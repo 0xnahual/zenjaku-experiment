@@ -2,31 +2,6 @@ import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import { useDarkMode } from '../contexts/DarkModeContext'
 
-// Mock Data with Addresses
-const MOCK_DATA = {
-  allTime: [
-    { rank: 1, address: 'darkknight.sol', volume: 150000, avatar: 'ZM' },
-    { rank: 2, address: 'HN7cABqLq46Es1jh92dQQisAq662SmxELLLsHHe4YWrx', volume: 125000, avatar: 'CR' },
-    { rank: 3, address: 'satoshi.sol', volume: 98000, avatar: 'SS' },
-    { rank: 4, address: 'Gv2W...9zXy', volume: 85000, avatar: 'BW' },
-    { rank: 5, address: 'phantom.sol', volume: 72000, avatar: 'ES' },
-  ],
-  monthly: [
-    { rank: 1, address: 'HN7cABqLq46Es1jh92dQQisAq662SmxELLLsHHe4YWrx', volume: 45000, avatar: 'CR' },
-    { rank: 2, address: 'darkknight.sol', volume: 38000, avatar: 'ZM' },
-    { rank: 3, address: 'wave.sol', volume: 22000, avatar: 'NW' },
-    { rank: 4, address: 'satoshi.sol', volume: 18000, avatar: 'SS' },
-    { rank: 5, address: 'trader.sol', volume: 15000, avatar: 'TJ' },
-  ],
-  daily: [
-    { rank: 1, address: 'wave.sol', volume: 5000, avatar: 'NW' },
-    { rank: 2, address: 'daytrader.sol', volume: 4200, avatar: 'DT' },
-    { rank: 3, address: 'HN7cABqLq46Es1jh92dQQisAq662SmxELLLsHHe4YWrx', volume: 3800, avatar: 'CR' },
-    { rank: 4, address: 'darkknight.sol', volume: 3100, avatar: 'ZM' },
-    { rank: 5, address: 'fast.sol', volume: 2500, avatar: 'QF' },
-  ]
-}
-
 const formatAddress = (address) => {
   if (!address) return 'Unknown'
   return `${address.slice(0, 6)}...${address.slice(-4)}`
@@ -35,14 +10,15 @@ const formatAddress = (address) => {
 export default function Leaderboard() {
   const { isDark, mounted } = useDarkMode()
   const [timeframe, setTimeframe] = useState('allTime')
-  const [data, setData] = useState(MOCK_DATA.allTime)
-  const [loading, setLoading] = useState(false)
+  const [data, setData] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchLeaderboard = async () => {
       setLoading(true)
       try {
-        const res = await fetch('/api/leaderboard')
+        // Pass the current timeframe to the API
+        const res = await fetch(`/api/leaderboard?timeframe=${timeframe}`)
         const json = await res.json()
         console.log('Leaderboard API response:', json)
 
@@ -59,8 +35,7 @@ export default function Leaderboard() {
       }
     }
 
-    // Fetch real data for ALL tabs for now to avoid showing fake addresses.
-    // In the future, we can pass ?timeframe=monthly to the API.
+    // Fetch real data for ALL tabs.
     fetchLeaderboard()
   }, [timeframe])
 
@@ -121,7 +96,16 @@ export default function Leaderboard() {
 
             {/* Leaderboard Table */}
             <div className="space-y-2">
-              {data.map((item, index) => (
+              {loading ? (
+                 <div className={`text-center py-12 font-mono text-sm opacity-50 ${isDark ? 'text-white' : 'text-black'}`}>
+                    CALCULATING VOLUME...
+                 </div>
+              ) : data.length === 0 ? (
+                 <div className={`text-center py-12 font-mono text-sm opacity-50 ${isDark ? 'text-white' : 'text-black'}`}>
+                    NO TRADES FOUND FOR THIS PERIOD
+                 </div>
+              ) : (
+                data.map((item, index) => (
                 <div
                   key={index}
                   className={`flex items-center justify-between py-4 px-4 rounded-sm transition-colors ${isDark
@@ -159,7 +143,7 @@ export default function Leaderboard() {
                     </div>
                   </div>
                 </div>
-              ))}
+              )))}
             </div>
           </div>
         </div>
