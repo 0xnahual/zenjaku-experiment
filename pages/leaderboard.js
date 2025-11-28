@@ -134,12 +134,28 @@ export default function Leaderboard() {
                       </div>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <div className={`font-mono text-sm font-bold tracking-tight ${isDark ? 'text-[#ff9900]' : 'text-[#ff6600]'}`}>
-                      {item.volume.toLocaleString()} SOL
+                  <div className="text-right min-w-[120px]">
+                    {/* Primary: Volume */}
+                    <div className="mb-1">
+                        <div className={`font-mono text-lg font-bold tracking-tight ${isDark ? 'text-[#ff9900]' : 'text-[#ff6600]'}`}>
+                          {item.volume.toLocaleString()}
+                        </div>
+                        <div className={`font-mono text-[9px] tracking-widest uppercase opacity-40 ${isDark ? 'text-white' : 'text-black'}`}>
+                          VOLUME (SOL)
+                        </div>
                     </div>
-                    <div className={`font-mono text-[9px] tracking-widest uppercase opacity-40 ${isDark ? 'text-white' : 'text-black'}`}>
-                      VOLUME
+                    
+                    {/* Secondary: Breakdown */}
+                    <div className={`flex justify-end gap-3 font-mono text-[9px] mt-2 ${isDark ? 'text-white' : 'text-black'}`}>
+                        <div className="flex items-baseline gap-1">
+                            <span className="font-bold opacity-80">{item.donated.toLocaleString()}</span>
+                            <span className="tracking-wider text-[7px] uppercase opacity-40">DONATED</span>
+                        </div>
+                        <div className="w-px h-2 bg-current opacity-20 self-center"></div>
+                        <div className="flex items-baseline gap-1">
+                            <span className="font-bold opacity-80">{item.burned.toLocaleString()}</span>
+                            <span className="tracking-wider text-[7px] uppercase opacity-40">BURNED</span>
+                        </div>
                     </div>
                   </div>
                 </div>

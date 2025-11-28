@@ -14,7 +14,8 @@ export default async function handler(req, res) {
 
     let query = supabase
       .from('sales')
-      .select('buyer, price, block_time')
+      // Added 'seller' to the selection so we can credit them too
+      .select('buyer, seller, price, block_time')
 
     // Apply Time Filters
     const now = new Date()
@@ -39,19 +40,35 @@ export default async function handler(req, res) {
 
     if (sales && sales.length > 0) {
         sales.forEach(sale => {
+          const price = Number(sale.price) || 0
+          const credit = price * 0.5
+
+          // Credit the BUYER (50% of volume)
           if (sale.buyer) {
-            volumeByWallet[sale.buyer] = (volumeByWallet[sale.buyer] || 0) + Number(sale.price)
+            volumeByWallet[sale.buyer] = (volumeByWallet[sale.buyer] || 0) + credit
+          }
+
+          // Credit the SELLER (50% of volume)
+          if (sale.seller) {
+            volumeByWallet[sale.seller] = (volumeByWallet[sale.seller] || 0) + credit
           }
         })
     }
 
     // Transform to array
     const leaderboard = Object.entries(volumeByWallet)
-      .map(([address, volume]) => ({
-        address,
-        volume: Number(volume.toFixed(4)), // 4 decimals is usually enough for SOL
-        avatar: address.slice(0, 2).toUpperCase()
-      }))
+      .map(([address, volume]) => {
+        const vol = Number(volume);
+        // 0.69% total royalties, split between charity and burn (0.345% each)
+        const royaltyShare = 0.00345; 
+        return {
+            address,
+            volume: Number(vol.toFixed(4)),
+            donated: Number((vol * royaltyShare).toFixed(5)),
+            burned: Number((vol * royaltyShare).toFixed(5)),
+            avatar: address.slice(0, 2).toUpperCase()
+        };
+      })
       .sort((a, b) => b.volume - a.volume)
       .slice(0, 50) // Top 50
 
