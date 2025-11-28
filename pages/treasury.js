@@ -16,16 +16,9 @@ const LATEST_STORY = {
 }
 
 export default function Treasury() {
-  const { isDark, glitchActive, mounted } = useDarkMode()
-  if (!mounted) return null
+  const { isDark, mounted } = useDarkMode()
 
-  const accent = isDark ? '#ff9900' : '#ff6600'
-  const accentSecondary = isDark ? '#ff6600' : '#ff9900'
-  const statText = isDark ? 'text-[#ff9900]' : 'text-[#ff6600]'
-  const statText2 = isDark ? 'text-[#ff6600]' : 'text-[#ff9900]'
-  const bg = isDark ? 'bg-black' : 'bg-white'
-  const border = isDark ? 'border-[#ff9900]/30' : 'border-[#ff9900]/20'
-  const textColor = isDark ? '#fff' : '#111'
+  if (!mounted) return null
 
   return (
     <>
@@ -36,132 +29,110 @@ export default function Treasury() {
         <link rel="icon" type="image/png" href="/favicon.png" />
       </Head>
       <div className={`pt-24 px-4 pb-16 min-h-screen ${isDark ? 'bg-black' : 'bg-white'}`}>
-        <div className="max-w-7xl mx-auto">
-          {/* Treasury Header - Matching site aesthetic */}
-          <div className="mb-16 font-mono">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-start">
-              {/* Left Column - Title and Description */}
-              <div className="lg:order-1">
-                <div 
-                  className="text-[10px] tracking-[0.5em] uppercase mb-3 glitch-text"
-                  style={{ 
-                    color: isDark ? '#FFFFFF' : '#000000',
-                    opacity: glitchActive ? 0.9 : 0.5
-                  }}
-                >
-                  REAL WORLD IMPACT
-                </div>
-                <h1 
-                  className="text-2xl sm:text-3xl font-black tracking-tighter mb-4"
-                  style={{ 
-                    color: isDark ? '#FFFFFF' : '#000000',
-                    WebkitTextStroke: isDark ? '1px #FFF' : '1px #000',
-                    textShadow: glitchActive ? 
-                      (isDark ? '-2px -2px #ff6600, 2px 2px #ff9900' : '2px 2px #ff6600, -2px -2px #ff9900')
-                      : 'none'
-                  }}
-                >
-                  THE TREASURY
-                </h1>
-                <p 
-                  className="text-sm opacity-70 leading-relaxed"
-                  style={{ color: isDark ? '#FFFFFF' : '#000000' }}
-                >
-                  Half of all royalties are offered to the world — supporting causes, lifting others, and restoring balance beyond the chain. Every donation becomes part of the story, recorded and shared on <a href="https://x.com/vibeknights" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-80 transition-opacity" style={{ color: isDark ? '#ff6600' : '#ff9900' }}>X</a>.
-                </p>
-              </div>
+        <div className="max-w-4xl mx-auto">
+          {/* Header */}
+          <div className="mb-16 font-mono text-center">
+            <div
+              className="text-[10px] tracking-[0.5em] uppercase mb-4 opacity-50"
+              style={{ color: isDark ? '#FFFFFF' : '#000000' }}
+            >
+              REAL WORLD IMPACT
+            </div>
+            <h1
+              className="text-3xl font-black tracking-tighter mb-6"
+              style={{ color: isDark ? '#FFFFFF' : '#000000' }}
+            >
+              THE TREASURY
+            </h1>
+            <p
+              className="text-sm opacity-70 max-w-2xl mx-auto leading-relaxed mb-2"
+              style={{ color: isDark ? '#FFFFFF' : '#000000' }}
+            >
+              Half of all royalties are offered to the world — supporting causes, lifting others, and restoring balance beyond the chain.
+            </p>
+            <p
+              className="text-[10px] font-mono tracking-wider uppercase"
+              style={{ color: isDark ? '#ff9900' : '#ff6600', opacity: 0.8 }}
+            >
+              TRANSPARENT // IMPACTFUL // GLOBAL
+            </p>
 
-              {/* Right Column - Stats */}
-              <div className="lg:order-2 lg:flex lg:justify-end lg:items-start">
-                <div className="text-center lg:text-right space-y-3 lg:mt-8">
-                  <div className="font-mono text-xl sm:text-2xl font-black tracking-tight" style={{ color: isDark ? '#ff9900' : '#ff6600' }}>
-                    ${TOTAL_DONATED.toLocaleString()} DONATED
-                  </div>
-                  <div className="font-mono text-sm opacity-70" style={{ color: isDark ? '#ff9900' : '#ff6600' }}>
-                    ${TREASURY_BALANCE.toLocaleString()} treasury balance
-                  </div>
-                  <div 
-                    className="text-[10px] font-mono tracking-wider"
-                    style={{ 
-                      color: isDark ? '#ff9900' : '#ff6600',
-                      opacity: glitchActive ? 0.9 : 0.7
-                    }}
-                  >
-                    BALANCE // RESTORED // ETERNAL
-                  </div>
+            {/* Stats */}
+            <div className="flex flex-col sm:flex-row justify-center gap-8 sm:gap-16 mt-12">
+              <div className="text-center">
+                <div className={`font-mono text-3xl font-bold tracking-tighter ${isDark ? 'text-[#ff9900]' : 'text-[#ff6600]'}`}>
+                  ${TOTAL_DONATED.toLocaleString()}
+                </div>
+                <div className={`font-mono text-[10px] tracking-widest uppercase opacity-40 mt-1 ${isDark ? 'text-white' : 'text-black'}`}>
+                  TOTAL DONATED
+                </div>
+              </div>
+              <div className="hidden sm:block w-px bg-gray-800/20"></div>
+              <div className="text-center">
+                <div className={`font-mono text-3xl font-bold tracking-tighter ${isDark ? 'text-[#ff9900]' : 'text-[#ff6600]'}`}>
+                  ${TREASURY_BALANCE.toLocaleString()}
+                </div>
+                <div className={`font-mono text-[10px] tracking-widest uppercase opacity-40 mt-1 ${isDark ? 'text-white' : 'text-black'}`}>
+                  TREASURY BALANCE
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Latest Donation Story */}
-          <div className="relative">
-            {/* Cyberpunk Frame */}
-            <div className={`absolute inset-0 border ${isDark ? 'border-[#ff9900]/20' : 'border-[#ff6600]/30'}`} />
-            <div className={`absolute top-0 left-0 w-6 h-6 border-t border-l ${isDark ? 'border-[#ff9900]/40' : 'border-[#ff6600]/50'}`} />
-            <div className={`absolute top-0 right-0 w-6 h-6 border-t border-r ${isDark ? 'border-[#ff9900]/40' : 'border-[#ff6600]/50'}`} />
-            <div className={`absolute bottom-0 left-0 w-6 h-6 border-b border-l ${isDark ? 'border-[#ff9900]/40' : 'border-[#ff6600]/50'}`} />
-            <div className={`absolute bottom-0 right-0 w-6 h-6 border-b border-r ${isDark ? 'border-[#ff9900]/40' : 'border-[#ff6600]/50'}`} />
-            
-            {/* Content */}
-            <div className="p-6 sm:p-8">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
-                {/* Avatar and Info */}
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#ff9900] to-[#ff6600] flex items-center justify-center border border-[#ff9900]/40">
-                    <span className="font-mono text-sm font-bold text-white">TC</span>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="font-mono text-sm font-bold" style={{ color: isDark ? '#FFFFFF' : '#000000' }}>
-                      {LATEST_STORY.author}
-                    </span>
-                    <span className="font-mono text-[10px] tracking-wider opacity-70" style={{ color: isDark ? '#ff9900' : '#ff6600' }}>
-                      {LATEST_STORY.handle}
-                    </span>
-                  </div>
-                </div>
+          {/* Latest Story */}
+          <div className="space-y-0 border-t border-dashed border-gray-800/50">
+            {/* Header for the list */}
+            <div className={`py-4 px-4 border-b border-dashed border-gray-800/20 font-mono text-[10px] uppercase tracking-widest opacity-40 ${isDark ? 'text-white' : 'text-black'}`}>
+              LATEST ACTIVITY
+            </div>
 
-                {/* Story Text */}
-                <div className="flex-1 min-w-0">
-                  <p className="font-mono text-sm opacity-80 leading-relaxed" style={{ color: isDark ? '#FFFFFF' : '#000000' }}>
-                    {LATEST_STORY.text}
-                  </p>
-                  <div className="flex items-center gap-3 mt-2">
-                    <span className="font-mono text-[10px] tracking-wider opacity-60" style={{ color: isDark ? '#FFFFFF' : '#000000' }}>
-                      {LATEST_STORY.date}
-                    </span>
-                    <a 
-                      href={LATEST_STORY.tweetUrl} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="inline-block text-[10px] tracking-wider hover:opacity-80 transition-opacity font-mono border border-current px-3 py-1"
-                      style={{ color: isDark ? '#ff9900' : '#ff6600' }}
-                    >
-                      VIEW ON TWITTER →
-                    </a>
-                  </div>
+            {/* Story Item */}
+            <div className={`flex flex-col sm:flex-row items-start sm:items-center gap-6 py-8 px-4 border-b border-dashed border-gray-800/20 transition-colors ${isDark ? 'hover:bg-white/5' : 'hover:bg-black/5'}`}>
+              {/* Avatar */}
+              <div className="flex-shrink-0">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#ff9900] to-[#ff6600] flex items-center justify-center border border-[#ff9900]/40 text-white font-mono font-bold text-sm">
+                  TC
                 </div>
+              </div>
 
-                {/* Donation Amount */}
-                <div className="flex flex-col items-end">
-                  <div className={`font-mono text-lg font-black tracking-tight ${isDark ? 'text-[#ff9900]' : 'text-[#ff6600]'}`}>
-                    +${LATEST_STORY.amount.toLocaleString()}
-                  </div>
-                  <div className="font-mono text-[10px] tracking-wider opacity-70" style={{ color: isDark ? '#FFFFFF' : '#000000' }}>
-                    DONATED
-                  </div>
+              {/* Content */}
+              <div className="flex-grow min-w-0">
+                <div className="flex items-baseline gap-3 mb-1">
+                  <span className={`font-mono text-sm font-bold ${isDark ? 'text-white' : 'text-black'}`}>
+                    {LATEST_STORY.author}
+                  </span>
+                  <span className={`font-mono text-xs opacity-50 ${isDark ? 'text-[#ff9900]' : 'text-[#ff6600]'}`}>
+                    {LATEST_STORY.handle}
+                  </span>
+                  <span className={`font-mono text-[10px] opacity-30 ${isDark ? 'text-white' : 'text-black'}`}>
+                    • {LATEST_STORY.date}
+                  </span>
+                </div>
+                <p className={`font-mono text-sm opacity-70 leading-relaxed mb-3 ${isDark ? 'text-white' : 'text-black'}`}>
+                  {LATEST_STORY.text}
+                </p>
+                {LATEST_STORY.tweetUrl && (
+                  <a
+                    href={LATEST_STORY.tweetUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center gap-2 font-mono text-[10px] tracking-wider uppercase border border-current px-3 py-1 hover:opacity-70 transition-opacity ${isDark ? 'text-[#ff9900]' : 'text-[#ff6600]'}`}
+                  >
+                    View on X <span>→</span>
+                  </a>
+                )}
+              </div>
+
+              {/* Amount */}
+              <div className="flex-shrink-0 text-right">
+                <div className={`font-mono text-xl font-bold tracking-tight ${isDark ? 'text-[#ff9900]' : 'text-[#ff6600]'}`}>
+                  +${LATEST_STORY.amount.toLocaleString()}
+                </div>
+                <div className={`font-mono text-[9px] tracking-widest uppercase opacity-40 ${isDark ? 'text-white' : 'text-black'}`}>
+                  DONATION
                 </div>
               </div>
             </div>
-
-            {/* Glitch Lines */}
-            <div 
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background: `repeating-linear-gradient(transparent, transparent 2px, rgba(255, 153, 0, 0.03) 3px, transparent 3px)`,
-                backgroundSize: '100% 4px'
-              }}
-            />
           </div>
         </div>
       </div>

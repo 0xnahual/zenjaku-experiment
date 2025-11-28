@@ -46,7 +46,7 @@ export default function Home() {
                 <div className="flex flex-col md:flex-row w-full max-w-[1050px] h-auto md:h-[650px] mx-auto border-0 overflow-hidden items-center justify-center gap-10 px-8">
                     {/* Left: Text Block */}
                     <div className="flex flex-col justify-center items-start w-full md:w-1/2 h-auto md:h-full space-y-4">
-                        <div className={`relative transition-transform duration-300 w-full ${glitchActive ? '-translate-x-[3px]' : ''}`}> 
+                        <div className={`relative transition-transform duration-300 w-full ${glitchActive ? '-translate-x-[3px]' : ''}`}>
                             <h1
                                 className="text-[4.5rem] md:text-[6.5rem] font-black tracking-tighter leading-[0.8] text-left"
                                 style={{
@@ -82,7 +82,7 @@ export default function Home() {
                             className="font-mono text-xs sm:text-sm font-medium max-w-full md:max-w-[480px] text-left"
                             style={{ color: isDark ? '#FFFFFF' : '#444444' }}
                         >
-                            A collection of <span style={{textDecoration: 'line-through', opacity: 0.6}}>3,100</span> 3,089 elves trapped in an eternal struggle.
+                            A collection of <span style={{ textDecoration: 'line-through', opacity: 0.6 }}>3,100</span> 3,089 elves trapped in an eternal struggle.
                             As half of the royalties turn them into ash, the other saves the world.
                             Witness the balance unfold as part of our community.
                         </p>
