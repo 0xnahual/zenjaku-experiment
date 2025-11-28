@@ -95,41 +95,32 @@ export default function Leaderboard() {
             </div>
 
             {/* Leaderboard Table */}
-            <div className="space-y-2">
+            <div className="space-y-0 border-t border-dashed border-gray-800/50">
               {loading ? (
                  <div className={`text-center py-12 font-mono text-sm opacity-50 ${isDark ? 'text-white' : 'text-black'}`}>
-                    CALCULATING VOLUME...
+                    [ CALCULATING_VOLUME... ]
                  </div>
               ) : data.length === 0 ? (
                  <div className={`text-center py-12 font-mono text-sm opacity-50 ${isDark ? 'text-white' : 'text-black'}`}>
-                    NO TRADES FOUND FOR THIS PERIOD
+                    [ NO_TRADES_FOUND ]
                  </div>
               ) : (
                 data.map((item, index) => (
                 <div
                   key={index}
-                  className={`flex items-center justify-between py-4 px-4 rounded-sm transition-colors ${isDark
+                  className={`flex items-center justify-between py-4 px-4 border-b border-dashed border-gray-800/20 transition-colors ${isDark
                     ? 'hover:bg-white/5'
                     : 'hover:bg-black/5'
                     } ${loading ? 'opacity-50' : 'opacity-100'}`}
                 >
                   <div className="flex items-center gap-6">
-                    <div className={`font-mono text-sm w-6 text-center opacity-50 ${isDark ? 'text-white' : 'text-black'}`}>
-                      {item.rank}
+                    <div className={`font-mono text-sm w-12 text-left opacity-50 ${isDark ? 'text-[#ff9900]' : 'text-[#ff6600]'}`}>
+                      #{String(item.rank).padStart(2, '0')}
                     </div>
                     <div className="flex items-center gap-4">
-                      <div
-                        className={`w-8 h-8 rounded-full flex items-center justify-center font-mono text-xs font-bold ${isDark ? 'bg-white/10 text-white' : 'bg-black/5 text-black'}`}
-                        style={{ color: index < 3 ? accent : undefined }}
-                      >
-                        {item.avatar}
-                      </div>
                       <div className="text-left">
                         <div className={`font-mono text-sm tracking-wider ${isDark ? 'text-white' : 'text-black'}`}>
                           {formatAddress(item.address)}
-                        </div>
-                        <div className={`font-mono text-[9px] tracking-widest uppercase opacity-40 ${isDark ? 'text-white' : 'text-black'}`}>
-                          WALLET ADDRESS
                         </div>
                       </div>
                     </div>
