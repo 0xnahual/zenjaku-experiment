@@ -41,11 +41,16 @@ const Header = () => {
                 }
             ]
         },
-    
-        
+
+
         {
             name: 'The Fallen',
             link: '/cemetery',
+            isExternal: false
+        },
+        {
+            name: 'Leaderboard',
+            link: '/leaderboard',
             isExternal: false
         },
         {
@@ -72,14 +77,14 @@ const Header = () => {
     return (
         <header className={`fixed top-0 left-0 w-full px-4 py-4 flex justify-between items-center z-50 ${isDark ? 'bg-gradient-to-b from-black/90 to-black/0' : 'bg-gradient-to-b from-white/90 to-white/0'}`}>
             <Link href="/" className="font-mono z-20">
-                <div 
+                <div
                     className={`text-[10px] tracking-[0.5em] uppercase transition-opacity duration-300 ${glitchActive ? 'opacity-30' : 'opacity-50'}`}
                     style={{ color: isDark ? '#FFFFFF' : '#000000' }}
                 >
-                    THE ZENJAKU EXPERIMENT  
-                    
+                    THE ZENJAKU EXPERIMENT
+
                 </div>
-                <div 
+                <div
                     className={`text-xs tracking-[0.3em] uppercase transform transition-transform duration-300 ${glitchActive ? 'translate-x-[2px]' : ''}`}
                     style={{ color: isDark ? '#FFFFFF' : '#000000' }}
                 >
@@ -94,8 +99,8 @@ const Header = () => {
                 aria-label="Toggle navigation menu"
             >
                 {menuOpen
-                  ? <HiX size={28} style={{ color: isDark ? '#fff' : '#111' }} />
-                  : <HiMenu size={28} style={{ color: isDark ? '#fff' : '#111' }} />}
+                    ? <HiX size={28} style={{ color: isDark ? '#fff' : '#111' }} />
+                    : <HiMenu size={28} style={{ color: isDark ? '#fff' : '#111' }} />}
             </button>
 
             {/* Desktop Nav */}
@@ -127,7 +132,7 @@ const Header = () => {
                                         {link.name}
                                     </button>
                                     {galleryDropdownOpen && (
-                                        <div 
+                                        <div
                                             className={`absolute top-full left-0 mt-2 py-2 min-w-[200px] rounded shadow-lg z-50 ${isDark ? 'bg-black border border-gray-700' : 'bg-white border border-gray-200'}`}
                                             onMouseEnter={() => {
                                                 if (dropdownTimeout) {
