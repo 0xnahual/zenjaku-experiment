@@ -2,6 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 html,
 body {
     font-family: 'Montserrat';
@@ -31,14 +32,12 @@ html {
 }
 
 .textblueyellow {
-    filter: drop-shadow(1.3px 0px 0px #ffae00)
-        drop-shadow(-1.3px 0px 0px #0074ff);
+    filter: drop-shadow(1.3px 0px 0px #ffae00) drop-shadow(-1.3px 0px 0px #0074ff);
     letter-spacing: 3.5px;
 }
 
 .textRedBlue {
-    filter: drop-shadow(1.5px 0px 0px #ff1900)
-        drop-shadow(-1.5px 0px 0px #0074ff);
+    filter: drop-shadow(1.5px 0px 0px #ff1900) drop-shadow(-1.5px 0px 0px #0074ff);
 }
 
 .textblueGolden {
@@ -46,18 +45,15 @@ html {
 }
 
 .btnBlueYellow {
-    filter: drop-shadow(2.5px 0px 0px #ffae00)
-        drop-shadow(-2.3px 0px 0px #0074ff);
+    filter: drop-shadow(2.5px 0px 0px #ffae00) drop-shadow(-2.3px 0px 0px #0074ff);
 }
 
 .btnRedBlue {
-    filter: drop-shadow(2.5px 0px 0px #ff1900)
-        drop-shadow(-2.3px 0px 0px #0074ff);
+    filter: drop-shadow(2.5px 0px 0px #ff1900) drop-shadow(-2.3px 0px 0px #0074ff);
 }
 
 .headerBlueYellow {
-    filter: drop-shadow(1.5px 0px 0px #ffae00)
-        drop-shadow(-1.3px 0px 0px #0074ff);
+    filter: drop-shadow(1.5px 0px 0px #ffae00) drop-shadow(-1.3px 0px 0px #0074ff);
 }
 
 .textblueGoldenArtmap {
@@ -136,6 +132,7 @@ html {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -145,6 +142,7 @@ html {
     from {
         -webkit-transform: rotate(0deg);
     }
+
     to {
         -webkit-transform: rotate(360deg);
     }
@@ -317,80 +315,79 @@ html {
 
 @keyframes glitchOne {
     0% {
-        filter: drop-shadow(0 0 0 var(--before-color))
-            drop-shadow(0 0 0 var(--after-color));
+        filter: drop-shadow(0 0 0 var(--before-color)) drop-shadow(0 0 0 var(--after-color));
     }
+
     39.9% {
-        filter: drop-shadow(0 0 0 var(--before-color))
-            drop-shadow(0 0 0 var(--after-color));
+        filter: drop-shadow(0 0 0 var(--before-color)) drop-shadow(0 0 0 var(--after-color));
     }
+
     40% {
-        filter: drop-shadow(0.08em 0 0 var(--before-color))
-            drop-shadow(-0.08em 0 0 var(--after-color));
+        filter: drop-shadow(0.08em 0 0 var(--before-color)) drop-shadow(-0.08em 0 0 var(--after-color));
     }
+
     46.5% {
-        filter: drop-shadow(0em 0 0 var(--before-color))
-            drop-shadow(-0em 0 0 var(--after-color));
+        filter: drop-shadow(0em 0 0 var(--before-color)) drop-shadow(-0em 0 0 var(--after-color));
     }
+
     51.9% {
-        filter: drop-shadow(0em 0 0 var(--before-color))
-            drop-shadow(0em 0 0 var(--after-color));
+        filter: drop-shadow(0em 0 0 var(--before-color)) drop-shadow(0em 0 0 var(--after-color));
     }
+
     52% {
-        filter: drop-shadow(0.08em 0 0 var(--before-color))
-            drop-shadow(-0.08em 0 0 var(--after-color));
+        filter: drop-shadow(0.08em 0 0 var(--before-color)) drop-shadow(-0.08em 0 0 var(--after-color));
     }
+
     58.5% {
-        filter: drop-shadow(0em 0 0 var(--before-color))
-            drop-shadow(-0em 0 0 var(--after-color));
+        filter: drop-shadow(0em 0 0 var(--before-color)) drop-shadow(-0em 0 0 var(--after-color));
     }
+
     100% {
-        filter: drop-shadow(0 0 0 var(--before-color))
-            drop-shadow(0 0 0 var(--after-color));
+        filter: drop-shadow(0 0 0 var(--before-color)) drop-shadow(0 0 0 var(--after-color));
     }
 }
 
 @keyframes glitchTwo {
     0% {
-        filter: drop-shadow(0 0 0 var(--before-color))
-            drop-shadow(0 0 0 var(--after-color));
+        filter: drop-shadow(0 0 0 var(--before-color)) drop-shadow(0 0 0 var(--after-color));
     }
+
     39.9% {
-        filter: drop-shadow(0 0 0 var(--before-color))
-            drop-shadow(0 0 0 var(--after-color));
+        filter: drop-shadow(0 0 0 var(--before-color)) drop-shadow(0 0 0 var(--after-color));
     }
+
     40% {
-        filter: drop-shadow(0 0.08em 0 var(--after-color))
-            drop-shadow(0 -0.08em 0 var(--before-color));
+        filter: drop-shadow(0 0.08em 0 var(--after-color)) drop-shadow(0 -0.08em 0 var(--before-color));
     }
+
     46.5% {
-        filter: drop-shadow(0 0 0 var(--after-color))
-            drop-shadow(0 0 0 var(--before-color));
+        filter: drop-shadow(0 0 0 var(--after-color)) drop-shadow(0 0 0 var(--before-color));
     }
+
     100% {
-        filter: drop-shadow(0 0 0 var(--before-color))
-            drop-shadow(0 0 0 var(--after-color));
+        filter: drop-shadow(0 0 0 var(--before-color)) drop-shadow(0 0 0 var(--after-color));
     }
 }
 
 @keyframes glitchThree {
     0% {
-        filter: drop-shadow(0 0 0 var(--before-color))
-            drop-shadow(0 0 0 var(--after-color));
+        filter: drop-shadow(0 0 0 var(--before-color)) drop-shadow(0 0 0 var(--after-color));
     }
+
     51.9% {
-        filter: drop-shadow(0em 0 0 var(--before-color))
-            drop-shadow(0em 0 0 var(--after-color));
+        filter: drop-shadow(0em 0 0 var(--before-color)) drop-shadow(0em 0 0 var(--after-color));
     }
+
     52% {
         filter: drop-shadow(0 -0.08em 0 var(--before-color));
     }
+
     58.5% {
         filter: drop-shadow(0 0 0 var(--before-color));
     }
+
     100% {
-        filter: drop-shadow(0 0 0 var(--before-color))
-            drop-shadow(0 0 0 var(--after-color));
+        filter: drop-shadow(0 0 0 var(--before-color)) drop-shadow(0 0 0 var(--after-color));
     }
 }
 
@@ -419,28 +416,30 @@ html {
     background: #034afb;
 }
 
-.whiteAndBlackScrollbar::-webkit-scrollbar{
+.whiteAndBlackScrollbar::-webkit-scrollbar {
     width: 6px;
     background-color: black;
     border-radius: 15px;
 }
-.whiteAndBlackScrollbar::-webkit-scrollbar-thumb{
+
+.whiteAndBlackScrollbar::-webkit-scrollbar-thumb {
     background: white;
     border-radius: 15px;
 }
 
-.blackAndWhiteScrollbar::-webkit-scrollbar{
+.blackAndWhiteScrollbar::-webkit-scrollbar {
     width: 6px;
     background-color: white;
     border-radius: 15px;
 }
 
-.blackAndWhiteScrollbar::-webkit-scrollbar-thumb{
+.blackAndWhiteScrollbar::-webkit-scrollbar-thumb {
     background: black;
     border-radius: 15px;
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     *,
     ::before,
     ::after {
@@ -499,6 +498,7 @@ html {
         height: 0;
         background-color: #ff0a02;
     }
+
     100% {
         width: 300vw;
         height: 300vw;
@@ -514,6 +514,7 @@ html {
         background-color: #ff7323;
         display: block;
     }
+
     100% {
         width: 300vw;
         height: 300vw;
@@ -529,6 +530,7 @@ html {
         background-color: #ffae27;
         display: block;
     }
+
     100% {
         width: 300vw;
         height: 300vw;
@@ -544,6 +546,7 @@ html {
         background-color: white;
         display: block;
     }
+
     100% {
         width: 300vw;
         height: 300vw;
@@ -606,12 +609,15 @@ html {
     0% {
         opacity: 1;
     }
+
     5.55% {
         opacity: 0.5;
     }
+
     11.11% {
         opacity: 0;
     }
+
     100% {
         opacity: 0;
     }
@@ -621,18 +627,23 @@ html {
     0% {
         opacity: 0;
     }
+
     5.55% {
         opacity: 0.5;
     }
+
     11.11% {
         opacity: 1;
     }
+
     16.66% {
         opacity: 0.5;
     }
+
     22.22% {
         opacity: 0;
     }
+
     100% {
         opacity: 0;
     }
@@ -642,21 +653,27 @@ html {
     0% {
         opacity: 0;
     }
+
     11.11% {
         opacity: 0;
     }
+
     16.66% {
         opacity: 0.5;
     }
+
     22.22% {
         opacity: 1;
     }
+
     27.77% {
         opacity: 0.5;
     }
+
     33.33% {
         opacity: 0;
     }
+
     100% {
         opacity: 0;
     }
@@ -666,21 +683,27 @@ html {
     0% {
         opacity: 0;
     }
+
     22.22% {
         opacity: 0;
     }
+
     27.77% {
         opacity: 0.5;
     }
+
     33.33% {
         opacity: 1;
     }
+
     38.88% {
         opacity: 0.5;
     }
+
     44.44% {
         opacity: 0;
     }
+
     100% {
         opacity: 0;
     }
@@ -690,21 +713,27 @@ html {
     0% {
         opacity: 0;
     }
+
     33.33% {
         opacity: 0;
     }
+
     38.88% {
         opacity: 0.5;
     }
+
     44.44% {
         opacity: 1;
     }
+
     50% {
         opacity: 0.5;
     }
+
     55.55% {
         opacity: 0;
     }
+
     100% {
         opacity: 0;
     }
@@ -714,21 +743,27 @@ html {
     0% {
         opacity: 0;
     }
+
     44.44% {
         opacity: 0;
     }
+
     50% {
         opacity: 0.5;
     }
+
     55.55% {
         opacity: 1;
     }
+
     61.11% {
         opacity: 0.5;
     }
+
     66.66% {
         opacity: 0;
     }
+
     100% {
         opacity: 0;
     }
@@ -738,21 +773,27 @@ html {
     0% {
         opacity: 0;
     }
+
     55.55% {
         opacity: 0;
     }
+
     61.11% {
         opacity: 0.5;
     }
+
     66.66% {
         opacity: 1;
     }
+
     72.22% {
         opacity: 0.5;
     }
+
     77.77% {
         opacity: 0;
     }
+
     100% {
         opacity: 0;
     }
@@ -762,21 +803,27 @@ html {
     0% {
         opacity: 0;
     }
+
     66.66% {
         opacity: 0;
     }
+
     72.22% {
         opacity: 0.5;
     }
+
     77.77% {
         opacity: 1;
     }
+
     83.33% {
         opacity: 0.5;
     }
+
     88.88% {
         opacity: 0;
     }
+
     100% {
         opacity: 0;
     }
@@ -786,18 +833,23 @@ html {
     0% {
         opacity: 0;
     }
+
     77.77% {
         opacity: 0;
     }
+
     83.33% {
         opacity: 0.5;
     }
+
     88.88% {
         opacity: 1;
     }
+
     94.44% {
         opacity: 0.5;
     }
+
     100% {
         opacity: 0;
     }
@@ -825,12 +877,14 @@ html {
         -webkit-column-width: 100%;
         column-width: 100%;
     }
+
     .selected-image {
         max-height: none !important;
         max-width: none !important;
         width: 75vw !important;
         height: auto !important;
     }
+
     .selected-image-container {
         max-height: 90vh;
         max-width: 90vw;
@@ -854,4 +908,15 @@ html {
 .disablemac-mac-animations * {
     transition: none !important;
     animation: none !important;
+}
+
+.ghost-text {
+    opacity: 0.7;
+    /* Slightly dimmed by default */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.ghost-text:hover {
+    opacity: 1;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }

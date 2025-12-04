@@ -32,8 +32,7 @@ const Header = () => {
             dropdownItems: [
                 {
                     name: 'The Zenjaku',
-                    link: '#', // Placeholder for now
-                    comingSoon: true
+                    link: '/zenjaku'
                 },
                 {
                     name: 'Zenjaku Legends (BTC)',
