@@ -1,18 +1,27 @@
 import { useDarkMode } from '../contexts/DarkModeContext'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import ScrambleText from './ScrambleText'
 
+// Pages that should always be dark mode
+const FORCE_DARK_PAGES = ['/zenjaku']
+
 export default function Layout({ children }) {
-    const { isDark, glitchActive, mounted } = useDarkMode()
+    const router = useRouter()
+    const { isDark: contextIsDark, glitchActive, mounted } = useDarkMode()
+
+    // Force dark mode on certain pages
+    const forceDark = FORCE_DARK_PAGES.includes(router.pathname)
+    const isDark = forceDark || contextIsDark
 
     const [timestamp, setTimestamp] = useState('')
 
     useEffect(() => {
-        if (!mounted) return
+        if (!mounted && !forceDark) return
         updateTimestamp()
         const timestampInterval = setInterval(updateTimestamp, 1000)
         return () => clearInterval(timestampInterval)
-    }, [mounted])
+    }, [mounted, forceDark])
 
     const updateTimestamp = () => {
         const date = new Date().toISOString().split('T')[0].replace(/-/g, '')
@@ -20,7 +29,8 @@ export default function Layout({ children }) {
         setTimestamp(`${date}_${random}`)
     }
 
-    if (!mounted) {
+    // Don't wait for mount on force dark pages - render immediately with dark styles
+    if (!mounted && !forceDark) {
         return null
     }
 

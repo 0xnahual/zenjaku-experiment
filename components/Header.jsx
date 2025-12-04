@@ -1,13 +1,22 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useDarkMode } from '../contexts/DarkModeContext'
 import { HiMenu, HiX } from 'react-icons/hi'
 
+// Pages that should always be dark mode
+const FORCE_DARK_PAGES = ['/zenjaku']
+
 const Header = () => {
-    const { isDark, glitchActive, mounted } = useDarkMode()
+    const router = useRouter()
+    const { isDark: contextIsDark, glitchActive, mounted } = useDarkMode()
     const [menuOpen, setMenuOpen] = useState(false)
     const [galleryDropdownOpen, setGalleryDropdownOpen] = useState(false)
     const [dropdownTimeout, setDropdownTimeout] = useState(null)
+
+    // Force dark mode on certain pages
+    const forceDark = FORCE_DARK_PAGES.includes(router.pathname)
+    const isDark = forceDark || contextIsDark
 
     // Cleanup timeout on unmount
     useEffect(() => {
@@ -69,7 +78,8 @@ const Header = () => {
         }
     ]
 
-    if (!mounted) {
+    // Don't wait for mount on force dark pages - render immediately with dark styles
+    if (!mounted && !forceDark) {
         return null
     }
 

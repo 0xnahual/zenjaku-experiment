@@ -1,14 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import Head from 'next/head'
-import { useDarkMode } from '../contexts/DarkModeContext'
 import arweaveData from '../data/arweave-uploads.json'
-import ScrambleText from '../components/ScrambleText'
+
+const ITEMS_PER_BATCH = 48
 
 export default function ZenjakuGallery() {
-    const { isDark, glitchActive, mounted } = useDarkMode()
     const [selectedPiece, setSelectedPiece] = useState(null)
-    const [items, setItems] = useState([])
+    const [allItems, setAllItems] = useState([])
+    const [visibleItems, setVisibleItems] = useState([])
+    const [loading, setLoading] = useState(false)
+    const loaderRef = useRef(null)
 
+    // Load all items data on mount
     useEffect(() => {
         const loadedItems = Object.entries(arweaveData).map(([filename, url], index) => {
             const id = filename.replace('.png', '')
@@ -17,17 +20,48 @@ export default function ZenjakuGallery() {
                 id: id,
                 filename: filename,
                 image: url,
-                // Placeholder metadata until real metadata is available
                 name: `#${(index + 1).toString().padStart(3, '0')}`,
                 description: 'A Zenjaku from the void.',
             }
         })
-        setItems(loadedItems)
+        setAllItems(loadedItems)
+        // Load first batch
+        setVisibleItems(loadedItems.slice(0, ITEMS_PER_BATCH))
     }, [])
 
-    if (!mounted) {
-        return null
-    }
+    // Load more items
+    const loadMore = useCallback(() => {
+        if (loading || visibleItems.length >= allItems.length) return
+        
+        setLoading(true)
+        // Small delay for smooth loading effect
+        setTimeout(() => {
+            const nextBatch = allItems.slice(
+                visibleItems.length,
+                visibleItems.length + ITEMS_PER_BATCH
+            )
+            setVisibleItems(prev => [...prev, ...nextBatch])
+            setLoading(false)
+        }, 100)
+    }, [loading, visibleItems.length, allItems])
+
+    // Intersection Observer for infinite scroll
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting) {
+                    loadMore()
+                }
+            },
+            { threshold: 0.1 }
+        )
+
+        if (loaderRef.current) {
+            observer.observe(loaderRef.current)
+        }
+
+        return () => observer.disconnect()
+    }, [loadMore])
 
     return (
         <>
@@ -36,64 +70,43 @@ export default function ZenjakuGallery() {
                 <meta name="description" content="The Zenjaku collection. Raw, immutable, eternal." />
             </Head>
 
-            <div className={`min-h-screen pt-24 px-4 pb-16 ${isDark ? 'bg-black text-white' : 'bg-white text-black'}`}>
-                <div className="max-w-[1600px] mx-auto">
-                    {/* Header Section */}
-                    <div className="mb-12 border-b border-current pb-8">
-                        <h1
-                            className="text-4xl md:text-6xl font-mono font-black tracking-tighter mb-4 uppercase"
-                            style={{
-                                textShadow: glitchActive ? '2px 2px #ff0000, -2px -2px #00ff00' : 'none'
-                            }}
-                        >
-                            The Zenjaku
-                        </h1>
-                        <div className="flex flex-col md:flex-row justify-between items-end gap-4">
-                            <p className="font-mono text-sm md:text-base opacity-70 max-w-2xl">
-                                {items.length} unique entities stored permanently on Arweave.
-                                <br />
-                                <span className="text-xs opacity-50">METADATA SYNC: PENDING...</span>
-                            </p>
-                            <div className="font-mono text-xs tracking-widest uppercase border border-current px-4 py-2">
-                                STATUS: ONLINE
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Grid */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
-                        {items.map((item) => (
-                            <div
-                                key={item.id}
-                                className="group relative cursor-pointer"
-                                onClick={() => setSelectedPiece(item)}
-                            >
-                                <div className="aspect-square bg-gray-900 relative overflow-hidden border border-transparent group-hover:border-[#ff9900] transition-colors">
-                                    <img
-                                        src={item.image}
-                                        alt={item.name}
-                                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                                        style={{
-                                            filter: isDark ? 'brightness(0.9)' : 'none'
-                                        }}
-                                        loading="lazy"
-                                    />
-
-                                    <div className="absolute top-2 right-2 bg-black/80 text-white text-[8px] font-mono px-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                        #{item.index.toString().padStart(3, '0')}
-                                    </div>
-                                    {/* Overlay on hover */}
-                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
-                                </div>
-
-                                <div className="mt-2 font-mono text-[9px] flex flex-col gap-1 opacity-70 group-hover:opacity-100 group-hover:text-[#ff9900]">
-                                    <span className="font-bold">#{item.index.toString().padStart(3, '0')}</span>
-                                    <span className="break-all leading-tight">{item.id}</span>
-                                </div>
-                            </div>
-                        ))}
+            <div className="min-h-screen bg-black text-white">
+                {/* Floating Header */}
+                <div className="fixed top-20 left-6 z-30 mix-blend-difference pointer-events-none">
+                    <div className="font-mono text-[10px] tracking-[0.5em] text-white/40 mb-1">禅衡者</div>
+                    <div className="text-[11px] font-mono tracking-[0.2em] text-white/60">
+                        {allItems.length > 0 && <span className="text-white">{allItems.length}</span>} STORED FOREVER
                     </div>
                 </div>
+
+                {/* Grid - Full Bleed */}
+                <div className="grid grid-cols-5 sm:grid-cols-7 md:grid-cols-9 lg:grid-cols-11 xl:grid-cols-13 2xl:grid-cols-15">
+                    {visibleItems.map((item) => (
+                        <div
+                            key={item.id}
+                            className="aspect-square cursor-pointer relative overflow-hidden group"
+                            onClick={() => setSelectedPiece(item)}
+                        >
+                            <img
+                                src={item.image}
+                                alt={item.name}
+                                className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
+                                loading="lazy"
+                            />
+                            <div className="absolute inset-0 bg-[#ff9900]/0 group-hover:bg-[#ff9900]/10 transition-colors duration-300" />
+                        </div>
+                    ))}
+                </div>
+
+                {/* Loader */}
+                {visibleItems.length < allItems.length && (
+                    <div 
+                        ref={loaderRef} 
+                        className="h-20 flex items-center justify-center"
+                    >
+                        <div className="w-1 h-1 bg-[#ff9900] animate-ping" />
+                    </div>
+                )}
             </div>
 
             {/* Modal */}
@@ -103,7 +116,7 @@ export default function ZenjakuGallery() {
                     onClick={() => setSelectedPiece(null)}
                 >
                     <div
-                        className={`max-w-5xl w-full p-1 relative border ${isDark ? 'bg-black border-[#ff9900]/30 text-white' : 'bg-white border-black text-black'}`}
+                        className="max-w-5xl w-full p-1 relative border bg-black border-[#ff9900]/30 text-white"
                         onClick={e => e.stopPropagation()}
                     >
                         <button
