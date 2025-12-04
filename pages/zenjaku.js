@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import { useDarkMode } from '../contexts/DarkModeContext'
 import arweaveData from '../data/arweave-uploads.json'
+import ScrambleText from '../components/ScrambleText'
 
 export default function ZenjakuGallery() {
     const { isDark, glitchActive, mounted } = useDarkMode()
@@ -9,10 +10,7 @@ export default function ZenjakuGallery() {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        // Transform the simple key-value JSON into an array of objects
         const loadedItems = Object.entries(arweaveData).map(([filename, url], index) => {
-            // Extract a "token ID" or hash from the filename if possible, or just use index
-            // Filename format seems to be: <hash>.png
             const id = filename.replace('.png', '')
             return {
                 index: index + 1,
@@ -20,7 +18,7 @@ export default function ZenjakuGallery() {
                 filename: filename,
                 image: url,
                 // Placeholder metadata until real metadata is available
-                name: `Zenjaku #${index + 1}`,
+                name: `#${(index + 1).toString().padStart(3, '0')}`,
                 description: 'A Zenjaku from the void.',
             }
         })
@@ -81,12 +79,15 @@ export default function ZenjakuGallery() {
                                         loading="lazy"
                                     />
 
+                                    <div className="absolute top-2 right-2 bg-black/80 text-white text-[8px] font-mono px-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        #{item.index.toString().padStart(3, '0')}
+                                    </div>
                                     {/* Overlay on hover */}
                                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
                                 </div>
 
                                 <div className="mt-2 font-mono text-[9px] flex flex-col gap-1 opacity-70 group-hover:opacity-100 group-hover:text-[#ff9900]">
-                                    <span className="font-bold">#{item.index}</span>
+                                    <span className="font-bold">#{item.index.toString().padStart(3, '0')}</span>
                                     <span className="break-all leading-tight">{item.id}</span>
                                 </div>
                             </div>
@@ -102,7 +103,7 @@ export default function ZenjakuGallery() {
                     onClick={() => setSelectedPiece(null)}
                 >
                     <div
-                        className={`max-w-4xl w-full p-6 md:p-8 relative border ${isDark ? 'bg-black border-gray-800' : 'bg-white border-black'}`}
+                        className={`max-w-5xl w-full p-1 relative border ${isDark ? 'bg-black border-[#ff9900]/30 text-white' : 'bg-white border-black text-black'}`}
                         onClick={e => e.stopPropagation()}
                     >
                         <button
@@ -147,6 +148,10 @@ export default function ZenjakuGallery() {
                                 </div>
 
                                 <div className="mt-8 pt-4 border-t border-current border-opacity-20">
+                                    <div className="flex justify-between items-center border-b border-current border-opacity-20 pb-1 mb-1">
+                                        <span className="font-bold">#{selectedPiece.index.toString().padStart(3, '0')}</span>
+                                        <span>SUBJECT</span>
+                                    </div>
                                     <a
                                         href={selectedPiece.image}
                                         target="_blank"
