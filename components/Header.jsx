@@ -11,7 +11,7 @@ const Header = () => {
     const router = useRouter()
     const { isDark: contextIsDark, glitchActive, mounted } = useDarkMode()
     const [menuOpen, setMenuOpen] = useState(false)
-    const [galleryDropdownOpen, setGalleryDropdownOpen] = useState(false)
+    const [openDropdown, setOpenDropdown] = useState(null)
     const [dropdownTimeout, setDropdownTimeout] = useState(null)
 
     // Force dark mode on certain pages
@@ -34,13 +34,14 @@ const Header = () => {
             isExternal: false
         },
         {
-            name: ' Collection',
+            name: 'Collection',
             link: '/gallery',
             isExternal: false,
             hasDropdown: true,
+            dropdownId: 'collection',
             dropdownItems: [
                 {
-                    name: 'The Zenjaku',
+                    name: 'The Zenjaku (SOL)',
                     link: '/zenjaku'
                 },
                 {
@@ -49,22 +50,26 @@ const Header = () => {
                 }
             ]
         },
-
-
         {
-            name: 'The Fallen',
+            name: 'The Game',
             link: '/cemetery',
-            isExternal: false
-        },
-        {
-            name: 'Leaderboard',
-            link: '/leaderboard',
-            isExternal: false
-        },
-        {
-            name: 'The Treasury',
-            link: '/treasury',
-            isExternal: false
+            isExternal: false,
+            hasDropdown: true,
+            dropdownId: 'game',
+            dropdownItems: [
+                {
+                    name: 'The Fallen',
+                    link: '/cemetery'
+                },
+                {
+                    name: 'Leaderboard',
+                    link: '/leaderboard'
+                },
+                {
+                    name: 'The Treasury',
+                    link: '/treasury'
+                }
+            ]
         },
         {
             name: 'SOL',
@@ -125,22 +130,22 @@ const Header = () => {
                                             clearTimeout(dropdownTimeout)
                                             setDropdownTimeout(null)
                                         }
-                                        setGalleryDropdownOpen(true)
+                                        setOpenDropdown(link.dropdownId)
                                     }}
                                     onMouseLeave={() => {
                                         const timeout = setTimeout(() => {
-                                            setGalleryDropdownOpen(false)
+                                            setOpenDropdown(null)
                                         }, 150)
                                         setDropdownTimeout(timeout)
                                     }}
                                 >
                                     <button
                                         className={`font-mono text-xs tracking-widest uppercase hover:opacity-70 transition-opacity ${isDark ? 'text-white' : 'text-black'}`}
-                                        onClick={() => setGalleryDropdownOpen(!galleryDropdownOpen)}
+                                        onClick={() => setOpenDropdown(openDropdown === link.dropdownId ? null : link.dropdownId)}
                                     >
                                         {link.name}
                                     </button>
-                                    {galleryDropdownOpen && (
+                                    {openDropdown === link.dropdownId && (
                                         <div
                                             className={`absolute top-full left-0 mt-2 py-2 min-w-[200px] rounded shadow-lg z-50 ${isDark ? 'bg-black border border-gray-700' : 'bg-white border border-gray-200'}`}
                                             onMouseEnter={() => {
@@ -151,7 +156,7 @@ const Header = () => {
                                             }}
                                             onMouseLeave={() => {
                                                 const timeout = setTimeout(() => {
-                                                    setGalleryDropdownOpen(false)
+                                                    setOpenDropdown(null)
                                                 }, 150)
                                                 setDropdownTimeout(timeout)
                                             }}
@@ -169,7 +174,7 @@ const Header = () => {
                                                         key={item.name}
                                                         href={item.link}
                                                         className={`block px-4 py-2 font-mono text-xs tracking-wide uppercase hover:opacity-70 transition-opacity ${isDark ? 'text-white hover:bg-gray-900' : 'text-black hover:bg-gray-100'}`}
-                                                        onClick={() => setGalleryDropdownOpen(false)}
+                                                        onClick={() => setOpenDropdown(null)}
                                                     >
                                                         {item.name}
                                                     </Link>

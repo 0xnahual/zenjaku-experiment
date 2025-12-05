@@ -70,7 +70,7 @@ export default function Layout({ children }) {
                 >
                     <span>a social experiment by</span>
                     <span className="font-bold ghost-text">
-                        <ScrambleText text="THE ARCHITECT" />
+                        <ScrambleText text="NΛHUΛL" />
                     </span>
                 </div>
             </div>
