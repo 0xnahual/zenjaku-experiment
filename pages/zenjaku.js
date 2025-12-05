@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Head from 'next/head'
 import arweaveData from '../data/arweave-uploads.json'
 
 export default function ZenjakuGallery() {
     const [selectedPiece, setSelectedPiece] = useState(null)
     const [items, setItems] = useState([])
+    const [autoScrollActive, setAutoScrollActive] = useState(true)
+    const gridRef = useRef(null)
 
     useEffect(() => {
         const loadedItems = Object.entries(arweaveData).map(([filename, url], index) => {
@@ -20,6 +22,56 @@ export default function ZenjakuGallery() {
         setItems(loadedItems)
     }, [])
 
+    // Auto-scroll effect
+    useEffect(() => {
+        if (!autoScrollActive) return
+
+        const scrollSpeed = 0.5 // pixels per frame
+        let animationId
+
+        const scroll = () => {
+            if (!autoScrollActive) return
+            window.scrollBy(0, scrollSpeed)
+            animationId = requestAnimationFrame(scroll)
+        }
+
+        // Start scrolling after a short delay
+        const timeout = setTimeout(() => {
+            animationId = requestAnimationFrame(scroll)
+        }, 500)
+
+        return () => {
+            clearTimeout(timeout)
+            if (animationId) cancelAnimationFrame(animationId)
+        }
+    }, [autoScrollActive])
+
+    // Stop auto-scroll on any interaction
+    const stopAutoScroll = () => {
+        if (autoScrollActive) setAutoScrollActive(false)
+    }
+
+    useEffect(() => {
+        // Stop on manual scroll
+        const handleWheel = () => stopAutoScroll()
+        const handleTouchStart = () => stopAutoScroll()
+        const handleKeyDown = (e) => {
+            if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Space'].includes(e.code)) {
+                stopAutoScroll()
+            }
+        }
+
+        window.addEventListener('wheel', handleWheel, { passive: true })
+        window.addEventListener('touchstart', handleTouchStart, { passive: true })
+        window.addEventListener('keydown', handleKeyDown)
+
+        return () => {
+            window.removeEventListener('wheel', handleWheel)
+            window.removeEventListener('touchstart', handleTouchStart)
+            window.removeEventListener('keydown', handleKeyDown)
+        }
+    }, [autoScrollActive])
+
     return (
         <>
             <Head>
@@ -29,7 +81,11 @@ export default function ZenjakuGallery() {
 
             <div className="min-h-screen bg-black text-white pt-16">
                 {/* Grid - All items, CryptoPunks style */}
-                <div className="grid grid-cols-5 sm:grid-cols-10">
+                <div 
+                    ref={gridRef}
+                    className="grid grid-cols-5 sm:grid-cols-10"
+                    onMouseEnter={stopAutoScroll}
+                >
                     {items.map((item) => (
                         <div
                             key={item.id}
