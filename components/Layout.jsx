@@ -69,9 +69,14 @@ export default function Layout({ children }) {
                     style={{ color: isDark ? '#FFFFFF' : '#000000' }}
                 >
                     <span>a social experiment by</span>
-                    <span className="font-bold ghost-text">
+                    <a 
+                        href="https://x.com/0XNAHUAL" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="font-bold ghost-text hover:text-[#ff9900] transition-colors underline"
+                    >
                         <ScrambleText text="NΛHUΛL" />
-                    </span>
+                    </a>
                 </div>
             </div>
 
