@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 import Head from 'next/head'
 import arweaveData from '../data/arweave-uploads.json'
 
@@ -81,28 +82,18 @@ export default function ZenjakuGallery() {
 
             <div className="min-h-screen bg-black text-white pt-16">
                 {/* Grid - All items, CryptoPunks style */}
-                <div 
+                <div
                     ref={gridRef}
                     className="grid grid-cols-5 sm:grid-cols-10"
                     onMouseEnter={stopAutoScroll}
+                    onMouseLeave={() => setAutoScrollActive(true)}
                 >
                     {items.map((item) => (
-                        <div
+                        <ZenjakuItem
                             key={item.id}
-                            className="aspect-square cursor-pointer relative group"
-                            onClick={() => setSelectedPiece(item)}
-                        >
-                            <img
-                                src={item.image}
-                                alt={item.name}
-                                className="w-full h-full object-cover group-hover:brightness-50 transition-all"
-                                loading="lazy"
-                            />
-                            <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none p-1">
-                                <span className="font-mono text-white text-xs font-bold">{item.name}</span>
-                                <span className="font-mono text-white/60 text-[6px] mt-1 text-center break-all leading-tight">{item.id}</span>
-                            </div>
-                        </div>
+                            item={item}
+                            onClick={setSelectedPiece}
+                        />
                     ))}
                 </div>
             </div>
@@ -124,11 +115,16 @@ export default function ZenjakuGallery() {
                             CLOSE
                         </button>
 
-                        <img
-                            src={selectedPiece.image}
-                            alt={selectedPiece.name}
-                            className="w-full aspect-square object-contain mb-4"
-                        />
+                        <div className="relative w-full aspect-square mb-4">
+                            <Image
+                                src={selectedPiece.image}
+                                alt={selectedPiece.name}
+                                className="object-contain"
+                                fill
+                                sizes="(max-width: 768px) 100vw, 600px"
+                                priority
+                            />
+                        </div>
 
                         <div className="font-mono text-sm space-y-2">
                             <div className="flex justify-between">
@@ -151,5 +147,35 @@ export default function ZenjakuGallery() {
                 </div>
             )}
         </>
+    )
+}
+
+function ZenjakuItem({ item, onClick }) {
+    const [isLoading, setIsLoading] = useState(true)
+
+    return (
+        <div
+            className="aspect-square cursor-pointer relative group bg-white/5"
+            onClick={() => onClick(item)}
+        >
+            {isLoading && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-3 h-3 border border-white/20 border-t-[#ff9900] rounded-full animate-spin" />
+                </div>
+            )}
+            <Image
+                src={item.image}
+                alt={item.name}
+                className={`object-cover transition-all duration-300 ${isLoading ? 'opacity-0 scale-95' : 'opacity-100 scale-100 group-hover:brightness-50'
+                    }`}
+                fill
+                sizes="(max-width: 640px) 20vw, 10vw"
+                onLoadingComplete={() => setIsLoading(false)}
+            />
+            <div className={`absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none p-1 z-10 ${isLoading ? 'hidden' : ''}`}>
+                <span className="font-mono text-white text-xs font-bold">{item.name}</span>
+                <span className="font-mono text-white/60 text-[6px] mt-1 text-center break-all leading-tight">{item.id}</span>
+            </div>
+        </div>
     )
 }

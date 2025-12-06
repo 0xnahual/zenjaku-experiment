@@ -38,6 +38,9 @@ export default function Layout({ children }) {
         <main className={`min-h-screen w-full relative overflow-hidden transition-colors duration-1000 ${isDark ? 'bg-black' : 'bg-white'}`}>
             {children}
 
+            {/* Bottom Gradient Overlay */}
+            <div className={`fixed bottom-0 left-0 w-full h-32 pointer-events-none z-10 transition-colors duration-300 ${isDark ? 'bg-gradient-to-t from-black/90 to-black/0' : 'bg-gradient-to-t from-white/90 to-white/0'}`} />
+
             <div className="fixed bottom-4 right-4 font-mono text-[8px] sm:text-[10px] tracking-wider z-20 text-right">
                 <div
                     className={`transition-opacity duration-300`}
@@ -69,13 +72,14 @@ export default function Layout({ children }) {
                     style={{ color: isDark ? '#FFFFFF' : '#000000' }}
                 >
                     <span>a social experiment by</span>
-                    <a 
-                        href="https://x.com/0XNAHUAL" 
-                        target="_blank" 
+                    <a
+                        href="https://x.com/0XNAHUAL"
+                        target="_blank"
                         rel="noopener noreferrer"
-                        className="font-bold ghost-text hover:text-[#ff9900] transition-colors underline"
+                        className="font-bold ghost-text hover:text-[#ff9900] transition-colors underline group"
                     >
                         <ScrambleText text="NΛHUΛL" />
+                        <span className="inline-block ml-1 opacity-70 group-hover:opacity-100 transition-opacity">↗</span>
                     </a>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import { useDarkMode } from '../contexts/DarkModeContext'
+import Link from 'next/link'
 import { TOTAL_VALUE_BURNED, BURNED_COUNT } from '../config/constants'
 
 export default function Home() {
@@ -79,12 +80,20 @@ export default function Home() {
                             ))}
                         </div>
                         <p
-                            className="font-mono text-xs sm:text-sm font-medium max-w-full md:max-w-[480px] text-left"
-                            style={{ color: isDark ? '#FFFFFF' : '#444444' }}
+                            className="font-mono text-xs sm:text-sm font-medium w-full text-left"
+                            style={{ color: isDark ? '#AAAAAA' : '#444444' }}
                         >
-                            A collection of <span style={{ textDecoration: 'line-through', opacity: 0.6 }}>3,100</span> 3,089 elves trapped in an eternal struggle.
-                            As half of the royalties turn them into ash, the other saves the world.
-                            Witness the balance unfold as part of our community.
+                            Zenjaku is an on-chain experiment in duality.
+                            <br />
+                            <span style={{ textDecoration: 'line-through', opacity: 0.5 }}>3,100</span> 3,089 elves trapped in an eternal struggle. Half of the royalties
+                            <Link href="/cemetery" className="hover:text-white transition-colors cursor-pointer ml-1 mr-1">
+                                turn them to ash
+                            </Link>
+                            . Half
+                            <Link href="/treasury" className="hover:text-white transition-colors cursor-pointer ml-1 mr-1">
+                                transforms reality
+                            </Link>
+                            . Is balance power? Step in and find out.
                         </p>
                         <div className="flex flex-row gap-8 font-mono text-sm tracking-widest uppercase pt-2 whitespace-nowrap text-left"
                             style={{ color: isDark ? '#FFFFFF' : '#000000' }}>
@@ -92,7 +101,7 @@ export default function Home() {
                                 3,089 PFPS ON SOL
                             </div>
                             <div className="underline underline-offset-2 decoration-1 hover:opacity-70 transition-opacity cursor-pointer">
-                                50 1/1S ON BTC
+                                33 1/1S ON BTC
                             </div>
                         </div>
                     </div>
