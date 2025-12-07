@@ -75,14 +75,24 @@ const Header = () => {
             ]
         },
         {
-            name: 'SOL',
-            link: 'https://www.tensor.trade/trade/zenjaku',
-            isExternal: true
-        },
-        {
-            name: 'BTC',
-            link: 'https://magiceden.io/ordinals/marketplace/zenjaku',
-            isExternal: true
+            name: 'COLLECT',
+            link: '#',
+            isExternal: false,
+            hasDropdown: true,
+            isCta: true,
+            dropdownId: 'collect',
+            dropdownItems: [
+                {
+                    name: 'SOL (TENSOR)',
+                    link: 'https://www.tensor.trade/trade/zenjaku',
+                    isExternal: true
+                },
+                {
+                    name: 'BTC (MAGIC EDEN)',
+                    link: 'https://magiceden.io/ordinals/marketplace/zenjaku',
+                    isExternal: true
+                }
+            ]
         }
     ]
 
@@ -143,14 +153,18 @@ const Header = () => {
                                     }}
                                 >
                                     <button
-                                        className={`font-mono text-xs tracking-widest uppercase hover:opacity-70 transition-opacity ${isDark ? 'text-white' : 'text-black'}`}
+                                        className={`font-mono text-xs tracking-widest uppercase transition-all 
+                                            ${link.isCta
+                                                ? `px-6 py-2 border ${isDark ? 'border-white text-white hover:bg-white hover:text-black' : 'border-black text-black hover:bg-black hover:text-white'}`
+                                                : `hover:opacity-70 ${isDark ? 'text-white' : 'text-black'}`
+                                            }`}
                                         onClick={() => setOpenDropdown(openDropdown === link.dropdownId ? null : link.dropdownId)}
                                     >
                                         {link.name}
                                     </button>
                                     {openDropdown === link.dropdownId && (
                                         <div
-                                            className={`absolute top-full left-0 mt-2 py-2 min-w-[200px] rounded shadow-lg z-50 ${isDark ? 'bg-black border border-gray-700' : 'bg-white border border-gray-200'}`}
+                                            className={`absolute top-full text-left ${link.isCta ? 'right-0' : 'left-0'} mt-2 py-2 min-w-[200px] rounded shadow-lg z-50 ${isDark ? 'bg-black border border-gray-700' : 'bg-white border border-gray-200'}`}
                                             onMouseEnter={() => {
                                                 if (dropdownTimeout) {
                                                     clearTimeout(dropdownTimeout)
@@ -170,10 +184,21 @@ const Header = () => {
                                                         key={item.name}
                                                         className={`block px-4 py-2 font-mono text-xs tracking-wide uppercase cursor-not-allowed opacity-50 ${isDark ? 'text-white' : 'text-black'}`}
                                                     >
-                                                        {item.name} <span className="text-[10px] opacity-60">
-                                                            {typeof item.comingSoon === 'string' ? `(${item.comingSoon})` : '(Coming Soon)'}
+                                                        <span className={`inline-block ${isDark ? 'bg-white/20 text-transparent select-none' : 'bg-black/20 text-transparent select-none'} animate-pulse`}>
+                                                            [[{item.name}]]
                                                         </span>
                                                     </div>
+                                                ) : item.isExternal ? (
+                                                    <a
+                                                        key={item.name}
+                                                        href={item.link}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className={`block px-4 py-2 font-mono text-xs tracking-wide uppercase hover:opacity-70 transition-opacity ${isDark ? 'text-white hover:bg-gray-900' : 'text-black hover:bg-gray-100'}`}
+                                                        onClick={() => setOpenDropdown(null)}
+                                                    >
+                                                        {item.name}
+                                                    </a>
                                                 ) : (
                                                     <Link
                                                         key={item.name}
@@ -235,10 +260,21 @@ const Header = () => {
                                                         key={item.name}
                                                         className={`font-mono text-lg tracking-wide uppercase cursor-not-allowed opacity-50 ${isDark ? 'text-white' : 'text-black'}`}
                                                     >
-                                                        {item.name} <span className="text-sm opacity-60">
-                                                            {typeof item.comingSoon === 'string' ? `(${item.comingSoon})` : '(Coming Soon)'}
+                                                        <span className={`inline-block ${isDark ? 'bg-white/20 text-transparent select-none' : 'bg-black/20 text-transparent select-none'} animate-pulse`}>
+                                                            [[{item.name}]]
                                                         </span>
                                                     </div>
+                                                ) : item.isExternal ? (
+                                                    <a
+                                                        key={item.name}
+                                                        href={item.link}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className={`font-mono text-lg tracking-wide uppercase hover:text-[#ff9900] transition-colors ${isDark ? 'text-white' : 'text-black'}`}
+                                                        onClick={() => setMenuOpen(false)}
+                                                    >
+                                                        {item.name}
+                                                    </a>
                                                 ) : (
                                                     <Link
                                                         key={item.name}

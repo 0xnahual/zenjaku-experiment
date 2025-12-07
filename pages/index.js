@@ -79,6 +79,7 @@ export default function Home() {
                                 </div>
                             ))}
                         </div>
+                        {/* 
                         <p
                             className="font-mono text-xs sm:text-sm font-medium w-full text-left"
                             style={{ color: isDark ? '#AAAAAA' : '#444444' }}
@@ -90,15 +91,32 @@ export default function Home() {
                             . Half
                             transforms reality
                             . Is balance power? Step in and find out.
+                        </p> 
+                        */}
+                        <p
+                            className="font-mono text-xs sm:text-sm font-medium w-full text-left leading-relaxed relative"
+                            style={{
+                                color: isDark ? '#FFFFFF' : '#000000',
+                                textShadow: glitchActive ? (isDark ? '2px 0 #ff0000, -2px 0 #00ff00' : '2px 0 #ff0000, -2px 0 #00ffff') : 'none'
+                            }}
+                        >
+                            Zenjaku is an on-chain experiment in duality.
+                            <br />
+                            <span className="opacity-50 line-through decoration-current">3,100</span> <span className="text-[#ff9900]">3,089</span> elves trapped in an eternal struggle.
+                            <br />
+                            Half of the royalties <span className={`inline-block px-1 mx-1 ${isDark ? 'bg-white/20 text-transparent select-none' : 'bg-black/20 text-transparent select-none'} animate-pulse`}>[[REDACTED]]</span>.
+                            Half <span className={`inline-block px-1 mx-1 ${isDark ? 'bg-white/20 text-transparent select-none' : 'bg-black/20 text-transparent select-none'} animate-pulse`}>[[REDACTED]]</span>.
+                            <br />
+                            Is balance power? Step in and find out.
                         </p>
                         <div className="flex flex-row gap-8 font-mono text-sm tracking-widest uppercase pt-2 whitespace-nowrap text-left"
                             style={{ color: isDark ? '#FFFFFF' : '#000000' }}>
-                            <div className="underline underline-offset-2 decoration-1 hover:opacity-70 transition-opacity cursor-pointer">
+                            <Link href="/solana" className="underline underline-offset-2 decoration-1 hover:opacity-70 transition-opacity cursor-pointer">
                                 3,089 PFPS ON SOL
-                            </div>
-                            <div className="underline underline-offset-2 decoration-1 hover:opacity-70 transition-opacity cursor-pointer">
+                            </Link>
+                            <Link href="/bitcoin" className="underline underline-offset-2 decoration-1 hover:opacity-70 transition-opacity cursor-pointer">
                                 33 1/1S ON BTC
-                            </div>
+                            </Link>
                         </div>
                     </div>
                     {/* Right: Image Block */}
