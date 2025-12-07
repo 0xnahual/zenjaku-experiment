@@ -86,13 +86,9 @@ export default function Home() {
                             Zenjaku is an on-chain experiment in duality.
                             <br />
                             <span style={{ textDecoration: 'line-through', opacity: 0.5 }}>3,100</span> 3,089 elves trapped in an eternal struggle. Half of the royalties
-                            <Link href="/cemetery" className="hover:text-white transition-colors cursor-pointer ml-1 mr-1">
-                                turn them to ash
-                            </Link>
+                            turn them to ash
                             . Half
-                            <Link href="/treasury" className="hover:text-white transition-colors cursor-pointer ml-1 mr-1">
-                                transforms reality
-                            </Link>
+                            transforms reality
                             . Is balance power? Step in and find out.
                         </p>
                         <div className="flex flex-row gap-8 font-mono text-sm tracking-widest uppercase pt-2 whitespace-nowrap text-left"

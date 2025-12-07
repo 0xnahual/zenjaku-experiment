@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import ScrambleText from './ScrambleText'
 
 // Pages that should always be dark mode
-const FORCE_DARK_PAGES = ['/zenjaku']
+const FORCE_DARK_PAGES = ['/solana']
 
 export default function Layout({ children }) {
     const router = useRouter()
@@ -39,7 +39,7 @@ export default function Layout({ children }) {
             {children}
 
             {/* Bottom Gradient Overlay */}
-            <div className={`fixed bottom-0 left-0 w-full h-32 pointer-events-none z-10 transition-colors duration-300 ${isDark ? 'bg-gradient-to-t from-black/90 to-black/0' : 'bg-gradient-to-t from-white/90 to-white/0'}`} />
+            <div className={`fixed bottom-0 left-0 w-full pointer-events-none z-10 transition-all duration-300 ${isDark ? 'h-32 bg-gradient-to-t from-black/90 to-black/0' : 'h-16 bg-gradient-to-t from-white/75 to-white/0'}`} />
 
             <div className="fixed bottom-4 right-4 font-mono text-[8px] sm:text-[10px] tracking-wider z-20 text-right">
                 <div

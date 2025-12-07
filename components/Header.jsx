@@ -5,7 +5,7 @@ import { useDarkMode } from '../contexts/DarkModeContext'
 import { HiMenu, HiX } from 'react-icons/hi'
 
 // Pages that should always be dark mode
-const FORCE_DARK_PAGES = ['/zenjaku']
+const FORCE_DARK_PAGES = ['/solana']
 
 const Header = () => {
     const router = useRouter()
@@ -35,18 +35,18 @@ const Header = () => {
         },
         {
             name: 'Collection',
-            link: '/gallery',
+            link: '/bitcoin',
             isExternal: false,
             hasDropdown: true,
             dropdownId: 'collection',
             dropdownItems: [
                 {
                     name: 'The Zenjaku (SOL)',
-                    link: '/zenjaku'
+                    link: '/solana'
                 },
                 {
                     name: 'Zenjaku Legends (BTC)',
-                    link: '/gallery'
+                    link: '/bitcoin'
                 }
             ]
         },
@@ -59,15 +59,18 @@ const Header = () => {
             dropdownItems: [
                 {
                     name: 'The Fallen',
-                    link: '/cemetery'
+                    link: '/cemetery',
+                    comingSoon: "EXPERIMENT NOT YET STARTED"
                 },
                 {
                     name: 'Leaderboard',
-                    link: '/leaderboard'
+                    link: '/leaderboard',
+                    comingSoon: "EXPERIMENT NOT YET STARTED"
                 },
                 {
                     name: 'The Treasury',
-                    link: '/treasury'
+                    link: '/treasury',
+                    comingSoon: "EXPERIMENT NOT YET STARTED"
                 }
             ]
         },
@@ -167,7 +170,9 @@ const Header = () => {
                                                         key={item.name}
                                                         className={`block px-4 py-2 font-mono text-xs tracking-wide uppercase cursor-not-allowed opacity-50 ${isDark ? 'text-white' : 'text-black'}`}
                                                     >
-                                                        {item.name} <span className="text-[10px] opacity-60">(Coming Soon)</span>
+                                                        {item.name} <span className="text-[10px] opacity-60">
+                                                            {typeof item.comingSoon === 'string' ? `(${item.comingSoon})` : '(Coming Soon)'}
+                                                        </span>
                                                     </div>
                                                 ) : (
                                                     <Link
@@ -230,7 +235,9 @@ const Header = () => {
                                                         key={item.name}
                                                         className={`font-mono text-lg tracking-wide uppercase cursor-not-allowed opacity-50 ${isDark ? 'text-white' : 'text-black'}`}
                                                     >
-                                                        {item.name} <span className="text-sm opacity-60">(Coming Soon)</span>
+                                                        {item.name} <span className="text-sm opacity-60">
+                                                            {typeof item.comingSoon === 'string' ? `(${item.comingSoon})` : '(Coming Soon)'}
+                                                        </span>
                                                     </div>
                                                 ) : (
                                                     <Link
