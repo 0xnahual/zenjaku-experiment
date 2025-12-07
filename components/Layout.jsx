@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import ScrambleText from './ScrambleText'
 
 // Pages that should always be dark mode
-const FORCE_DARK_PAGES = ['/solana']
+const FORCE_DARK_PAGES = ['/solana', '/transformation']
 
 export default function Layout({ children }) {
     const router = useRouter()

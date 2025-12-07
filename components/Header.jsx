@@ -5,7 +5,7 @@ import { useDarkMode } from '../contexts/DarkModeContext'
 import { HiMenu, HiX } from 'react-icons/hi'
 
 // Pages that should always be dark mode
-const FORCE_DARK_PAGES = ['/solana']
+const FORCE_DARK_PAGES = ['/solana', '/transformation']
 
 const Header = () => {
     const router = useRouter()
@@ -47,6 +47,10 @@ const Header = () => {
                 {
                     name: 'Zenjaku Legends (BTC)',
                     link: '/bitcoin'
+                },
+                {
+                    name: 'Transformation',
+                    link: '/transformation'
                 }
             ]
         },
