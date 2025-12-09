@@ -104,17 +104,17 @@ export default function Transformation() {
             <div className="absolute inset-0 bg-[#050505]" />
             <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-[1] bg-[length:100%_2px,3px_100%] pointer-events-none opacity-20" />
 
-            {/* Navigation Areas */}
+            {/* Navigation Areas - Hidden on mobile, visible on larger screens */}
             <button
                 onClick={handlePrev}
-                className="absolute left-0 top-0 bottom-0 w-[15vw] z-20 flex items-center justify-start pl-8 cursor-pointer group focus:outline-none"
+                className="hidden md:flex absolute left-0 top-0 bottom-0 w-[15vw] z-20 items-center justify-start pl-8 cursor-pointer group focus:outline-none"
             >
                 <span className="text-4xl font-light text-zinc-800 group-hover:text-[#ff9900] transition-colors duration-300">←</span>
             </button>
 
             <button
                 onClick={handleNext}
-                className="absolute right-0 top-0 bottom-0 w-[15vw] z-20 flex items-center justify-end pr-8 cursor-pointer group focus:outline-none"
+                className="hidden md:flex absolute right-0 top-0 bottom-0 w-[15vw] z-20 items-center justify-end pr-8 cursor-pointer group focus:outline-none"
             >
                 <span className="text-4xl font-light text-zinc-800 group-hover:text-[#ff9900] transition-colors duration-300">→</span>
             </button>
@@ -122,7 +122,7 @@ export default function Transformation() {
             <main className="relative z-10 flex-1 flex flex-col items-center justify-center p-4">
 
                 {result && (
-                    <div className="flex flex-col items-center gap-12 w-full max-w-6xl">
+                    <div className="flex flex-col items-center gap-6 md:gap-12 w-full max-w-6xl">
 
                         {/* Header Section */}
                         <div className="text-center space-y-4">
@@ -139,12 +139,12 @@ export default function Transformation() {
                             </h1>
                         </div>
 
-                        {/* Visuals Container */}
-                        <div className="relative flex items-center justify-center gap-4">
+                        {/* Visuals Container - Stack on mobile, row on desktop */}
+                        <div className="relative flex flex-col md:flex-row items-center justify-center gap-4">
 
                             {/* Card 1: Vibe Knight - NOW ORANGE FRAMED */}
-                            <div className="flex flex-col gap-3 group">
-                                <div className="relative w-[30vh] h-[30vh] md:w-[40vh] md:h-[40vh] border border-[#ff9900]/30 bg-[#0a0a0a] p-1 transition-colors duration-500 group-hover:border-[#ff9900]">
+                            <div className="flex flex-col gap-2 md:gap-3 group">
+                                <div className="relative w-[70vw] h-[70vw] sm:w-[50vw] sm:h-[50vw] md:w-[30vh] md:h-[30vh] lg:w-[40vh] lg:h-[40vh] max-w-[300px] max-h-[300px] md:max-w-none md:max-h-none border border-[#ff9900]/30 bg-[#0a0a0a] p-1 transition-colors duration-500 group-hover:border-[#ff9900]">
                                     {result.pastImage ? (
                                         <div className="relative w-full h-full">
                                             <Image
@@ -177,8 +177,8 @@ export default function Transformation() {
                             {/* Center Connector - REMOVED */}
 
                             {/* Card 2: Zenjaku */}
-                            <div className="flex flex-col gap-3 group">
-                                <div className="relative w-[30vh] h-[30vh] md:w-[40vh] md:h-[40vh] border border-[#ff9900]/30 bg-[#0a0a0a] p-1 transition-colors duration-500 group-hover:border-[#ff9900]">
+                            <div className="flex flex-col gap-2 md:gap-3 group">
+                                <div className="relative w-[70vw] h-[70vw] sm:w-[50vw] sm:h-[50vw] md:w-[30vh] md:h-[30vh] lg:w-[40vh] lg:h-[40vh] max-w-[300px] max-h-[300px] md:max-w-none md:max-h-none border border-[#ff9900]/30 bg-[#0a0a0a] p-1 transition-colors duration-500 group-hover:border-[#ff9900]">
                                     <div className="relative w-full h-full">
                                         <Image
                                             src={result.currentImage}
@@ -204,8 +204,14 @@ export default function Transformation() {
                     </div>
                 )}
 
+                {/* Mobile Navigation Arrows */}
+                <div className="flex md:hidden justify-center gap-12 mt-4">
+                    <button onClick={handlePrev} className="text-3xl text-zinc-600 active:text-[#ff9900] transition-colors p-2">←</button>
+                    <button onClick={handleNext} className="text-3xl text-zinc-600 active:text-[#ff9900] transition-colors p-2">→</button>
+                </div>
+
                 {/* Footer Search - Floating HUD style */}
-                <div className="absolute bottom-12 z-30">
+                <div className="absolute bottom-6 md:bottom-12 z-30">
                     <form onSubmit={handleSearch} className="group relative">
                         <input
                             type="text"

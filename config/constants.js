@@ -16,4 +16,8 @@ export const TOTAL_VALUE_BURNED_USD = TOTAL_VALUE_BURNED * SOL_PRICE_USD;
 export const TOTAL_SUPPLY = 3050;
 
 // Live Zenjaku Count (Dynamic)
-export const LIVE_ZENJAKU_COUNT = TOTAL_SUPPLY - BURNED_COUNT; 
+export const LIVE_ZENJAKU_COUNT = TOTAL_SUPPLY - BURNED_COUNT;
+
+// Experiment Start Date - Only count sales from this date forward
+// Set to the current date when you want to "reset" the leaderboard tracking
+export const EXPERIMENT_START_DATE = '2025-12-09T00:00:00Z'; 

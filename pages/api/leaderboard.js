@@ -1,4 +1,5 @@
 import { getSupabaseAdmin } from '../../lib/supabase'
+import { EXPERIMENT_START_DATE } from '../../config/constants'
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -25,34 +26,36 @@ export default async function handler(req, res) {
     } else if (timeframe === 'monthly') {
       const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString()
       query = query.gte('block_time', thirtyDaysAgo)
+    } else {
+      // 'allTime' now starts from EXPERIMENT_START_DATE
+      query = query.gte('block_time', EXPERIMENT_START_DATE)
     }
-    // 'allTime' needs no filter
 
     const { data: sales, error } = await query
 
     if (error) {
-        console.error('Supabase Query Error:', error)
-        throw error
+      console.error('Supabase Query Error:', error)
+      throw error
     }
 
     // Aggregate in memory (efficient enough for <10k sales)
     const volumeByWallet = {}
 
     if (sales && sales.length > 0) {
-        sales.forEach(sale => {
-          const price = Number(sale.price) || 0
-          const credit = price * 0.5
+      sales.forEach(sale => {
+        const price = Number(sale.price) || 0
+        const credit = price * 0.5
 
-          // Credit the BUYER (50% of volume)
-          if (sale.buyer) {
-            volumeByWallet[sale.buyer] = (volumeByWallet[sale.buyer] || 0) + credit
-          }
+        // Credit the BUYER (50% of volume)
+        if (sale.buyer) {
+          volumeByWallet[sale.buyer] = (volumeByWallet[sale.buyer] || 0) + credit
+        }
 
-          // Credit the SELLER (50% of volume)
-          if (sale.seller) {
-            volumeByWallet[sale.seller] = (volumeByWallet[sale.seller] || 0) + credit
-          }
-        })
+        // Credit the SELLER (50% of volume)
+        if (sale.seller) {
+          volumeByWallet[sale.seller] = (volumeByWallet[sale.seller] || 0) + credit
+        }
+      })
     }
 
     // Transform to array
@@ -60,13 +63,13 @@ export default async function handler(req, res) {
       .map(([address, volume]) => {
         const vol = Number(volume);
         // 0.69% total royalties, split between charity and burn (0.345% each)
-        const royaltyShare = 0.00345; 
+        const royaltyShare = 0.00345;
         return {
-            address,
-            volume: Number(vol.toFixed(4)),
-            donated: Number((vol * royaltyShare).toFixed(5)),
-            burned: Number((vol * royaltyShare).toFixed(5)),
-            avatar: address.slice(0, 2).toUpperCase()
+          address,
+          volume: Number(vol.toFixed(4)),
+          donated: Number((vol * royaltyShare).toFixed(5)),
+          burned: Number((vol * royaltyShare).toFixed(5)),
+          avatar: address.slice(0, 2).toUpperCase()
         };
       })
       .sort((a, b) => b.volume - a.volume)
