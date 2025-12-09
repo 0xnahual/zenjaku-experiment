@@ -67,7 +67,7 @@ export default function Manifesto() {
             title: "THE PLAYERS",
             content: (
                 <>
-                    You're not just a holder. You're a <span className="text-[#ff9900]">player</span>.{"\n"}
+                    You're a <span className="text-[#ff9900]">player</span>.{"\n"}
                     Your wallet is your <span className={`inline-block px-1 mx-1 ${isDark ? 'bg-white/20 text-transparent select-none' : 'bg-black/20 text-transparent select-none'} animate-pulse`}>[[WEAPON]]</span>.{"\n"}
                     Your decisions fuel the experiment.
                 </>
@@ -77,7 +77,7 @@ export default function Manifesto() {
             title: "THE PURPOSE",
             content: (
                 <>
-                    This isn't just collecting. It's a ritual of balance.{"\n"}
+                    Join this experiment and help shape its outcome.{"\n"}
                     Play your part, tip the scale, witness the <span className={`inline-block px-1 mx-1 ${isDark ? 'bg-white/20 text-transparent select-none' : 'bg-black/20 text-transparent select-none'} animate-pulse`}>[[STORY]]</span> unfold.
                 </>
             )

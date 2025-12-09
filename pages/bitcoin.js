@@ -44,7 +44,7 @@ export default function Gallery() {
                                     : 'none'
                             }}
                         >
-                            29 ZENJAKU CHAMPPIONS
+                            33 ZENJAKU CHAMPIONS
                         </h1>
                         <div className="space-y-3">
                             <p
@@ -117,7 +117,7 @@ export default function Gallery() {
                                             >
                                                 COMING SOON
                                             </div>
-                                            <div className="text-white/30 text-xs">Digital enlightenment awaits</div>
+                                            <div className="text-white/30 text-xs">Balance demands patience</div>
                                         </div>
                                     </div>
                                 )}
