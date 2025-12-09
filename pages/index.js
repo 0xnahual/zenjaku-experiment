@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import { useDarkMode } from '../contexts/DarkModeContext'
 import Link from 'next/link'
-import { TOTAL_VALUE_BURNED, BURNED_COUNT } from '../config/constants'
+import { TOTAL_VALUE_BURNED, BURNED_COUNT, TOTAL_SUPPLY, LIVE_ZENJAKU_COUNT } from '../config/constants'
 
 export default function Home() {
     const { isDark, glitchActive, mounted } = useDarkMode()
@@ -39,8 +39,6 @@ export default function Home() {
             <Head>
                 <title>The Zenjaku Experiment</title>
                 <meta name="description" content="A social experiment in duality. Two forces: one of chaos, one of order. Which side will prevail?" />
-                <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-                <link rel="icon" type="image/png" href="/favicon.png" />
             </Head>
 
             <div className="w-full min-h-screen flex items-center justify-center bg-transparent pt-20 md:pt-0">
@@ -59,7 +57,7 @@ export default function Home() {
                                     marginBottom: '0.5rem',
                                 }}
                             >
-                                <span className="block">3,089</span>
+                                <span className="block">{LIVE_ZENJAKU_COUNT.toLocaleString()}</span>
                                 <span className="block mt-0">TRAPPED</span>
                                 <span className="block mt-0">SOULS</span>
                             </h1>
@@ -102,7 +100,7 @@ export default function Home() {
                         >
                             Zenjaku is an on-chain experiment in duality.
                             <br />
-                            <span className="opacity-50 line-through decoration-current">3,100</span> <span className="text-[#ff9900]">3,089</span> elves trapped in an eternal struggle.
+                            <span className="opacity-50 line-through decoration-current">{TOTAL_SUPPLY.toLocaleString()}</span> <span className="text-[#ff9900]">{LIVE_ZENJAKU_COUNT.toLocaleString()}</span> elves trapped in an eternal struggle.
                             <br />
                             Half of the royalties <span className={`inline-block px-1 mx-1 ${isDark ? 'bg-white/20 text-transparent select-none' : 'bg-black/20 text-transparent select-none'} animate-pulse`}>[[REDACTED]]</span>.
                             Half <span className={`inline-block px-1 mx-1 ${isDark ? 'bg-white/20 text-transparent select-none' : 'bg-black/20 text-transparent select-none'} animate-pulse`}>[[REDACTED]]</span>.
@@ -112,7 +110,7 @@ export default function Home() {
                         <div className="flex flex-row gap-8 font-mono text-sm tracking-widest uppercase pt-2 whitespace-nowrap text-left"
                             style={{ color: isDark ? '#FFFFFF' : '#000000' }}>
                             <Link href="/solana" className="underline underline-offset-2 decoration-1 hover:opacity-70 transition-opacity cursor-pointer">
-                                3,089 PFPS ON SOL
+                                {LIVE_ZENJAKU_COUNT.toLocaleString()} PFPS ON SOL
                             </Link>
                             <Link href="/bitcoin" className="underline underline-offset-2 decoration-1 hover:opacity-70 transition-opacity cursor-pointer">
                                 33 1/1S ON BTC

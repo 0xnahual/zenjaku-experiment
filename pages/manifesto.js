@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Head from 'next/head'
 import { useDarkMode } from '../contexts/DarkModeContext'
+import { TOTAL_SUPPLY, LIVE_ZENJAKU_COUNT } from '../config/constants'
 
 export default function Manifesto() {
     const { isDark, glitchActive, mounted } = useDarkMode()
@@ -44,7 +45,7 @@ export default function Manifesto() {
             title: "WELCOME TO THE EXPERIMENT",
             content: (
                 <>
-                    <span className="opacity-50 line-through decoration-current">3,100</span> <span className="text-[#ff9900]">3,089</span> elves trapped inside the chain.{"\n"}
+                    <span className="opacity-50 line-through decoration-current">{TOTAL_SUPPLY.toLocaleString()}</span> <span className="text-[#ff9900]">{LIVE_ZENJAKU_COUNT.toLocaleString()}</span> elves trapped inside the chain.{"\n"}
                     Every trade shifts the <span className={`inline-block px-1 mx-1 ${isDark ? 'bg-white/20 text-transparent select-none' : 'bg-black/20 text-transparent select-none'} animate-pulse`}>[[OUTCOME]]</span>.{"\n"}
                     Half the royalties <span className={`inline-block px-1 mx-1 ${isDark ? 'bg-white/20 text-transparent select-none' : 'bg-black/20 text-transparent select-none'} animate-pulse`}>[[BURN]]</span>, half fuel <span className={`inline-block px-1 mx-1 ${isDark ? 'bg-white/20 text-transparent select-none' : 'bg-black/20 text-transparent select-none'} animate-pulse`}>[[SAVE]]</span>.{"\n"}
                     Your choices and actions balance the scales.
@@ -92,8 +93,6 @@ export default function Manifesto() {
             <Head>
                 <title>Manifesto | The Zenjaku Experiment</title>
                 <meta name="description" content="The guiding principles of The Zenjaku Experiment" />
-                <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-                <link rel="icon" type="image/png" href="/favicon.png" />
             </Head>
 
             <div className="relative z-10 h-screen flex flex-col justify-center overflow-hidden">

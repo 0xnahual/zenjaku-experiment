@@ -45,8 +45,6 @@ export default function Cemetery() {
             <Head>
                 <title>Digital Cemetery | The Zenjaku Experiment</title>
                 <meta name="description" content="A memorial for transcended Zenjaku NFTs, forever recorded on the Solana blockchain." />
-                <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-                <link rel="icon" type="image/png" href="/favicon.png" />
             </Head>
 
             <div className={`pt-24 px-4 pb-16 min-h-screen ${isDark ? 'bg-black' : 'bg-white'}`}>

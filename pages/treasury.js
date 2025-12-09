@@ -25,8 +25,6 @@ export default function Treasury() {
       <Head>
         <title>Treasury | The Zenjaku Experiment</title>
         <meta name="description" content="Transparent record of donations and treasury for Zenjaku. Half of all royalties are used to help others, restoring balance to the world." />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="icon" type="image/png" href="/favicon.png" />
       </Head>
       <div className={`pt-24 px-4 pb-16 min-h-screen ${isDark ? 'bg-black' : 'bg-white'}`}>
         <div className="max-w-4xl mx-auto">

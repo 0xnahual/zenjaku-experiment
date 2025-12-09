@@ -19,8 +19,6 @@ export default function Gallery() {
             <Head>
                 <title>1/1 Gallery | The Zenjaku Experiment</title>
                 <meta name="description" content="21 unique pieces of digital rebellion, inscribed forever on the Bitcoin blockchain." />
-                <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-                <link rel="icon" type="image/png" href="/favicon.png" />
             </Head>
 
             <div className="pt-24 px-4 pb-16">
