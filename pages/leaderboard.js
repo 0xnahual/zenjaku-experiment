@@ -67,6 +67,11 @@ export default function Leaderboard() {
             >
               VERIFIED // ON-CHAIN // IMMUTABLE
             </p>
+            <p
+              className="text-[9px] font-mono tracking-wider text-gray-400 mt-2"
+            >
+              Tracking Tensor and MagicEden
+            </p>
 
             {/* Timeframe Selector */}
             <div className="flex justify-center gap-8 border-b border-gray-800/20 pb-4 mt-12 mb-12">
