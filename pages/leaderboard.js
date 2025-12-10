@@ -70,7 +70,7 @@ export default function Leaderboard() {
             <p
               className="text-[9px] font-mono tracking-wider text-gray-400 mt-2"
             >
-              Tracking Tensor and MagicEden
+              Tracking MagicEden
             </p>
 
             {/* Timeframe Selector */}

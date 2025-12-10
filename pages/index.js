@@ -102,9 +102,7 @@ export default function Home() {
                             <br />
                             <span className="opacity-50 line-through decoration-current">{TOTAL_SUPPLY.toLocaleString()}</span> <span className="text-[#ff9900]">{LIVE_ZENJAKU_COUNT.toLocaleString()}</span> elves trapped in an eternal struggle.
                             <br />
-                            Half of the royalties <span className={`inline-block px-1 mx-1 ${isDark ? 'bg-white/20 text-transparent select-none' : 'bg-black/20 text-transparent select-none'} animate-pulse`}>[[REDACTED]]</span>.
-                            Half <span className={`inline-block px-1 mx-1 ${isDark ? 'bg-white/20 text-transparent select-none' : 'bg-black/20 text-transparent select-none'} animate-pulse`}>[[REDACTED]]</span>.
-                            <br />
+                            Half of the royalties destroy the collection. Half <a href="https://x.com/0XNAHUAL/status/1998807944260104511" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70 transition-opacity">transform reality</a>.
                             Is balance power? Step in and find out.
                         </p>
                         <div className="flex flex-row gap-8 font-mono text-sm tracking-widest uppercase pt-2 whitespace-nowrap text-left"

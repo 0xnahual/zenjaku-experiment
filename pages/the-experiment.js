@@ -46,8 +46,8 @@ export default function Manifesto() {
             content: (
                 <>
                     <span className="opacity-50 line-through decoration-current">{TOTAL_SUPPLY.toLocaleString()}</span> <span className="text-[#ff9900]">{LIVE_ZENJAKU_COUNT.toLocaleString()}</span> elves trapped inside the chain.{"\n"}
-                    Every trade shifts the <span className={`inline-block px-1 mx-1 ${isDark ? 'bg-white/20 text-transparent select-none' : 'bg-black/20 text-transparent select-none'} animate-pulse`}>[[OUTCOME]]</span>.{"\n"}
-                    Half the royalties <span className={`inline-block px-1 mx-1 ${isDark ? 'bg-white/20 text-transparent select-none' : 'bg-black/20 text-transparent select-none'} animate-pulse`}>[[BURN]]</span>, half fuel <span className={`inline-block px-1 mx-1 ${isDark ? 'bg-white/20 text-transparent select-none' : 'bg-black/20 text-transparent select-none'} animate-pulse`}>[[SAVE]]</span>.{"\n"}
+                    Every trade shifts the balance.{"\n"}
+                    Half the royalties burn the supply, half fuel <a href="https://x.com/0XNAHUAL/status/1998807944260104511" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70 transition-opacity text-[#ff9900]">real-world impact</a>.{"\n"}
                     Your choices and actions balance the scales.
                 </>
             )
@@ -56,9 +56,9 @@ export default function Manifesto() {
             title: "THE RULES",
             content: (
                 <>
-                    • <span className="text-[#ff9900]">Collect a zenjaku</span> → join the struggle{"\n"}
-                    • Royalties split: <span className={`inline-block px-1 mx-1 ${isDark ? 'bg-white/20 text-transparent select-none' : 'bg-black/20 text-transparent select-none'} animate-pulse`}>[[REDACTED]]</span> vs. <span className={`inline-block px-1 mx-1 ${isDark ? 'bg-white/20 text-transparent select-none' : 'bg-black/20 text-transparent select-none'} animate-pulse`}>[[REDACTED]]</span>{"\n"}
-                    • Every <span className={`inline-block px-1 mx-1 ${isDark ? 'bg-white/20 text-transparent select-none' : 'bg-black/20 text-transparent select-none'} animate-pulse`}>[[ACTION]]</span> is permanent{"\n"}
+                    • <a href="/collect" className="underline hover:opacity-70 transition-opacity text-[#ff9900]">Collect a zenjaku</a> → join the struggle{"\n"}
+                    • Royalties split: burn vs. donate{"\n"}
+                    • Every trade is permanent{"\n"}
                     • Live scoreboard — light vs. dark always shifting
                 </>
             )
@@ -67,8 +67,8 @@ export default function Manifesto() {
             title: "THE PLAYERS",
             content: (
                 <>
-                    You're a <span className="text-[#ff9900]">player</span>.{"\n"}
-                    Your wallet is your <span className={`inline-block px-1 mx-1 ${isDark ? 'bg-white/20 text-transparent select-none' : 'bg-black/20 text-transparent select-none'} animate-pulse`}>[[WEAPON]]</span>.{"\n"}
+                    You're a player.
+                    Your wallet is your weapon.{"\n"}
                     Your decisions fuel the experiment.
                 </>
             )
@@ -78,7 +78,7 @@ export default function Manifesto() {
             content: (
                 <>
                     Join this experiment and help shape its outcome.{"\n"}
-                    Play your part, tip the scale, witness the <span className={`inline-block px-1 mx-1 ${isDark ? 'bg-white/20 text-transparent select-none' : 'bg-black/20 text-transparent select-none'} animate-pulse`}>[[STORY]]</span> unfold.
+                    Play your part, tip the scale, witness the story unfold.
                 </>
             )
         }

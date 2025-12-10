@@ -30,7 +30,7 @@ const Header = () => {
     const links = [
         {
             name: 'How it Works',
-            link: '/manifesto',
+            link: '/the-experiment',
             isExternal: false
         },
         {
