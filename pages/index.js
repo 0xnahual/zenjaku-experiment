@@ -102,7 +102,7 @@ export default function Home() {
                             <br />
                             <span className="opacity-50 line-through decoration-current">{TOTAL_SUPPLY.toLocaleString()}</span> <span className="text-[#ff9900]">{LIVE_ZENJAKU_COUNT.toLocaleString()}</span> elves trapped in an eternal struggle.
                             <br />
-                            Half of the royalties <a href="https://x.com/0XNAHUAL/status/1998813363359346767" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70 transition-opacity">destroy the collection</a>. Half <a href="https://x.com/0XNAHUAL/status/1998807944260104511" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70 transition-opacity">transform reality</a>.
+                            Half of the royalties <a href="https://x.com/0XNAHUAL/status/1998813363359346767" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70 transition-opacity">fuel destruction</a>. Half <a href="https://x.com/0XNAHUAL/status/1998807944260104511" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70 transition-opacity">transform reality</a>.
                             Is balance power? Step in and find out.
                         </p>
                         <div className="flex flex-row gap-8 font-mono text-sm tracking-widest uppercase pt-2 whitespace-nowrap text-left"
