@@ -1,0 +1,143 @@
+{
+  "mintAddress": "5kRsSbFofnA6QSfnnFaXUxTgDXzukUQKeWQu7BGVVMo4",
+  "onChainMetadata": {
+    "name": "Zenjaku #635",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/4Sahc_3qbEZm5eI-V5RYyyFALT-uDzFMvQ4uMnQuwRI",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "9P1aZLQ1TGHyvjtF6Zk8zef5r2j5eQ1CiEPwCQeTTmAR",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #635",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/mE4FufMxwowIxqMNOKa2j_dlgpAjkRp4Z1SjGqjtmF0?ext=png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "None"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Yellow"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Cyber-Jacket"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Turquiouse Orange"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "Expansion"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "Silver"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Interested Side Eyes"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Light Blue"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Bun Middle Parted"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Electric Blue"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Good Vibes"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Female"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "1"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/mE4FufMxwowIxqMNOKa2j_dlgpAjkRp4Z1SjGqjtmF0?ext=png",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "BenLqEBUwsXhtWwGW9xaXN8FkYVWF7JkVM9QaKPzrAMq",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T16:58:48.653Z"
+}

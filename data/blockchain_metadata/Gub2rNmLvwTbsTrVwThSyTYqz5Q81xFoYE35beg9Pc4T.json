@@ -1,0 +1,148 @@
+{
+  "mintAddress": "Gub2rNmLvwTbsTrVwThSyTYqz5Q81xFoYE35beg9Pc4T",
+  "onChainMetadata": {
+    "name": "Zenjaku #2695",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/MC8LJQ22HxheOT8EZhxXyuySgzVZ9CgFvkVUQ9z_HBc",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "HZRkho19gnE8bV6ucEPiA9A4AcKTkmdN6vjNBnZ3nkLd",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "9NJYbkxZ9MvCm9y4AYtDdxKRGGtMceNxHBqJ4BRCKfPS",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #2695",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/zEEv_v-w0Ds1vsHcZWCdCx6U20zTJh32kuKrs3MPpBw?ext=png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "None"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back",
+        "value": "Skateboard"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "Red"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Purple"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Spiked Warrior"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Crimson Court"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "None"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Side Wink"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Tealdawn"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Bowl"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Pink"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Lower Fangs"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Male"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "9"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/zEEv_v-w0Ds1vsHcZWCdCx6U20zTJh32kuKrs3MPpBw?ext=png",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "BenLqEBUwsXhtWwGW9xaXN8FkYVWF7JkVM9QaKPzrAMq",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T15:48:21.445Z"
+}

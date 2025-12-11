@@ -1,0 +1,148 @@
+{
+  "mintAddress": "9mieY9wWDoFBkEBwMiLA4D73R5usg3d33nyRakoREY7N",
+  "onChainMetadata": {
+    "name": "Zenjaku #1343",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/vHsYbEEmiA7yMcSIR5RukcO8Y0Zn38f77w9hbyC5HUU",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "9P1aZLQ1TGHyvjtF6Zk8zef5r2j5eQ1CiEPwCQeTTmAR",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "9NJYbkxZ9MvCm9y4AYtDdxKRGGtMceNxHBqJ4BRCKfPS",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #1343",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/qDbZEBGGGOVpq_Ka2TZCqSxv7b-fqms4_qIi--xilPo?ext=png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "Spectacles"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "Blue"
+      },
+      {
+        "trait_type": "Back",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Yellow"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Barbaric Armor"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Purple Court"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "Huggie Spike"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "Golden"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Neutral"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Light Blue"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Not Over-the-Face"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Blue"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Leaf"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Male"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "2"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/qDbZEBGGGOVpq_Ka2TZCqSxv7b-fqms4_qIi--xilPo?ext=png",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "BenLqEBUwsXhtWwGW9xaXN8FkYVWF7JkVM9QaKPzrAMq",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T16:43:10.974Z"
+}

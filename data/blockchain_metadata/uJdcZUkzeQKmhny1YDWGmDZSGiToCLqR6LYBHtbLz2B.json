@@ -1,0 +1,143 @@
+{
+  "mintAddress": "uJdcZUkzeQKmhny1YDWGmDZSGiToCLqR6LYBHtbLz2B",
+  "onChainMetadata": {
+    "name": "Zenjaku #3044",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/FOcEWZDPq5M_xpwyudp0JhnSc7UBqG0cvk500ff0g54",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "6E8sHjiHRtUhafYLJGPY87uhDWrnX631uqSq6pRe8imT",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #3044",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/AcJ-m1zIlGcmg73ANMttN-EZ2ZRLo7l8E_64GalyOcA?ext=png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "None"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back",
+        "value": "Sword"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "Blue"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Blue"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Berserk Armor"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Golden Red"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "None"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Drowsy Front"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Tealdawn"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Thunder Ponytail"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Orange"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Cool Fang"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Male"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "2"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/AcJ-m1zIlGcmg73ANMttN-EZ2ZRLo7l8E_64GalyOcA?ext=png",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "BenLqEBUwsXhtWwGW9xaXN8FkYVWF7JkVM9QaKPzrAMq",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T17:18:20.310Z"
+}

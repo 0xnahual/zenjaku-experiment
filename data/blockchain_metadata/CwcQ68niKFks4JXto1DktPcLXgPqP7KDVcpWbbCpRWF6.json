@@ -1,0 +1,143 @@
+{
+  "mintAddress": "CwcQ68niKFks4JXto1DktPcLXgPqP7KDVcpWbbCpRWF6",
+  "onChainMetadata": {
+    "name": "Zenjaku #1978",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/XqqhdiQxbm3X-fIWmNGkccwCjTRCM0LwHHY_X-sO_wk",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "HZRkho19gnE8bV6ucEPiA9A4AcKTkmdN6vjNBnZ3nkLd",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #1978",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/mDgvURJBkF3UmwKwqWdqxEh9F6fY78jObxj0l95Th04?ext=png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "None"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back",
+        "value": "Wings"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "Yellow"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Red"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Baggy Sweater"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Light Blue Dark"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "None"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Shy"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Light Blue"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Flowy"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Calm Blue"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Good Vibes"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Female"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "9"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/mDgvURJBkF3UmwKwqWdqxEh9F6fY78jObxj0l95Th04?ext=png",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "BenLqEBUwsXhtWwGW9xaXN8FkYVWF7JkVM9QaKPzrAMq",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T16:29:35.685Z"
+}

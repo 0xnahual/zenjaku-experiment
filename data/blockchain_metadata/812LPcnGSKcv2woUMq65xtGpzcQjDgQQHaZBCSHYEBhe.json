@@ -1,0 +1,138 @@
+{
+  "mintAddress": "812LPcnGSKcv2woUMq65xtGpzcQjDgQQHaZBCSHYEBhe",
+  "onChainMetadata": {
+    "name": "Vibe Knights #1927",
+    "symbol": "VIBE",
+    "uri": "https://arweave.net/DX3n2bs_NGj_d6A4RfhZuVn6vjQAZgNbwQlIrnyPxl4",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "HZRkho19gnE8bV6ucEPiA9A4AcKTkmdN6vjNBnZ3nkLd",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Vibe Knights #1927",
+    "symbol": "VIBE",
+    "description": "8888 Anime Elves, One Global IP.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/EKGeFazMEH4CTMizz2_GwuPm3DwCxbueE5fSeiZjsJI?ext=png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "None"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "Golden"
+      },
+      {
+        "trait_type": "Back",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "Silver"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Orange"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Dress Armor"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Blue & Yellow"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "None"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "Golden"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Drowsy Side Eyes"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Dark Blue"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Faux Hawk"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Red"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Lil' Kiss"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "Red"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Female"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "1"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/EKGeFazMEH4CTMizz2_GwuPm3DwCxbueE5fSeiZjsJI?ext=png",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "BenLqEBUwsXhtWwGW9xaXN8FkYVWF7JkVM9QaKPzrAMq",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T16:50:27.199Z"
+}

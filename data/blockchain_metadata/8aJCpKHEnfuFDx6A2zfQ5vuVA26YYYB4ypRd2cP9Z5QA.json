@@ -1,0 +1,143 @@
+{
+  "mintAddress": "8aJCpKHEnfuFDx6A2zfQ5vuVA26YYYB4ypRd2cP9Z5QA",
+  "onChainMetadata": {
+    "name": "Vibe Knights #1051",
+    "symbol": "VIBE",
+    "uri": "https://arweave.net/YOu-L3sH8rFOPU1L5woTQ2joCUuhkixW9hbqJVCyYec",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "9P1aZLQ1TGHyvjtF6Zk8zef5r2j5eQ1CiEPwCQeTTmAR",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 50
+        },
+        {
+          "address": "9NJYbkxZ9MvCm9y4AYtDdxKRGGtMceNxHBqJ4BRCKfPS",
+          "verified": false,
+          "share": 50
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Vibe Knights #1051",
+    "symbol": "VIBE",
+    "description": "8888 Anime Elves, One Global IP.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/S-dZ0MO8bLWBrOLNd3VBeT6go_9ndYfZ3S2D_1LTyTU?ext=png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Ultra"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "None"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Red"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Spiked Armor"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Replace Color"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "None"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Shy"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Almost Red"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Long Sideburns"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Cyan"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Lipstick Grin"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "Black"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Female"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "4"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/S-dZ0MO8bLWBrOLNd3VBeT6go_9ndYfZ3S2D_1LTyTU?ext=png",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "BenLqEBUwsXhtWwGW9xaXN8FkYVWF7JkVM9QaKPzrAMq",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T16:48:23.491Z"
+}

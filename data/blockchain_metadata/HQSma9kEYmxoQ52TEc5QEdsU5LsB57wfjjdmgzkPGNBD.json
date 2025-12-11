@@ -1,0 +1,148 @@
+{
+  "mintAddress": "HQSma9kEYmxoQ52TEc5QEdsU5LsB57wfjjdmgzkPGNBD",
+  "onChainMetadata": {
+    "name": "Zenjaku #2861",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/aO32hirA9RwNQpdi1ArogFEEDLjpJQAQ5BjUAYax2o4",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "6NHBpQJ8p38wkYfmgfQ5PkazxFS1s8FXEZdBcc8kK79Z",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "9NJYbkxZ9MvCm9y4AYtDdxKRGGtMceNxHBqJ4BRCKfPS",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": false,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #2861",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/vaLNLK_uzsQbSZGz492MUKTcw6c8nsxzRgJNcxqBjis",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Core"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "Eye Patch"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "Magenta"
+      },
+      {
+        "trait_type": "Back",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Blue"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Denim Jacket"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Black & Wine"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "Huggie Spike"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "Black"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Neutral"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Green"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Agile Ponytail"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Cosmic Purple"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Good Vibes"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Female"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "6"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/vaLNLK_uzsQbSZGz492MUKTcw6c8nsxzRgJNcxqBjis",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T15:46:21.281Z"
+}

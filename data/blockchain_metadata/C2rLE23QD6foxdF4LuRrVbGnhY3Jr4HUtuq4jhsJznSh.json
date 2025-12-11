@@ -1,0 +1,143 @@
+{
+  "mintAddress": "C2rLE23QD6foxdF4LuRrVbGnhY3Jr4HUtuq4jhsJznSh",
+  "onChainMetadata": {
+    "name": "Zenjaku #1801",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/m9PlGJY3B6zUFO70fuoo_9jtNnN3GAwKmP46MaiqImg",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "jxDYEVEkxF8JYXn6i22pr28hSnuwrCLiMGtzn5RS439",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #1801",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/Q0i2FYOvyKewTOlkN2GQzM0JXE3OfG6U7P4lCYSUBCM?ext=png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Core"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "None"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Blue"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Midnight Overcoat"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Purple & Magenta"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "Three Huggies"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "Silver"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Drowsy Side Eyes"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Yellow"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Bob Shag"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Electric Blue"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Lil' Kiss"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "Black"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Female"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "4"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/Q0i2FYOvyKewTOlkN2GQzM0JXE3OfG6U7P4lCYSUBCM?ext=png",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "BenLqEBUwsXhtWwGW9xaXN8FkYVWF7JkVM9QaKPzrAMq",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T16:33:10.037Z"
+}

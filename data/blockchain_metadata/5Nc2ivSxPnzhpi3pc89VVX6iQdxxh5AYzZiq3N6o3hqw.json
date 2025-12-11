@@ -1,0 +1,148 @@
+{
+  "mintAddress": "5Nc2ivSxPnzhpi3pc89VVX6iQdxxh5AYzZiq3N6o3hqw",
+  "onChainMetadata": {
+    "name": "Zenjaku #644",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/SvfWRtFrpN2Vz-0hC-wkYLpuOgC6pOlo5ZEoKlHZafs",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "6NHBpQJ8p38wkYfmgfQ5PkazxFS1s8FXEZdBcc8kK79Z",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "9NJYbkxZ9MvCm9y4AYtDdxKRGGtMceNxHBqJ4BRCKfPS",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": false,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #644",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/E6nvfhGuneR9ln_s_VBb1THNxrhXKzEAaQWGpHgBJqw",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Core"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "None"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back",
+        "value": "Sword"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "Misfits"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Red"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Heavy Armor"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Black Silver"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "Huggie"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "Golden"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Drowsy Front"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Red"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Native Braids"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Black"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Cool Fang"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Male"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "7"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/E6nvfhGuneR9ln_s_VBb1THNxrhXKzEAaQWGpHgBJqw",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T17:00:18.325Z"
+}

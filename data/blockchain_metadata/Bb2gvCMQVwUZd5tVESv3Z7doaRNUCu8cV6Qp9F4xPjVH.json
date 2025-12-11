@@ -1,0 +1,139 @@
+{
+  "mintAddress": "Bb2gvCMQVwUZd5tVESv3Z7doaRNUCu8cV6Qp9F4xPjVH",
+  "onChainMetadata": {
+    "name": "Zenjaku #1646",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/i5ymcgUEuEXFCThuMzM5rvdz2FjQE_Gqtu0vI5wjko0",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "HZRkho19gnE8bV6ucEPiA9A4AcKTkmdN6vjNBnZ3nkLd",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #1646",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/6rcUyENrMTA0Bg6xPTl-FHemKB7up-u2BE16dyRXrJ8?ext=png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Ultra"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "None"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back",
+        "value": "Legend Sword"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "Gold"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Purple"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Royal Panther"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Blue & Yellow"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "None"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Focused"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Red"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Combat Messy"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Cosmic Purple"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Leaf"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Male"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "7"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/6rcUyENrMTA0Bg6xPTl-FHemKB7up-u2BE16dyRXrJ8?ext=png",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "BenLqEBUwsXhtWwGW9xaXN8FkYVWF7JkVM9QaKPzrAMq",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T16:34:50.608Z"
+}

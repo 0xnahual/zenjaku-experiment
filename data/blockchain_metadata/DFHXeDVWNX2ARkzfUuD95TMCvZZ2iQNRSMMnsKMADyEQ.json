@@ -1,0 +1,139 @@
+{
+  "mintAddress": "DFHXeDVWNX2ARkzfUuD95TMCvZZ2iQNRSMMnsKMADyEQ",
+  "onChainMetadata": {
+    "name": "Zenjaku #2055",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/jEYu5gubyv3VdPZqZzUG1caGobv-aFwiXKOEN1AUlgY",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "9P1aZLQ1TGHyvjtF6Zk8zef5r2j5eQ1CiEPwCQeTTmAR",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #2055",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/83vClS14uiO89Vd5zHM766F6AGFo-uyEaV8cizEDFiA?ext=png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "Royal Feather"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "Golden"
+      },
+      {
+        "trait_type": "Back",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Orange"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Spiked Warrior"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Crimson Court"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "None"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Lazy Eyes"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Green"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Faux Hawk"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Blue"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Leaf"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Male"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "7"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/83vClS14uiO89Vd5zHM766F6AGFo-uyEaV8cizEDFiA?ext=png",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "BenLqEBUwsXhtWwGW9xaXN8FkYVWF7JkVM9QaKPzrAMq",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T16:28:40.399Z"
+}

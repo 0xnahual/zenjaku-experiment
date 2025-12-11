@@ -1,0 +1,148 @@
+{
+  "mintAddress": "7oYtaabS9Ug1ofRrunAMLoU3KmY2PHVtiPsLuUThX5vY",
+  "onChainMetadata": {
+    "name": "Zenjaku #977",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/Xcf4jqm1TFfbAOZg3SNTluO-XN-2y5OMqFYXwdFEGwc",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "4RhfZdC1tCX7yScgyUz4dNLxnmVd29o7gZaMAU6PF6VC",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "9NJYbkxZ9MvCm9y4AYtDdxKRGGtMceNxHBqJ4BRCKfPS",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #977",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/DEAaP4r7b3ZBB0JwIO8l9ABNd4CyFua9QZ2wfJXRmXQ?ext=png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Ultra"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "Band Mask"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "Black"
+      },
+      {
+        "trait_type": "Back",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Orange"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Lion God"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Imperial Silver"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "None"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Focused Side Male"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Amber"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Bob Cut"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Calm Blue"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Covered"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Male"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "6"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/DEAaP4r7b3ZBB0JwIO8l9ABNd4CyFua9QZ2wfJXRmXQ?ext=png",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "BenLqEBUwsXhtWwGW9xaXN8FkYVWF7JkVM9QaKPzrAMq",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T16:51:17.691Z"
+}

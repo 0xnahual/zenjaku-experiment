@@ -1,0 +1,148 @@
+{
+  "mintAddress": "5vgFmQKMENQCzBctmSh81scv8mM3rCu6c9ERRGqB9vgz",
+  "onChainMetadata": {
+    "name": "Zenjaku #700",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/PXgQFZxSrIEoJ6HKdbtZAdukoddYrlxcGhCQPqiJb3M",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "6E8sHjiHRtUhafYLJGPY87uhDWrnX631uqSq6pRe8imT",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "9NJYbkxZ9MvCm9y4AYtDdxKRGGtMceNxHBqJ4BRCKfPS",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #700",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/qui9AISvpAEnQsFECXw5zg7QrTnmkZM71T5d7bo6QRs?ext=png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "None"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Blue"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Royal Guard"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Crimson Court"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "Spikes"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "Golden"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Interested Side Eyes"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Tealdawn"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Messy Sideburns"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Magenta"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": ":/"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Male"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "7"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/qui9AISvpAEnQsFECXw5zg7QrTnmkZM71T5d7bo6QRs?ext=png",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "BenLqEBUwsXhtWwGW9xaXN8FkYVWF7JkVM9QaKPzrAMq",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T16:58:12.320Z"
+}

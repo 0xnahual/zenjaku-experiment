@@ -1,0 +1,143 @@
+{
+  "mintAddress": "99nLPsFS4K2W2Df9dSjWRYS6wcbqvvjDrcyp11Bzz3fn",
+  "onChainMetadata": {
+    "name": "Zenjaku #1267",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/TlWF2fuwCBQBoh3ljHTY52uaY8EE1ICYRvfxW8l4GmQ",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "4RhfZdC1tCX7yScgyUz4dNLxnmVd29o7gZaMAU6PF6VC",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #1267",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/vcFcn-Qh-lL8OHnKSLZxCpb2at5tDtvV8RIunsBOTLc?ext=png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Mythic"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "None"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Purple"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Spirit Guide"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Magenta & Pink"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "None"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Neutral"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Tealdawn"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Wind Spirit"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Special"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Lipstick Grin"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "Green"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Female"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "3"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/vcFcn-Qh-lL8OHnKSLZxCpb2at5tDtvV8RIunsBOTLc?ext=png",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "BenLqEBUwsXhtWwGW9xaXN8FkYVWF7JkVM9QaKPzrAMq",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T16:45:25.453Z"
+}

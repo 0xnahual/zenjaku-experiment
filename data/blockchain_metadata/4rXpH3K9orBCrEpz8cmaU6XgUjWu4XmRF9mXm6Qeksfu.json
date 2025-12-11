@@ -1,0 +1,143 @@
+{
+  "mintAddress": "4rXpH3K9orBCrEpz8cmaU6XgUjWu4XmRF9mXm6Qeksfu",
+  "onChainMetadata": {
+    "name": "Vibe Knights #701",
+    "symbol": "VIBE",
+    "uri": "https://arweave.net/GRrgLs8YN8AtP3Tfu852Mr9E1IZNnzkIejXN7IQz27o",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "4RhfZdC1tCX7yScgyUz4dNLxnmVd29o7gZaMAU6PF6VC",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 50
+        },
+        {
+          "address": "9NJYbkxZ9MvCm9y4AYtDdxKRGGtMceNxHBqJ4BRCKfPS",
+          "verified": false,
+          "share": 50
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Vibe Knights #701",
+    "symbol": "VIBE",
+    "description": "8888 Anime Elves, One Global IP.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/iygQE8zNnqMlPfN4aHF-as60pWBjfWn0xLjk_HUTuQ8?ext=png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Ultra"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "Nose Bandage"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back",
+        "value": "Empowered Halberd"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "Purple"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Black"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Sweater"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Misfits"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "None"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Drowsy Side Eyes"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Tealdawn"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Comb Over"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Red"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Natural"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Female"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "7"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/iygQE8zNnqMlPfN4aHF-as60pWBjfWn0xLjk_HUTuQ8?ext=png",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "BenLqEBUwsXhtWwGW9xaXN8FkYVWF7JkVM9QaKPzrAMq",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T17:02:48.524Z"
+}

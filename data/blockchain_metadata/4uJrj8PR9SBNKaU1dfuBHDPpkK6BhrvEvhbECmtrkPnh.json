@@ -1,0 +1,148 @@
+{
+  "mintAddress": "4uJrj8PR9SBNKaU1dfuBHDPpkK6BhrvEvhbECmtrkPnh",
+  "onChainMetadata": {
+    "name": "Zenjaku #512",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/zztkwFwrEgYqrY2skAjTaFgN98Sm2db02QVxcl1MveM",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "4RhfZdC1tCX7yScgyUz4dNLxnmVd29o7gZaMAU6PF6VC",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "9NJYbkxZ9MvCm9y4AYtDdxKRGGtMceNxHBqJ4BRCKfPS",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #512",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/DMrBMKH0yfEroUPF9hCCaYyMSucTmnZ3xBMYmbmW6hM?ext=png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Ultra"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "None"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back",
+        "value": "Charged Staff"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "Purple"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Black"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Kimono Female"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Light Blue & Orange"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "2 dots"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "Black"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Warrior"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Pink"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Bob Sideburns"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Orange"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Lollipop"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "Black"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Female"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "1"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/DMrBMKH0yfEroUPF9hCCaYyMSucTmnZ3xBMYmbmW6hM?ext=png",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "BenLqEBUwsXhtWwGW9xaXN8FkYVWF7JkVM9QaKPzrAMq",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T17:02:41.341Z"
+}

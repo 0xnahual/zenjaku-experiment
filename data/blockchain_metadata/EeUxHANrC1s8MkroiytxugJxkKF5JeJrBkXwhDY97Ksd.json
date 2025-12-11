@@ -1,0 +1,148 @@
+{
+  "mintAddress": "EeUxHANrC1s8MkroiytxugJxkKF5JeJrBkXwhDY97Ksd",
+  "onChainMetadata": {
+    "name": "Zenjaku #2245",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/cVc06S3fxb-WsExG-KIpU0mOQu-f8sva4DOVn81JPCo",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "6NHBpQJ8p38wkYfmgfQ5PkazxFS1s8FXEZdBcc8kK79Z",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "9NJYbkxZ9MvCm9y4AYtDdxKRGGtMceNxHBqJ4BRCKfPS",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #2245",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/mTaGkE2xT_UEIYdKSGOMUi38Q3B2FHaO9XmnsqbpDOY",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Core"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "Devil Horns"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "Turquiouse"
+      },
+      {
+        "trait_type": "Back",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Purple"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Diver Male"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "idk"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "Full Ear Cuff"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "Golden"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Relaxed"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Tealdawn"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Undercut Ponytail"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Cosmic Purple"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Punk"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Male"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "1"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/mTaGkE2xT_UEIYdKSGOMUi38Q3B2FHaO9XmnsqbpDOY",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T15:58:39.103Z"
+}

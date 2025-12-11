@@ -1,0 +1,149 @@
+{
+  "mintAddress": "DPnZ5jr7zuuZZZn4ESKdRmVpq5LR2868QgCpuWrZUUv9",
+  "onChainMetadata": {
+    "name": "Zenjaku #2105",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/l4kOQrq97Gqxu0-SMj6wrWC1VrMsuCXWE36AeFrU5l8",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "6NHBpQJ8p38wkYfmgfQ5PkazxFS1s8FXEZdBcc8kK79Z",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "9NJYbkxZ9MvCm9y4AYtDdxKRGGtMceNxHBqJ4BRCKfPS",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Vibe Knights #5176",
+    "symbol": "VIBE",
+    "description": "8888 Anime Elves, One Global IP.",
+    "seller_fee_basis_points": 500,
+    "image": "https://nftstorage.link/ipfs/bafybeihjssblkjyfyo5unvr75h4th5jjonbmbrkdd475hghxfnzwo47pxe/1410.png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Core"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "None"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back",
+        "value": "Electric Guitar"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "Yellow"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Yellow"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Tunic"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Blue & Dark Red"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "Full Ear Cuff"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "Golden"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Drowsy Front"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Amber"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Messier"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Cosmic Purple"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Cool Fang"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Male"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "3"
+      }
+    ],
+    "properties": {
+      "edition": 209,
+      "files": [
+        {
+          "uri": "https://nftstorage.link/ipfs/bafybeihjssblkjyfyo5unvr75h4th5jjonbmbrkdd475hghxfnzwo47pxe/1410.png",
+          "type": "image/png"
+        }
+      ],
+      "category": "image",
+      "creators": [
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "share": 100
+        }
+      ]
+    }
+  },
+  "downloadedAt": "2025-10-13T16:28:01.123Z"
+}

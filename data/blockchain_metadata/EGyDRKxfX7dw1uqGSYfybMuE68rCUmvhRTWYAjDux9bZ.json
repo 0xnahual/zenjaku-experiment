@@ -1,0 +1,148 @@
+{
+  "mintAddress": "EGyDRKxfX7dw1uqGSYfybMuE68rCUmvhRTWYAjDux9bZ",
+  "onChainMetadata": {
+    "name": "Zenjaku #2263",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/smkQ7lt8xFq6W5d5xWWf2ifiVQhQMOtRTwH4N_qB2ww",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "jxDYEVEkxF8JYXn6i22pr28hSnuwrCLiMGtzn5RS439",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "9NJYbkxZ9MvCm9y4AYtDdxKRGGtMceNxHBqJ4BRCKfPS",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #2263",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/pDOYSQnfHxil3iD1ImDUmJ0D3k45M8wdBAtUKxKv5kE?ext=png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Core"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "Devil Horns"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "Magenta"
+      },
+      {
+        "trait_type": "Back",
+        "value": "Scythes"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "Purple"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Violet"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Dragon Court Shirt"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Violet Royal"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "Stud"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "Silver"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Neutral"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Tealdawn"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Samurai"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Black"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Lollipop"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Male"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "8"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/pDOYSQnfHxil3iD1ImDUmJ0D3k45M8wdBAtUKxKv5kE?ext=png",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "BenLqEBUwsXhtWwGW9xaXN8FkYVWF7JkVM9QaKPzrAMq",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T15:59:59.607Z"
+}

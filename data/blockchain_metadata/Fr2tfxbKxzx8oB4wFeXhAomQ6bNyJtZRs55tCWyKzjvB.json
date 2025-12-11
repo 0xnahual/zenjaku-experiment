@@ -1,0 +1,148 @@
+{
+  "mintAddress": "Fr2tfxbKxzx8oB4wFeXhAomQ6bNyJtZRs55tCWyKzjvB",
+  "onChainMetadata": {
+    "name": "Zenjaku #2524",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/tTl920Mt_bRsVcuunXfhQYMIFA33gl0IMTYnsQIScWI",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "6NHBpQJ8p38wkYfmgfQ5PkazxFS1s8FXEZdBcc8kK79Z",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "9NJYbkxZ9MvCm9y4AYtDdxKRGGtMceNxHBqJ4BRCKfPS",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": false,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #2524",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/CquS2rlClsqtuVxQum6qj5aYGQw1OQnVjrFhDGLE64s",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Core"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "Jaw Mask"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "Misfits"
+      },
+      {
+        "trait_type": "Back",
+        "value": "Club"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "Shadowcore"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Violet"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Guard Uniform"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Golden Court"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "Stud"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "Golden"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Focused"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Almost Red"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Not Spiky Mess"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Black"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Serious"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Male"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "9"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/CquS2rlClsqtuVxQum6qj5aYGQw1OQnVjrFhDGLE64s",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T15:51:39.682Z"
+}

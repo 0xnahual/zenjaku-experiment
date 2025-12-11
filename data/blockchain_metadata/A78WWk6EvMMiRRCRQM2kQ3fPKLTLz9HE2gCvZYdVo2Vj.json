@@ -1,0 +1,148 @@
+{
+  "mintAddress": "A78WWk6EvMMiRRCRQM2kQ3fPKLTLz9HE2gCvZYdVo2Vj",
+  "onChainMetadata": {
+    "name": "Zenjaku #1446",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/j_p4IaErdImZ1kNxQAUvIVoruLPjog_bJpRU6Coy1ks",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "AnZgqcmDL7UgfgcZbj3a76gPqyNoRVTTHse1Ns6NLEeg",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "9NJYbkxZ9MvCm9y4AYtDdxKRGGtMceNxHBqJ4BRCKfPS",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #1446",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/G3Esd7-EV1wZan2pblcD1UD_XyrW-HLt8Gs4VV8BwLA?ext=png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Mythic"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "None"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back",
+        "value": "Dragon Spirit"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "Gold"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Violet"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Aviator Jacket"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Orange"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "None"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Warrior"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Pink"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Scrambled 1"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Pink"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Fang Smile"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Female"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "5"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/G3Esd7-EV1wZan2pblcD1UD_XyrW-HLt8Gs4VV8BwLA?ext=png",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "BenLqEBUwsXhtWwGW9xaXN8FkYVWF7JkVM9QaKPzrAMq",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T16:41:55.951Z"
+}

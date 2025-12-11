@@ -1,0 +1,143 @@
+{
+  "mintAddress": "2SeDsTP4etobdVUUt6QrqbsiUusE2Asgv411LEWnyJg1",
+  "onChainMetadata": {
+    "name": "Zenjaku #132",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/VGqhADvs02g20IA9RSr-zD5jq5vxfFIU5prDMZgzwlg",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "9P1aZLQ1TGHyvjtF6Zk8zef5r2j5eQ1CiEPwCQeTTmAR",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #132",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/lMDYoyoiH1Oc-SvJFTckRblfN7_tz3arhgh7MFR8s2c?ext=png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Mythic"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "None"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back",
+        "value": "Light Sword"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "Light Blue"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Purple"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Witch Doctor"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Black Pure"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "None"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Viper"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Special"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Long Samurai"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Special"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Quirky Fang"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Male"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "1"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/lMDYoyoiH1Oc-SvJFTckRblfN7_tz3arhgh7MFR8s2c?ext=png",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "BenLqEBUwsXhtWwGW9xaXN8FkYVWF7JkVM9QaKPzrAMq",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T17:16:25.328Z"
+}

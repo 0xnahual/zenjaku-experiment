@@ -1,0 +1,148 @@
+{
+  "mintAddress": "G697vwUK666QbqPc5XPxknuhtZoivmP2LDyJhmZVQPhp",
+  "onChainMetadata": {
+    "name": "Zenjaku #2597",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/k88R_wkwZEzfcG6S9uNCz4ckC1cS2qQDWBmR7rgM-eY",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "6NHBpQJ8p38wkYfmgfQ5PkazxFS1s8FXEZdBcc8kK79Z",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "9NJYbkxZ9MvCm9y4AYtDdxKRGGtMceNxHBqJ4BRCKfPS",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #2597",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/7YuYtsqQ_RFtC68LH-tntG-PEGedWGJ_vOry7wwAaos",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Core"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "Round Shades"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "Blue"
+      },
+      {
+        "trait_type": "Back",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Blue"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Chocker Hoodie"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Violet Light"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "Industrial"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "Petal-Gold"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Ease"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Orange"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Long Pixie"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Light Purple"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Smile Lipstick"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "Purple"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Female"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "6"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/7YuYtsqQ_RFtC68LH-tntG-PEGedWGJ_vOry7wwAaos",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T15:50:49.334Z"
+}

@@ -1,0 +1,143 @@
+{
+  "mintAddress": "5Har9dNbW1tZgnCEDkgBUzrLzL5Vdu8LJ5xgVNoG9EZt",
+  "onChainMetadata": {
+    "name": "Zenjaku #611",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/thhTut_W7RQkiEhpi-ll1p6eFZkBSL_WoQRbbO47snw",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "4RhfZdC1tCX7yScgyUz4dNLxnmVd29o7gZaMAU6PF6VC",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #611",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/ppBU-Wb4Bp1UoFedKPVisNN5PzghaknL97S5f3NzFzY?ext=png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Ultra"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "Cheek Bandage"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back",
+        "value": "Charged Mage Staff"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "Turquiouse"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Black"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Kimono Female"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Infernal"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "Punk"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "Turquiouse"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Relaxed"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Green"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Flowy"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Blue"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": ":/"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Female"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "1"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/ppBU-Wb4Bp1UoFedKPVisNN5PzghaknL97S5f3NzFzY?ext=png",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "BenLqEBUwsXhtWwGW9xaXN8FkYVWF7JkVM9QaKPzrAMq",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T17:00:36.945Z"
+}

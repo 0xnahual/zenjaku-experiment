@@ -1,0 +1,148 @@
+{
+  "mintAddress": "52ngvDccDDypxHpEMgV5Vb37KKCCLAjC84vxdAn3WexZ",
+  "onChainMetadata": {
+    "name": "Zenjaku #552",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/lkZsowvWB9TplXShE6-nRCi6vM53VlvsloRAYVjWOFA",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "jxDYEVEkxF8JYXn6i22pr28hSnuwrCLiMGtzn5RS439",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "9NJYbkxZ9MvCm9y4AYtDdxKRGGtMceNxHBqJ4BRCKfPS",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #552",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/L2-5zgq5GwxkVNe-9iKP7hIHrGkfri_mZ4nUZJrVX5M?ext=png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Core"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "Devil Horns"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "Magenta"
+      },
+      {
+        "trait_type": "Back",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Violet"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Militar Uniform"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Blue & Dark Red"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "Full Ear Cuff"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "Turquiouse"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Curious"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Magenta"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Head Band"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Blue Green"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Leaf"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Male"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "9"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "None"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/L2-5zgq5GwxkVNe-9iKP7hIHrGkfri_mZ4nUZJrVX5M?ext=png",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "BenLqEBUwsXhtWwGW9xaXN8FkYVWF7JkVM9QaKPzrAMq",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T17:02:01.243Z"
+}

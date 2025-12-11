@@ -1,0 +1,143 @@
+{
+  "mintAddress": "6WgUUg3qmtajZSU9VwEKcf4UMZFkJGzooEgvE8fpr9f",
+  "onChainMetadata": {
+    "name": "Vibe Knights #172",
+    "symbol": "VIBE",
+    "uri": "https://arweave.net/MSrJw-YwDKpCPoP-AIqEXwvAfjaamOd7g4Rxx7D3w3s",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "AnZgqcmDL7UgfgcZbj3a76gPqyNoRVTTHse1Ns6NLEeg",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 50
+        },
+        {
+          "address": "9NJYbkxZ9MvCm9y4AYtDdxKRGGtMceNxHBqJ4BRCKfPS",
+          "verified": false,
+          "share": 50
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Vibe Knights #172",
+    "symbol": "VIBE",
+    "description": "8888 Anime Elves, One Global IP.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/MakwoucUDIfJU5wnW2EKUBlWwlqv3lWP-mrE-PLoPJo?ext=png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Mythic"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "None"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back",
+        "value": "Titan Sword"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "Gold"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Black"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Barbaric Armor"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Golden Court"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "3 dots"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "Blue"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Relaxed"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Red"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Unicorn"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Special"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": "Serious"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Male"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "8"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/MakwoucUDIfJU5wnW2EKUBlWwlqv3lWP-mrE-PLoPJo?ext=png",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "BenLqEBUwsXhtWwGW9xaXN8FkYVWF7JkVM9QaKPzrAMq",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T17:31:16.903Z"
+}

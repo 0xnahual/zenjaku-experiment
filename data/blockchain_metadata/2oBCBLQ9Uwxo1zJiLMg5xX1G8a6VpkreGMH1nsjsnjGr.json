@@ -1,0 +1,148 @@
+{
+  "mintAddress": "2oBCBLQ9Uwxo1zJiLMg5xX1G8a6VpkreGMH1nsjsnjGr",
+  "onChainMetadata": {
+    "name": "Zenjaku #112",
+    "symbol": "ZEN",
+    "uri": "https://arweave.net/LOXA5OVsbj8hTGlcdhygImOYHEUaLjaUw67Bvbk6WJ4",
+    "sellerFeeBasisPoints": 500,
+    "creators": {
+      "__option": "Some",
+      "value": [
+        {
+          "address": "jxDYEVEkxF8JYXn6i22pr28hSnuwrCLiMGtzn5RS439",
+          "verified": true,
+          "share": 0
+        },
+        {
+          "address": "ASwcGNEDgZx4wkPczEtMzQynBAgvQW96HEBUrwU675sz",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "9NJYbkxZ9MvCm9y4AYtDdxKRGGtMceNxHBqJ4BRCKfPS",
+          "verified": false,
+          "share": 0
+        },
+        {
+          "address": "H3UPb9VbQEH6F5HXfH1EsELTyiDKeoqBnibNzbNtrrae",
+          "verified": false,
+          "share": 100
+        }
+      ]
+    },
+    "primarySaleHappened": true,
+    "isMutable": true,
+    "updateAuthority": "5nY6efT87mbEAA2b52SrSAqUoFCBef2jwpJSWQ6VxSyJ",
+    "collection": {
+      "__option": "Some",
+      "value": {
+        "verified": true,
+        "key": "Cm69JBP3bh5pyTJHpGKDyT9bP6jurz5APvoHVHE9REMG"
+      }
+    },
+    "uses": {
+      "__option": "None"
+    },
+    "tokenStandard": {
+      "__option": "Some",
+      "value": 4
+    }
+  },
+  "jsonMetadata": {
+    "name": "Zenjaku #112",
+    "symbol": "ZEN",
+    "description": "Zenjaku: a deflationary collection of unique characters on Solana.",
+    "seller_fee_basis_points": 500,
+    "image": "https://arweave.net/ufa1I-qI3ePy0UHBPhORyIqnN3OeHx8ZE84fHm6T8_w?ext=png",
+    "attributes": [
+      {
+        "trait_type": "Rarity",
+        "value": "Ultra"
+      },
+      {
+        "trait_type": "Accessory",
+        "value": "None"
+      },
+      {
+        "trait_type": "Accessory Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Back",
+        "value": "Light Sword"
+      },
+      {
+        "trait_type": "Back Color",
+        "value": "Light Blue"
+      },
+      {
+        "trait_type": "Background",
+        "value": "Purple"
+      },
+      {
+        "trait_type": "Clothes",
+        "value": "Delinquent Jacket"
+      },
+      {
+        "trait_type": "Clothes Color",
+        "value": "Dark Blue Pure"
+      },
+      {
+        "trait_type": "Earring",
+        "value": "Stud"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "Turquiouse"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Love"
+      },
+      {
+        "trait_type": "Eyes Color",
+        "value": "Special"
+      },
+      {
+        "trait_type": "Hair",
+        "value": "Two Buns <3"
+      },
+      {
+        "trait_type": "Hair Color",
+        "value": "Cyan"
+      },
+      {
+        "trait_type": "Mouth",
+        "value": ":/"
+      },
+      {
+        "trait_type": "Mouth Color",
+        "value": "None"
+      },
+      {
+        "trait_type": "Body Type",
+        "value": "Female"
+      },
+      {
+        "trait_type": "Skin Color",
+        "value": "2"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "https://arweave.net/ufa1I-qI3ePy0UHBPhORyIqnN3OeHx8ZE84fHm6T8_w?ext=png",
+          "type": "image/png"
+        }
+      ],
+      "creators": [
+        {
+          "address": "BenLqEBUwsXhtWwGW9xaXN8FkYVWF7JkVM9QaKPzrAMq",
+          "share": 100
+        }
+      ],
+      "category": "image"
+    }
+  },
+  "downloadedAt": "2025-10-13T17:14:55.334Z"
+}

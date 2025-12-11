@@ -2,66 +2,80 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Head from 'next/head'
+import zenjakuMapping from '../../data/zenjaku-mapping.json'
 import arweaveData from '../../data/arweave-uploads.json'
 import pastImages from '../../data/past_image_urls.json'
 import Header from '../../components/Header'
 import { useDarkMode } from '../../contexts/DarkModeContext'
+
+// Build items from the proper mapping
+const allNumbers = Object.keys(zenjakuMapping).map(Number).sort((a, b) => a - b)
+const maxNumber = Math.max(...allNumbers)
 
 export default function Explorer() {
     const router = useRouter()
     const { id } = router.query
     const { mounted } = useDarkMode()
     const [nftData, setNftData] = useState(null)
-    const [allItems, setAllItems] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [inputValue, setInputValue] = useState('')
     const [showStateHistory, setShowStateHistory] = useState(false)
 
     useEffect(() => {
-        const items = Object.entries(arweaveData).map(([filename, url], index) => {
-            const nftId = filename.replace('.png', '')
-            const tokenNumber = index + 1
-            return {
-                tokenNumber: tokenNumber,
-                id: nftId,
-                currentImage: url,
-                pastImage: pastImages[nftId] || null,
-                name: `#${tokenNumber.toString().padStart(4, '0')}`
-            }
-        })
-        setAllItems(items)
-    }, [])
-
-    useEffect(() => {
-        if (!id || allItems.length === 0) return
+        if (!id) return
         const tokenNum = parseInt(id)
-        const found = allItems.find(item => item.tokenNumber === tokenNum)
-        if (found) {
-            setNftData(found)
+        const mintAddress = zenjakuMapping[tokenNum]
+        
+        if (mintAddress) {
+            const imageUrl = arweaveData[`${mintAddress}.png`]
+            setNftData({
+                tokenNumber: tokenNum,
+                id: mintAddress,
+                currentImage: imageUrl,
+                pastImage: pastImages[mintAddress] || null,
+                name: `#${tokenNum.toString().padStart(4, '0')}`
+            })
             setInputValue(tokenNum.toString())
         }
         setIsLoading(false)
-    }, [id, allItems])
+    }, [id])
 
     const handlePrev = () => {
         if (!nftData) return
         const prevNum = nftData.tokenNumber - 1
-        if (prevNum >= 1) router.push(`/explorer/${prevNum}`)
+        if (prevNum >= 1 && zenjakuMapping[prevNum]) router.push(`/explorer/${prevNum}`)
     }
 
     const handleNext = () => {
         if (!nftData) return
         const nextNum = nftData.tokenNumber + 1
-        if (nextNum <= allItems.length) router.push(`/explorer/${nextNum}`)
+        if (nextNum <= maxNumber && zenjakuMapping[nextNum]) router.push(`/explorer/${nextNum}`)
     }
 
     const handleInputSubmit = (e) => {
         e.preventDefault()
         const num = parseInt(inputValue)
-        if (num >= 1 && num <= allItems.length) {
+        if (num >= 1 && num <= maxNumber && zenjakuMapping[num]) {
             router.push(`/explorer/${num}`)
         }
     }
+
+    // Keyboard navigation
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            // Don't trigger if typing in input
+            if (document.activeElement.tagName === 'INPUT') return
+            
+            if (e.key === 'ArrowRight' && nftData && nftData.tokenNumber < maxNumber && zenjakuMapping[nftData.tokenNumber + 1]) {
+                router.push(`/explorer/${nftData.tokenNumber + 1}`)
+            } else if (e.key === 'ArrowLeft' && nftData && nftData.tokenNumber > 1 && zenjakuMapping[nftData.tokenNumber - 1]) {
+                router.push(`/explorer/${nftData.tokenNumber - 1}`)
+            }
+        }
+
+        window.addEventListener('keydown', handleKeyDown)
+        return () => window.removeEventListener('keydown', handleKeyDown)
+    }, [nftData, router])
 
     if (!mounted || isLoading || !nftData) {
         return (
@@ -73,8 +87,8 @@ export default function Explorer() {
         )
     }
 
-    const hasPrev = nftData.tokenNumber > 1
-    const hasNext = nftData.tokenNumber < allItems.length
+    const hasPrev = nftData.tokenNumber > 1 && zenjakuMapping[nftData.tokenNumber - 1]
+    const hasNext = nftData.tokenNumber < maxNumber && zenjakuMapping[nftData.tokenNumber + 1]
 
     return (
         <>
@@ -134,7 +148,7 @@ export default function Explorer() {
                                             >
                                                 →
                                             </button>
-                                            <span className="text-gray-500 text-[10px]">/ {allItems.length}</span>
+                                            <span className="text-gray-500 text-[10px]">/ {maxNumber}</span>
                                         </div>
                                     </div>
 

@@ -1,12 +1,6 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import arweaveData from '../../data/arweave-uploads.json'
-
-// Build items the same way explorer does
-const items = Object.entries(arweaveData).map(([filename, url], index) => ({
-    tokenNumber: index + 1,
-    mintAddress: filename.replace('.png', '')
-}))
+import zenjakuMapping from '../../data/zenjaku-mapping.json'
 
 export default function CollectRedirect() {
     const router = useRouter()
@@ -20,9 +14,8 @@ export default function CollectRedirect() {
         // Check if address is a number (token ID)
         if (/^\d+$/.test(address)) {
             const tokenNum = parseInt(address, 10)
-            const found = items.find(item => item.tokenNumber === tokenNum)
-            if (found) {
-                mintAddress = found.mintAddress
+            if (zenjakuMapping[tokenNum]) {
+                mintAddress = zenjakuMapping[tokenNum]
             }
         }
 
@@ -38,3 +31,4 @@ export default function CollectRedirect() {
         </div>
     )
 }
+
