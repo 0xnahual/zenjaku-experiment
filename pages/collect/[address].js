@@ -15,7 +15,7 @@ export default function CollectRedirect() {
         if (/^\d+$/.test(address)) {
             const tokenNum = parseInt(address, 10)
             if (zenjakuMapping[tokenNum]) {
-                mintAddress = zenjakuMapping[tokenNum]
+                mintAddress = zenjakuMapping[tokenNum].address
             }
         }
 

@@ -14,12 +14,24 @@ for (const file of files) {
     
     const mintAddress = data.mintAddress
     const name = data.onChainMetadata?.name || data.jsonMetadata?.name
+    const attributes = data.jsonMetadata?.attributes || []
+    
+    // Convert attributes array to object
+    const traits = {}
+    for (const attr of attributes) {
+        if (attr.trait_type && attr.value && attr.value !== 'None') {
+            traits[attr.trait_type] = attr.value
+        }
+    }
     
     if (name) {
         const match = name.match(/#(\d+)/)
         if (match) {
             const number = parseInt(match[1])
-            mapping[number] = mintAddress
+            mapping[number] = {
+                address: mintAddress,
+                traits: traits
+            }
         }
     }
 }

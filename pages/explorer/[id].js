@@ -10,6 +10,7 @@ import { useDarkMode } from '../../contexts/DarkModeContext'
 
 // Build items from the proper mapping
 const allNumbers = Object.keys(zenjakuMapping).map(Number).sort((a, b) => a - b)
+const totalCount = allNumbers.length
 const maxNumber = Math.max(...allNumbers)
 
 export default function Explorer() {
@@ -24,16 +25,18 @@ export default function Explorer() {
     useEffect(() => {
         if (!id) return
         const tokenNum = parseInt(id)
-        const mintAddress = zenjakuMapping[tokenNum]
+        const data = zenjakuMapping[tokenNum]
         
-        if (mintAddress) {
+        if (data) {
+            const mintAddress = data.address
             const imageUrl = arweaveData[`${mintAddress}.png`]
             setNftData({
                 tokenNumber: tokenNum,
                 id: mintAddress,
                 currentImage: imageUrl,
                 pastImage: pastImages[mintAddress] || null,
-                name: `#${tokenNum.toString().padStart(4, '0')}`
+                name: `#${tokenNum.toString().padStart(4, '0')}`,
+                traits: data.traits || {}
             })
             setInputValue(tokenNum.toString())
         }
@@ -121,11 +124,11 @@ export default function Explorer() {
                                 </div>
 
                                 {/* Right: Details */}
-                                <div className="font-mono text-xs space-y-6">
+                                <div className="font-mono text-xs space-y-3">
                                     {/* Navigation */}
                                     <div>
-                                        <div className="text-gray-500 text-[10px] mb-2">ENTITY</div>
-                                        <div className="flex items-center gap-3">
+                                        <div className="text-gray-500 text-[10px] mb-1">ENTITY</div>
+                                        <div className="flex items-center gap-2">
                                             <button
                                                 onClick={handlePrev}
                                                 disabled={!hasPrev}
@@ -138,7 +141,7 @@ export default function Explorer() {
                                                     type="text"
                                                     value={inputValue}
                                                     onChange={(e) => setInputValue(e.target.value)}
-                                                    className="w-16 bg-transparent text-3xl font-light text-[#ff9900] text-center focus:outline-none"
+                                                    className="w-14 bg-transparent text-2xl font-light text-[#ff9900] text-center focus:outline-none"
                                                 />
                                             </form>
                                             <button
@@ -148,29 +151,29 @@ export default function Explorer() {
                                             >
                                                 →
                                             </button>
-                                            <span className="text-gray-500 text-[10px]">/ {maxNumber}</span>
+                                            <span className="text-gray-500 text-[10px]">/ {totalCount}</span>
                                         </div>
                                     </div>
 
                                     {/* Parameters */}
-                                    <div className="border border-gray-700 divide-y divide-gray-700">
-                                        <div className="flex justify-between p-3">
+                                    <div className="border border-gray-700 divide-y divide-gray-700 text-[10px]">
+                                        <div className="flex justify-between py-1.5 px-2">
                                             <span className="text-gray-500">INDEX</span>
                                             <span className="text-gray-300">{nftData.tokenNumber}</span>
                                         </div>
-                                        <div className="flex justify-between p-3">
+                                        <div className="flex justify-between py-1.5 px-2">
                                             <span className="text-gray-500">ADDRESS</span>
-                                            <span className="text-[#ff9900]/70 text-[10px] break-all">{nftData.id}</span>
+                                            <span className="text-[#ff9900]/70 text-[9px] break-all">{nftData.id}</span>
                                         </div>
-                                        <div className="flex justify-between p-3">
+                                        <div className="flex justify-between py-1.5 px-2">
                                             <span className="text-gray-500">CHAIN</span>
                                             <span className="text-gray-300">SOLANA</span>
                                         </div>
-                                        <div className="flex justify-between p-3">
+                                        <div className="flex justify-between py-1.5 px-2">
                                             <span className="text-gray-500">SIGNAL</span>
                                             <span className="text-gray-300">ACTIVE</span>
                                         </div>
-                                        <div className="flex justify-between p-3">
+                                        <div className="flex justify-between py-1.5 px-2">
                                             <span className="text-gray-500">STATE</span>
                                             {nftData.pastImage ? (
                                                 <button 
@@ -185,34 +188,42 @@ export default function Explorer() {
                                         </div>
                                     </div>
 
-                                    {/* System Line */}
-                                    <div className="text-gray-500 text-[10px] py-2 border-y border-gray-700/50">
-                                        SIGNAL: ACTIVE — PARAMETERS LOGGED
-                                    </div>
+                                    {/* Traits */}
+                                    {nftData.traits && Object.keys(nftData.traits).length > 0 && (
+                                        <div className="border border-gray-700">
+                                            <div className="py-1 px-2 text-gray-600 text-[9px] border-b border-gray-800">ATTRIBUTES</div>
+                                            <div className="py-1.5 px-2 grid grid-cols-2 gap-x-4 gap-y-0.5 text-[9px]">
+                                                {Object.entries(nftData.traits).map(([key, value]) => (
+                                                    <div key={key} className="flex justify-between">
+                                                        <span className="text-gray-600">{key.toUpperCase()}</span>
+                                                        <span className="text-gray-400">{value}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
 
-                                    {/* External Links */}
-                                    <div className="flex gap-4 text-[10px]">
-                                        <a
-                                            href={`https://magiceden.io/item-details/${nftData.id}`}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-gray-500 hover:text-[#ff9900] transition-colors"
-                                        >
-                                            MARKET ↗
-                                        </a>
-                                        <a
-                                            href={`https://orb.helius.dev/address/${nftData.id}`}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-gray-500 hover:text-[#ff9900] transition-colors"
-                                        >
-                                            EXPLORER ↗
-                                        </a>
-                                    </div>
-
-                                    {/* Footer */}
-                                    <div className="text-gray-600 text-[10px] pt-4">
-                                        ENTRY RECORDED IN CORE ARCHIVE
+                                    {/* Footer with links */}
+                                    <div className="flex justify-between items-center text-[9px] pt-1 border-t border-gray-800">
+                                        <span className="text-gray-700">ENTRY LOGGED</span>
+                                        <div className="flex gap-3">
+                                            <a
+                                                href={`https://magiceden.io/item-details/${nftData.id}`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-gray-500 hover:text-[#ff9900] transition-colors"
+                                            >
+                                                MARKET ↗
+                                            </a>
+                                            <a
+                                                href={`https://orb.helius.dev/address/${nftData.id}`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-gray-500 hover:text-[#ff9900] transition-colors"
+                                            >
+                                                EXPLORER ↗
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
