@@ -1,5 +1,13 @@
 import { useState, useEffect } from 'react'
 import Head from 'next/head'
+import { EXPERIMENT_START_DATE } from '../config/constants'
+
+// Format the start date for display
+const startDate = new Date(EXPERIMENT_START_DATE).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric'
+})
 
 const formatAddress = (address) => {
   if (!address) return 'Unknown'
@@ -7,9 +15,10 @@ const formatAddress = (address) => {
 }
 
 export default function Leaderboard() {
-  const [timeframe, setTimeframe] = useState('allTime')
+  const [timeframe, setTimeframe] = useState('monthly')
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
+  const [showTooltip, setShowTooltip] = useState(false)
 
   useEffect(() => {
     const fetchLeaderboard = async () => {
@@ -60,22 +69,35 @@ export default function Leaderboard() {
             <p
               className="text-sm opacity-70 max-w-2xl mx-auto leading-relaxed mb-2 text-black"
             >
-              The architects of the ecosystem. These addresses are forging the path forward through volume and dedication.
+              Addresses influencing system balance through continuous movement.
             </p>
             <p
               className="text-[10px] font-mono tracking-wider uppercase text-[#ff6600] opacity-80"
             >
               VERIFIED // ON-CHAIN // IMMUTABLE
             </p>
-            <p
-              className="text-[9px] font-mono tracking-wider text-gray-400 mt-2"
-            >
-              Tracking MagicEden
+            <p className="text-[9px] font-mono tracking-wider text-gray-400 mt-2">
+              Tracking MagicEden · Started {startDate}
+              <span className="relative ml-1 inline-block">
+                <button
+                  onClick={() => setShowTooltip(!showTooltip)}
+                  onMouseEnter={() => setShowTooltip(true)}
+                  onMouseLeave={() => setShowTooltip(false)}
+                  className="text-gray-300 hover:text-[#ff6600] transition-colors"
+                >
+                  [?]
+                </button>
+                {showTooltip && (
+                  <span className="absolute bottom-5 left-1/2 -translate-x-1/2 w-56 p-2 bg-black text-white text-[8px] font-mono leading-relaxed z-50">
+                    <span className="text-[#ff6600]">VOLUME:</span> Each trade credits buyer + seller 50% each (2 participants per tx).
+                  </span>
+                )}
+              </span>
             </p>
 
             {/* Timeframe Selector */}
             <div className="flex justify-center gap-8 border-b border-gray-800/20 pb-4 mt-12 mb-12">
-              {['allTime', 'monthly', 'daily'].map((tf) => (
+              {['monthly', 'daily', 'allTime'].map((tf) => (
                 <button
                   key={tf}
                   onClick={() => setTimeframe(tf)}
@@ -136,12 +158,12 @@ export default function Leaderboard() {
                       {/* Secondary: Breakdown */}
                       <div className="flex justify-end gap-3 font-mono text-[9px] mt-2 text-black">
                         <div className="flex items-baseline gap-1">
-                          <span className="font-bold opacity-80">{item.donated.toLocaleString()}</span>
+                          <span className="font-bold opacity-80">{item.donated.toFixed(5)}</span>
                           <span className="tracking-wider text-[7px] uppercase opacity-40">DONATED</span>
                         </div>
                         <div className="w-px h-2 bg-current opacity-20 self-center"></div>
                         <div className="flex items-baseline gap-1">
-                          <span className="font-bold opacity-80">{item.burned.toLocaleString()}</span>
+                          <span className="font-bold opacity-80">{item.burned.toFixed(5)}</span>
                           <span className="tracking-wider text-[7px] uppercase opacity-40">BURNED</span>
                         </div>
                       </div>

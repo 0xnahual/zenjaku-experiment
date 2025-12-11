@@ -6,6 +6,8 @@ import { HiMenu, HiX } from 'react-icons/hi'
 
 // Pages that should always be dark mode
 const FORCE_DARK_PAGES = ['/solana', '/transformation', '/explorer']
+// Pages that should always be light mode
+const FORCE_LIGHT_PAGES = ['/leaderboard']
 
 const Header = () => {
     const router = useRouter()
@@ -16,7 +18,8 @@ const Header = () => {
 
     // Force dark mode on certain pages (including dynamic routes)
     const forceDark = FORCE_DARK_PAGES.some(page => router.pathname.startsWith(page))
-    const isDark = forceDark || contextIsDark
+    const forceLight = FORCE_LIGHT_PAGES.some(page => router.pathname.startsWith(page))
+    const isDark = forceLight ? false : (forceDark || contextIsDark)
 
     // Cleanup timeout on unmount
     useEffect(() => {
@@ -104,8 +107,8 @@ const Header = () => {
         }
     ]
 
-    // Don't wait for mount on force dark pages - render immediately with dark styles
-    if (!mounted && !forceDark) {
+    // Don't wait for mount on forced pages - render immediately with correct styles
+    if (!mounted && !forceDark && !forceLight) {
         return null
     }
 

@@ -20,4 +20,4 @@ export const LIVE_ZENJAKU_COUNT = TOTAL_SUPPLY - BURNED_COUNT;
 
 // Experiment Start Date - Only count sales from this date forward
 // Set to the current date when you want to "reset" the leaderboard tracking
-export const EXPERIMENT_START_DATE = '2024-12-09T00:00:00Z'; 
+export const EXPERIMENT_START_DATE = '2025-12-09T00:00:00Z'; 
