@@ -4,14 +4,14 @@ import { useRouter } from 'next/router'
 import ScrambleText from './ScrambleText'
 
 // Pages that should always be dark mode
-const FORCE_DARK_PAGES = ['/solana', '/transformation']
+const FORCE_DARK_PAGES = ['/solana', '/transformation', '/explorer']
 
 export default function Layout({ children }) {
     const router = useRouter()
     const { isDark: contextIsDark, glitchActive, mounted } = useDarkMode()
 
-    // Force dark mode on certain pages
-    const forceDark = FORCE_DARK_PAGES.includes(router.pathname)
+    // Force dark mode on certain pages (including dynamic routes)
+    const forceDark = FORCE_DARK_PAGES.some(page => router.pathname.startsWith(page))
     const isDark = forceDark || contextIsDark
 
     const [timestamp, setTimestamp] = useState('')

@@ -5,7 +5,7 @@ import { useDarkMode } from '../contexts/DarkModeContext'
 import { HiMenu, HiX } from 'react-icons/hi'
 
 // Pages that should always be dark mode
-const FORCE_DARK_PAGES = ['/solana', '/transformation']
+const FORCE_DARK_PAGES = ['/solana', '/transformation', '/explorer']
 
 const Header = () => {
     const router = useRouter()
@@ -14,8 +14,8 @@ const Header = () => {
     const [openDropdown, setOpenDropdown] = useState(null)
     const [dropdownTimeout, setDropdownTimeout] = useState(null)
 
-    // Force dark mode on certain pages
-    const forceDark = FORCE_DARK_PAGES.includes(router.pathname)
+    // Force dark mode on certain pages (including dynamic routes)
+    const forceDark = FORCE_DARK_PAGES.some(page => router.pathname.startsWith(page))
     const isDark = forceDark || contextIsDark
 
     // Cleanup timeout on unmount
@@ -51,6 +51,10 @@ const Header = () => {
                 {
                     name: 'Transformation',
                     link: '/transformation'
+                },
+                {
+                    name: 'Explorer',
+                    link: '/explorer/1'
                 }
             ]
         },
