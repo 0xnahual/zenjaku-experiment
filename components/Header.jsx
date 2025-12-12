@@ -75,8 +75,7 @@ const Header = () => {
                 },
                 {
                     name: 'Leaderboard',
-                    link: '/leaderboard',
-                    comingSoon: "EXPERIMENT NOT YET STARTED"
+                    link: '/leaderboard'
                 },
                 {
                     name: 'The Treasury',
@@ -94,8 +93,8 @@ const Header = () => {
             dropdownId: 'collect',
             dropdownItems: [
                 {
-                    name: 'SOL (TENSOR)',
-                    link: 'https://www.tensor.trade/trade/zenjaku',
+                    name: 'SOL (MAGIC EDEN)',
+                    link: 'https://magiceden.io/marketplace/zenjaku',
                     isExternal: true
                 },
                 {

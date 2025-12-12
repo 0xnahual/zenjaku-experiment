@@ -11,7 +11,7 @@ export default function Home() {
 
     useEffect(() => {
         if (!mounted) return
-        setRandomGirlIndex(Math.floor(Math.random() * 11))
+        setRandomGirlIndex(Math.floor(Math.random() * 10))
     }, [mounted])
 
     useEffect(() => {
