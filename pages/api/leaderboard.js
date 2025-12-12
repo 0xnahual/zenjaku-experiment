@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  const { timeframe } = req.query // 'daily', 'monthly', 'allTime'
+  const { timeframe, date } = req.query // 'daily', 'monthly', 'allTime', or 'specific' with date param
 
   try {
     // Use the admin client since we know the Service Role Key is working correctly
@@ -20,7 +20,12 @@ export default async function handler(req, res) {
 
     // Apply Time Filters
     const now = new Date()
-    if (timeframe === 'daily') {
+    if (timeframe === 'specific' && date) {
+      // Filter for a specific day
+      const startOfDay = new Date(date + 'T00:00:00Z').toISOString()
+      const endOfDay = new Date(date + 'T23:59:59Z').toISOString()
+      query = query.gte('block_time', startOfDay).lte('block_time', endOfDay)
+    } else if (timeframe === 'daily') {
       const oneDayAgo = new Date(now.getTime() - 24 * 60 * 60 * 1000).toISOString()
       query = query.gte('block_time', oneDayAgo)
     } else if (timeframe === 'monthly') {

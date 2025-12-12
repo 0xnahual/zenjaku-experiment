@@ -2,15 +2,19 @@ import { getSupabaseAdmin } from '../../lib/supabase'
 import { fetchCollectionActivities, processActivitiesForDB } from '../../lib/magiceden'
 
 export default async function handler(req, res) {
-  // 1. Security Check
+  // 1. Security Check - Accept both manual auth and Vercel cron
   const authHeader = req.headers.authorization
-  const expectedAuth = `Bearer ${process.env.SYNC_SECRET_KEY}`
+  const expectedSyncAuth = `Bearer ${process.env.SYNC_SECRET_KEY}`
+  const expectedCronAuth = `Bearer ${process.env.CRON_SECRET}`
 
-  if (req.method !== 'POST') {
+  // Allow GET for Vercel cron, POST for manual triggers
+  if (req.method !== 'POST' && req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  if (authHeader !== expectedAuth) {
+  // Check authorization - accept either SYNC_SECRET_KEY or CRON_SECRET
+  const isValidAuth = authHeader === expectedSyncAuth || authHeader === expectedCronAuth
+  if (!isValidAuth) {
     console.warn('Unauthorized sync attempt')
     return res.status(401).json({ error: 'Unauthorized' })
   }
