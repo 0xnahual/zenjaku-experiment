@@ -28,6 +28,9 @@ export default async function handler(req, res) {
     } else if (timeframe === 'daily') {
       const oneDayAgo = new Date(now.getTime() - 24 * 60 * 60 * 1000).toISOString()
       query = query.gte('block_time', oneDayAgo)
+    } else if (timeframe === 'weekly') {
+      const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString()
+      query = query.gte('block_time', sevenDaysAgo)
     } else if (timeframe === 'monthly') {
       const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString()
       query = query.gte('block_time', thirtyDaysAgo)

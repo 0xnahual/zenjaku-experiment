@@ -17,9 +17,12 @@ const formatAddress = (address) => {
 // Get experiment start date for date picker min
 const experimentStartDateStr = EXPERIMENT_START_DATE.split('T')[0]
 
+// Get today's date in YYYY-MM-DD format
+const getTodayStr = () => new Date().toISOString().split('T')[0]
+
 export default function Leaderboard() {
-  const [timeframe, setTimeframe] = useState('monthly')
-  const [selectedDate, setSelectedDate] = useState('')
+  const [timeframe, setTimeframe] = useState('daily')
+  const [selectedDate, setSelectedDate] = useState(getTodayStr())
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
   const [showTooltip, setShowTooltip] = useState(false)
@@ -30,8 +33,8 @@ export default function Leaderboard() {
       try {
         // Build URL with params
         let url = `/api/leaderboard?timeframe=${timeframe}`
-        if (timeframe === 'specific' && selectedDate) {
-          url += `&date=${selectedDate}`
+        if (timeframe === 'daily' && selectedDate) {
+          url = `/api/leaderboard?timeframe=specific&date=${selectedDate}`
         }
         const res = await fetch(url)
         const json = await res.json()
@@ -50,10 +53,7 @@ export default function Leaderboard() {
       }
     }
 
-    // Fetch real data for ALL tabs (or when date changes for specific)
-    if (timeframe !== 'specific' || selectedDate) {
-      fetchLeaderboard()
-    }
+    fetchLeaderboard()
   }, [timeframe, selectedDate])
 
   return (
@@ -108,37 +108,35 @@ export default function Leaderboard() {
             {/* Timeframe Selector */}
             <div className="flex flex-col items-center gap-4 border-b border-gray-800/20 pb-4 mt-12 mb-12">
               <div className="flex justify-center gap-8">
-                {['monthly', 'daily', 'allTime', 'specific'].map((tf) => (
+                {['daily', 'weekly', 'monthly', 'allTime'].map((tf) => (
                   <button
                     key={tf}
                     onClick={() => {
                       setTimeframe(tf)
-                      if (tf !== 'specific') setSelectedDate('')
+                      if (tf === 'daily') setSelectedDate(getTodayStr())
                     }}
                     className={`font-mono text-xs tracking-widest uppercase transition-all duration-300 ${timeframe === tf
                       ? 'text-[#ff6600] opacity-100'
                       : 'text-black opacity-40 hover:opacity-70'
                       }`}
                   >
-                    {tf === 'allTime' ? 'All Time' : tf === 'specific' ? 'By Date' : tf}
+                    {tf === 'allTime' ? 'All Time' : tf}
                   </button>
                 ))}
               </div>
-              {timeframe === 'specific' && (
+              {timeframe === 'daily' && (
                 <div className="flex items-center gap-2">
                   <input
                     type="date"
                     value={selectedDate}
                     onChange={(e) => setSelectedDate(e.target.value)}
                     min={experimentStartDateStr}
-                    max={new Date().toISOString().split('T')[0]}
+                    max={getTodayStr()}
                     className="font-mono text-xs px-3 py-1.5 border border-gray-300 bg-white text-black focus:outline-none focus:border-[#ff6600]"
                   />
-                  {selectedDate && (
-                    <span className="font-mono text-[10px] text-gray-500">
-                      {new Date(selectedDate).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
-                    </span>
-                  )}
+                  <span className="font-mono text-[10px] text-gray-500">
+                    {new Date(selectedDate + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
+                  </span>
                 </div>
               )}
             </div>
