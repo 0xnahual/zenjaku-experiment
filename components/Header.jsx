@@ -94,7 +94,7 @@ const Header = () => {
             dropdownItems: [
                 {
                     name: 'SOL (MAGIC EDEN)',
-                    link: 'https://magiceden.io/marketplace/zenjaku',
+                    link: 'https://magiceden.io/marketplace/vibe_knights',
                     isExternal: true
                 },
                 {
