@@ -108,54 +108,54 @@ export default async function handler(req, res) {
     ctx.lineWidth = 3
     ctx.strokeRect(30, 30, w - 60, h - 60)
 
-    // Header - MUCH BIGGER
+    // Header
     ctx.fillStyle = '#ff9900'
-    ctx.font = 'bold 48px monospace'
-    ctx.fillText('THE ZENJAKU EXPERIMENT', 60, 100)
+    ctx.font = 'bold 36px monospace'
+    ctx.fillText('THE ZENJAKU EXPERIMENT', 60, 80)
 
     ctx.fillStyle = '#666666'
-    ctx.font = '20px monospace'
-    ctx.fillText(`EXPERIMENT LOG · DAY ${day}`, 60, 135)
+    ctx.font = '14px monospace'
+    ctx.fillText(`EXPERIMENT LOG · DAY ${day}`, 60, 105)
 
-    // Stats line - MUCH BIGGER
-    ctx.font = 'bold 36px monospace'
+    // Stats line
+    ctx.font = 'bold 24px monospace'
     
     // Transactions
     ctx.fillStyle = '#222222'
     const txText = `${totalSales}`
-    ctx.fillText(txText, 60, 185)
+    ctx.fillText(txText, 60, 135)
     const txWidth = ctx.measureText(txText).width
     ctx.fillStyle = '#888888'
-    ctx.font = '18px monospace'
-    ctx.fillText('TRANSACTIONS', 60 + txWidth + 12, 185)
+    ctx.font = '12px monospace'
+    ctx.fillText('TRANSACTIONS', 60 + txWidth + 8, 135)
     
     // Volume
-    ctx.font = 'bold 36px monospace'
+    ctx.font = 'bold 24px monospace'
     ctx.fillStyle = '#ff9900'
     const volText = `${totalVolume.toFixed(2)}`
-    ctx.fillText(volText, 320, 185)
+    ctx.fillText(volText, 200, 135)
     const volWidth = ctx.measureText(volText).width
     ctx.fillStyle = '#888888'
-    ctx.font = '18px monospace'
-    ctx.fillText('SOL', 320 + volWidth + 8, 185)
+    ctx.font = '12px monospace'
+    ctx.fillText('SOL', 200 + volWidth + 6, 135)
     
     // Avg Price
-    ctx.font = 'bold 36px monospace'
+    ctx.font = 'bold 24px monospace'
     ctx.fillStyle = '#222222'
     const avgText = `${avgPrice.toFixed(3)}`
-    ctx.fillText(avgText, 520, 185)
+    ctx.fillText(avgText, 320, 135)
     const avgWidth = ctx.measureText(avgText).width
     ctx.fillStyle = '#888888'
-    ctx.font = '18px monospace'
-    ctx.fillText('AVG', 520 + avgWidth + 8, 185)
+    ctx.font = '12px monospace'
+    ctx.fillText('AVG', 320 + avgWidth + 6, 135)
 
-    // Highest Sale section (right side) - BIGGER
+    // Highest Sale section (right side)
     if (highestSale && highestSale.price > 0) {
       const hsImageUrl = highestSale.token_mint ? arweaveData[`${highestSale.token_mint}.png`] : null
       const hsNumber = highestSale.token_mint ? addressToNumber[highestSale.token_mint] : null
-      const hsSize = 130
+      const hsSize = 100
       const hsX = w - 60 - hsSize
-      const hsY = 60
+      const hsY = 50
 
       // Draw image first (or placeholder)
       if (hsImageUrl) {
@@ -163,45 +163,45 @@ export default async function handler(req, res) {
           const hsImg = await loadImage(hsImageUrl)
           ctx.drawImage(hsImg, hsX, hsY, hsSize, hsSize)
           ctx.strokeStyle = '#ff9900'
-          ctx.lineWidth = 3
+          ctx.lineWidth = 2
           ctx.strokeRect(hsX, hsY, hsSize, hsSize)
         } catch (e) {
           ctx.fillStyle = '#eeeeee'
           ctx.fillRect(hsX, hsY, hsSize, hsSize)
           ctx.strokeStyle = '#ff9900'
-          ctx.lineWidth = 3
+          ctx.lineWidth = 2
           ctx.strokeRect(hsX, hsY, hsSize, hsSize)
         }
       } else {
         ctx.fillStyle = '#eeeeee'
         ctx.fillRect(hsX, hsY, hsSize, hsSize)
         ctx.strokeStyle = '#ff9900'
-        ctx.lineWidth = 3
+        ctx.lineWidth = 2
         ctx.strokeRect(hsX, hsY, hsSize, hsSize)
       }
 
       // Text to the left of the image
       ctx.fillStyle = '#888888'
-      ctx.font = '14px monospace'
+      ctx.font = '10px monospace'
       ctx.textAlign = 'right'
-      ctx.fillText('TOP TRANSACTION', hsX - 15, hsY + 25)
+      ctx.fillText('TOP TRANSACTION', hsX - 10, hsY + 20)
       
       ctx.fillStyle = '#ff9900'
-      ctx.font = 'bold 28px monospace'
-      ctx.fillText(`${highestSale.price.toFixed(3)} SOL`, hsX - 15, hsY + 60)
+      ctx.font = 'bold 20px monospace'
+      ctx.fillText(`${highestSale.price.toFixed(3)} SOL`, hsX - 10, hsY + 45)
       
       if (hsNumber) {
         ctx.fillStyle = '#222222'
-        ctx.font = 'bold 16px monospace'
-        ctx.fillText(`ZENJAKU #${hsNumber}`, hsX - 15, hsY + 85)
+        ctx.font = 'bold 12px monospace'
+        ctx.fillText(`ZENJAKU #${hsNumber}`, hsX - 10, hsY + 65)
       }
       
       // Buyer address
       if (highestSale.buyer) {
         const shortBuyer = `${highestSale.buyer.slice(0, 4)}..${highestSale.buyer.slice(-4)}`
         ctx.fillStyle = '#888888'
-        ctx.font = '12px monospace'
-        ctx.fillText(`BUYER: ${shortBuyer}`, hsX - 15, hsY + 105)
+        ctx.font = '9px monospace'
+        ctx.fillText(`BUYER: ${shortBuyer}`, hsX - 10, hsY + 80)
       }
       
       ctx.textAlign = 'left'
@@ -209,19 +209,19 @@ export default async function handler(req, res) {
 
     // Divider
     ctx.strokeStyle = '#dddddd'
-    ctx.lineWidth = 2
+    ctx.lineWidth = 1
     ctx.beginPath()
-    ctx.moveTo(60, 210)
-    ctx.lineTo(w - 60, 210)
+    ctx.moveTo(60, 155)
+    ctx.lineTo(w - 60, 155)
     ctx.stroke()
 
-    // Primary Actors section - BIGGER
+    // Primary Actors section
     ctx.fillStyle = '#666666'
-    ctx.font = '16px monospace'
-    ctx.fillText('PRIMARY ACTORS', 60, 245)
+    ctx.font = '12px monospace'
+    ctx.fillText('PRIMARY ACTORS', 60, 180)
 
-    let yPos = 275
-    const imgSize = 48
+    let yPos = 205
+    const imgSize = 36
     const maxImages = 12
     const entryHeight = 95
 
@@ -229,43 +229,43 @@ export default async function handler(req, res) {
       const [address, data] = topWallets[i]
       const shortAddr = `${address.slice(0, 4)}..${address.slice(-4)}`
       
-      // Rank - BIGGER
+      // Rank
       ctx.fillStyle = '#ff9900'
-      ctx.font = 'bold 32px monospace'
-      ctx.fillText(`#${i + 1}`, 60, yPos + 25)
+      ctx.font = 'bold 24px monospace'
+      ctx.fillText(`#${i + 1}`, 60, yPos + 20)
       
-      // Address (prominent) - BIGGER
+      // Address (prominent)
       ctx.fillStyle = '#222222'
-      ctx.font = 'bold 22px monospace'
-      ctx.fillText(shortAddr, 120, yPos + 25)
+      ctx.font = 'bold 18px monospace'
+      ctx.fillText(shortAddr, 110, yPos + 20)
 
-      // Volume - BIGGER
+      // Volume
       ctx.fillStyle = '#ff9900'
-      ctx.font = 'bold 22px monospace'
+      ctx.font = 'bold 18px monospace'
       const entryVolText = data.volume.toFixed(3)
-      ctx.fillText(entryVolText, 280, yPos + 25)
+      ctx.fillText(entryVolText, 240, yPos + 20)
       const entryVolWidth = ctx.measureText(entryVolText).width
       ctx.fillStyle = '#888888'
-      ctx.font = '14px monospace'
-      ctx.fillText('SOL', 280 + entryVolWidth + 6, yPos + 25)
+      ctx.font = '10px monospace'
+      ctx.fillText('SOL', 240 + entryVolWidth + 4, yPos + 20)
 
-      // Donated & Burned - BIGGER
-      ctx.fillText(`DON: ${data.donated.toFixed(5)}`, 280 + entryVolWidth + 60, yPos + 25)
-      ctx.fillText(`BRN: ${data.burned.toFixed(5)}`, 280 + entryVolWidth + 200, yPos + 25)
+      // Donated & Burned
+      ctx.fillText(`DON: ${data.donated.toFixed(5)}`, 240 + entryVolWidth + 40, yPos + 20)
+      ctx.fillText(`BRN: ${data.burned.toFixed(5)}`, 240 + entryVolWidth + 150, yPos + 20)
       
       // Full address (subtle, below)
       ctx.fillStyle = '#aaaaaa'
-      ctx.font = '12px monospace'
-      ctx.fillText(address, 120, yPos + 45)
+      ctx.font = '9px monospace'
+      ctx.fillText(address, 110, yPos + 40)
 
       // Mini images with buy/sell indicators
       const items = data.items.filter(item => item.url).slice(0, maxImages)
-      let imgX = 120
+      let imgX = 110
 
       if (items.length === 0) {
         ctx.fillStyle = '#cccccc'
-        ctx.font = '14px monospace'
-        ctx.fillText('— no image data —', 120, yPos + 70)
+        ctx.font = '10px monospace'
+        ctx.fillText('— no image data —', 110, yPos + 60)
       }
 
       for (const item of items) {
@@ -273,22 +273,22 @@ export default async function handler(req, res) {
           const img = await loadImage(item.url)
           
           // Draw image
-          ctx.drawImage(img, imgX, yPos + 55, imgSize, imgSize)
+          ctx.drawImage(img, imgX, yPos + 50, imgSize, imgSize)
           
           // Very subtle color tint on bottom edge only
           ctx.globalAlpha = 0.4
-          const gradient = ctx.createLinearGradient(imgX, yPos + 55, imgX, yPos + 55 + imgSize)
+          const gradient = ctx.createLinearGradient(imgX, yPos + 50, imgX, yPos + 50 + imgSize)
           gradient.addColorStop(0, 'transparent')
           gradient.addColorStop(0.7, 'transparent')
           gradient.addColorStop(1, item.type === 'buy' ? '#00cc00' : '#ff3333')
           ctx.fillStyle = gradient
-          ctx.fillRect(imgX, yPos + 55, imgSize, imgSize)
+          ctx.fillRect(imgX, yPos + 50, imgSize, imgSize)
           ctx.globalAlpha = 1.0
           
           // Subtle border
           ctx.strokeStyle = item.type === 'buy' ? '#00aa00' : '#cc0000'
-          ctx.lineWidth = 2
-          ctx.strokeRect(imgX, yPos + 55, imgSize, imgSize)
+          ctx.lineWidth = 1
+          ctx.strokeRect(imgX, yPos + 50, imgSize, imgSize)
           
         } catch (e) {
           ctx.fillStyle = '#eeeeee'
@@ -300,8 +300,8 @@ export default async function handler(req, res) {
       // More indicator
       if (data.items.length > maxImages) {
         ctx.fillStyle = '#888888'
-        ctx.font = '14px monospace'
-        ctx.fillText(`+${data.items.length - maxImages}`, imgX + 6, yPos + 80)
+        ctx.font = '10px monospace'
+        ctx.fillText(`+${data.items.length - maxImages}`, imgX + 4, yPos + 72)
       }
       
       yPos += entryHeight
@@ -320,26 +320,26 @@ export default async function handler(req, res) {
     // Summary - RIGHT SIDE (higher up)
     ctx.textAlign = 'right'
     ctx.fillStyle = '#888888'
-    ctx.font = '14px monospace'
-    ctx.fillText('PERIOD TOTALS', w - 60, h - 130)
+    ctx.font = '12px monospace'
+    ctx.fillText('PERIOD TOTALS', w - 60, h - 110)
     
     ctx.fillStyle = '#ff9900'
-    ctx.font = 'bold 20px monospace'
-    ctx.fillText(`DONATED: ${totalDonated.toFixed(5)} SOL`, w - 60, h - 100)
-    ctx.fillText(`BURNED: ${totalBurned.toFixed(5)} SOL`, w - 60, h - 70)
+    ctx.font = 'bold 16px monospace'
+    ctx.fillText(`DONATED: ${totalDonated.toFixed(5)} SOL`, w - 60, h - 85)
+    ctx.fillText(`BURNED: ${totalBurned.toFixed(5)} SOL`, w - 60, h - 60)
     
     ctx.textAlign = 'left'
 
     // Footer - at actual bottom with clear separation
     ctx.fillStyle = '#aaaaaa'
-    ctx.font = '14px monospace'
+    ctx.font = '10px monospace'
     const timestamp = new Date().toISOString()
-    ctx.fillText(`${timestamp}`, 60, h - 40)
+    ctx.fillText(`Generated: ${timestamp}`, 60, h - 35)
     
     ctx.textAlign = 'right'
     ctx.fillStyle = '#aaaaaa'
-    ctx.font = '14px monospace'
-    ctx.fillText('zenjaku.fun/collect', w - 60, h - 40)
+    ctx.font = '10px monospace'
+    ctx.fillText('zenjaku.fun/collect', w - 60, h - 35)
     ctx.textAlign = 'left'
 
     // Return as PNG

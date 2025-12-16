@@ -9,6 +9,8 @@ export default function Home() {
     const [currentTextIndex, setCurrentTextIndex] = useState(0)
     const [randomGirlIndex, setRandomGirlIndex] = useState(0)
     const [priceData, setPriceData] = useState(null)
+    const [donationBalance, setDonationBalance] = useState(null)
+    const [burnBalance, setBurnBalance] = useState(null)
 
     useEffect(() => {
         if (!mounted) return
@@ -18,6 +20,18 @@ export default function Home() {
         fetch('/api/last-sale')
             .then(res => res.json())
             .then(data => setPriceData(data))
+            .catch(() => {})
+        
+        // Fetch donation balance
+        fetch('/api/solana-balance?address=9yw9hUdZCHruZsXdzkY4iaFMPDthegM8DqyrUhucSWsM')
+            .then(res => res.json())
+            .then(data => setDonationBalance(data.balance))
+            .catch(() => {})
+        
+        // Fetch burn balance
+        fetch('/api/solana-balance?address=6scYfnYS2bQxNG9sXohtHpndNbtutotBdgxcvftzUxrr')
+            .then(res => res.json())
+            .then(data => setBurnBalance(data.balance))
             .catch(() => {})
     }, [mounted])
 
@@ -131,6 +145,26 @@ export default function Home() {
                                 <span className="text-[#ff9900] font-bold">{priceData.avgPrice.toFixed(3)} SOL</span>
                             </div>
                         )}
+                        
+                        {/* Balance Indicators */}
+                        <div className="flex flex-col gap-2 font-mono text-xs tracking-wider pt-2">
+                            {donationBalance !== null && (
+                                <div className="flex items-center gap-2"
+                                    style={{ color: isDark ? '#666666' : '#999999' }}>
+                                    <span className="inline-block w-2 h-2 rounded-full bg-[#00cc00]" />
+                                    <span>DONATION BALANCE</span>
+                                    <span className="text-[#00cc00] font-bold">{donationBalance.toFixed(3)} SOL</span>
+                                </div>
+                            )}
+                            {burnBalance !== null && (
+                                <div className="flex items-center gap-2"
+                                    style={{ color: isDark ? '#666666' : '#999999' }}>
+                                    <span className="inline-block w-2 h-2 rounded-full bg-[#ff3333]" />
+                                    <span>BURN BALANCE</span>
+                                    <span className="text-[#ff3333] font-bold">{burnBalance.toFixed(3)} SOL</span>
+                                </div>
+                            )}
+                        </div>
                     </div>
                     {/* Right: Image Block */}
                     <div className="flex flex-col justify-center items-center w-full md:w-1/2 h-auto md:h-full px-0 md:pr-0">
