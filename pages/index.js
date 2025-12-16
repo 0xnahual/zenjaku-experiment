@@ -8,16 +8,16 @@ export default function Home() {
     const { isDark, glitchActive, mounted } = useDarkMode()
     const [currentTextIndex, setCurrentTextIndex] = useState(0)
     const [randomGirlIndex, setRandomGirlIndex] = useState(0)
-    const [lastSale, setLastSale] = useState(null)
+    const [priceData, setPriceData] = useState(null)
 
     useEffect(() => {
         if (!mounted) return
         setRandomGirlIndex(Math.floor(Math.random() * 10))
         
-        // Fetch last sale
+        // Fetch 24h avg price
         fetch('/api/last-sale')
             .then(res => res.json())
-            .then(data => setLastSale(data))
+            .then(data => setPriceData(data))
             .catch(() => {})
     }, [mounted])
 
@@ -109,7 +109,7 @@ export default function Home() {
                             <br />
                             <span className="opacity-50 line-through decoration-current">{TOTAL_SUPPLY.toLocaleString()}</span> <span className="text-[#ff9900]">{LIVE_ZENJAKU_COUNT.toLocaleString()}</span> elves trapped in an eternal struggle.
                             <br />
-                            Half of the royalties <a href="https://x.com/0XNAHUAL/status/1998813363359346767" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70 transition-opacity">fuel destruction</a>. Half <a href="https://x.com/0XNAHUAL/status/1998807944260104511" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70 transition-opacity">transform reality</a>.
+                            Half of the royalties fuel destruction. Half transform reality.
                             Is balance power? Step in and find out.
                         </p>
                         <div className="flex flex-row gap-8 font-mono text-sm tracking-widest uppercase pt-2 whitespace-nowrap text-left"
@@ -122,13 +122,13 @@ export default function Home() {
                             </Link>
                         </div>
                         
-                        {/* Last Sale Indicator */}
-                        {lastSale?.price > 0 && (
+                        {/* 24h Avg Price Indicator */}
+                        {priceData?.avgPrice > 0 && (
                             <div className="flex items-center gap-2 font-mono text-xs tracking-wider pt-4"
                                 style={{ color: isDark ? '#666666' : '#999999' }}>
                                 <span className="inline-block w-2 h-2 rounded-full bg-[#ff9900] animate-pulse" />
-                                <span>LAST TRANSACTION</span>
-                                <span className="text-[#ff9900] font-bold">{lastSale.price.toFixed(3)} SOL</span>
+                                <span>24H AVG</span>
+                                <span className="text-[#ff9900] font-bold">{priceData.avgPrice.toFixed(3)} SOL</span>
                             </div>
                         )}
                     </div>

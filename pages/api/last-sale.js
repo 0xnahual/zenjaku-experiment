@@ -7,23 +7,26 @@ export default async function handler(req, res) {
 
   try {
     const supabase = getSupabaseAdmin()
+    const hoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString()
     
-    const { data: sale, error } = await supabase
+    const { data: sales, error } = await supabase
       .from('sales')
-      .select('price, block_time')
-      .order('block_time', { ascending: false })
-      .limit(1)
-      .single()
+      .select('price')
+      .gte('block_time', hoursAgo)
 
     if (error) throw error
 
+    const totalSales = sales?.length || 0
+    const totalVolume = sales?.reduce((sum, s) => sum + (Number(s.price) || 0), 0) || 0
+    const avgPrice = totalSales > 0 ? totalVolume / totalSales : 0
+
     return res.status(200).json({
-      price: sale?.price || 0,
-      timestamp: sale?.block_time || null
+      avgPrice: avgPrice,
+      totalSales: totalSales
     })
 
   } catch (error) {
-    console.error('[Last Sale API] Error:', error)
-    return res.status(500).json({ error: 'Failed to fetch last sale' })
+    console.error('[Avg Price API] Error:', error)
+    return res.status(500).json({ error: 'Failed to fetch avg price' })
   }
 }
