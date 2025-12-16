@@ -1,5 +1,4 @@
 import { getSupabaseAdmin } from '../../lib/supabase'
-import { createCanvas, loadImage } from 'canvas'
 import arweaveData from '../../data/arweave-uploads.json'
 import zenjakuMapping from '../../data/zenjaku-mapping.json'
 
@@ -15,6 +14,21 @@ export default async function handler(req, res) {
   }
 
   const { hours = 24, day = 1 } = req.query
+
+  // Check if canvas is available
+  let Canvas, createCanvas, loadImage
+  try {
+    const canvasModule = await import('canvas')
+    createCanvas = canvasModule.createCanvas
+    loadImage = canvasModule.loadImage
+  } catch (canvasError) {
+    console.error('[Sales Report] Canvas import failed:', canvasError.message)
+    return res.status(500).json({ 
+      error: 'Canvas library not available',
+      details: 'The canvas library requires native dependencies that may not be available in this environment. Please ensure canvas is properly installed.',
+      message: canvasError.message
+    })
+  }
 
   try {
     const supabase = getSupabaseAdmin()
@@ -292,7 +306,7 @@ export default async function handler(req, res) {
           
         } catch (e) {
           ctx.fillStyle = '#eeeeee'
-          ctx.fillRect(imgX, yPos + 58, imgSize, imgSize)
+          ctx.fillRect(imgX, yPos + 50, imgSize, imgSize)
         }
         imgX += imgSize + 5
       }

@@ -25,14 +25,26 @@ export default function Home() {
         // Fetch donation balance
         fetch('/api/solana-balance?address=9yw9hUdZCHruZsXdzkY4iaFMPDthegM8DqyrUhucSWsM')
             .then(res => res.json())
-            .then(data => setDonationBalance(data.balance))
-            .catch(() => {})
+            .then(data => {
+                if (data.error) {
+                    setDonationBalance(null)
+                } else {
+                    setDonationBalance(data.balance ?? null)
+                }
+            })
+            .catch(() => setDonationBalance(null))
         
         // Fetch burn balance
         fetch('/api/solana-balance?address=6scYfnYS2bQxNG9sXohtHpndNbtutotBdgxcvftzUxrr')
             .then(res => res.json())
-            .then(data => setBurnBalance(data.balance))
-            .catch(() => {})
+            .then(data => {
+                if (data.error) {
+                    setBurnBalance(null)
+                } else {
+                    setBurnBalance(data.balance ?? null)
+                }
+            })
+            .catch(() => setBurnBalance(null))
     }, [mounted])
 
     useEffect(() => {
@@ -148,7 +160,7 @@ export default function Home() {
                         
                         {/* Balance Indicators */}
                         <div className="flex flex-col gap-2 font-mono text-xs tracking-wider pt-2">
-                            {donationBalance !== null && (
+                            {donationBalance !== null && donationBalance !== undefined && (
                                 <div className="flex items-center gap-2"
                                     style={{ color: isDark ? '#666666' : '#999999' }}>
                                     <span className="inline-block w-2 h-2 rounded-full bg-[#00cc00]" />
@@ -156,7 +168,7 @@ export default function Home() {
                                     <span className="text-[#00cc00] font-bold">{donationBalance.toFixed(3)} SOL</span>
                                 </div>
                             )}
-                            {burnBalance !== null && (
+                            {burnBalance !== null && burnBalance !== undefined && (
                                 <div className="flex items-center gap-2"
                                     style={{ color: isDark ? '#666666' : '#999999' }}>
                                     <span className="inline-block w-2 h-2 rounded-full bg-[#ff3333]" />
