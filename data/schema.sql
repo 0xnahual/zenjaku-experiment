@@ -8,8 +8,12 @@ CREATE TABLE IF NOT EXISTS sales (
     price NUMERIC,
     block_time TIMESTAMPTZ,
     source TEXT,
+    token_mint TEXT,
     created_at TIMESTAMPTZ DEFAULT NOW()
 );
+
+-- To add token_mint to existing table:
+-- ALTER TABLE sales ADD COLUMN IF NOT EXISTS token_mint TEXT;
 
 -- Enable RLS
 ALTER TABLE sales ENABLE ROW LEVEL SECURITY;

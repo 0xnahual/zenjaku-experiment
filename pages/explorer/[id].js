@@ -207,23 +207,23 @@ export default function Explorer() {
                                     <div className="flex justify-between items-center text-[9px] pt-1 border-t border-gray-800">
                                         <span className="text-gray-700">ENTRY LOGGED</span>
                                         <div className="flex gap-3">
-                                            <a
-                                                href={`https://magiceden.io/item-details/${nftData.id}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
+                                        <a
+                                            href={`https://magiceden.io/item-details/${nftData.id}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                                 className="text-gray-500 hover:text-[#ff9900] transition-colors"
-                                            >
+                                        >
                                                 MARKET ↗
-                                            </a>
-                                            <a
-                                                href={`https://orb.helius.dev/address/${nftData.id}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
+                                        </a>
+                                        <a
+                                            href={`https://orb.helius.dev/address/${nftData.id}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                                 className="text-gray-500 hover:text-[#ff9900] transition-colors"
-                                            >
+                                        >
                                                 EXPLORER ↗
-                                            </a>
-                                        </div>
+                                        </a>
+                                    </div>
                                     </div>
                                 </div>
                             </div>

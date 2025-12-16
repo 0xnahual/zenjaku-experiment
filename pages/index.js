@@ -8,10 +8,17 @@ export default function Home() {
     const { isDark, glitchActive, mounted } = useDarkMode()
     const [currentTextIndex, setCurrentTextIndex] = useState(0)
     const [randomGirlIndex, setRandomGirlIndex] = useState(0)
+    const [lastSale, setLastSale] = useState(null)
 
     useEffect(() => {
         if (!mounted) return
         setRandomGirlIndex(Math.floor(Math.random() * 10))
+        
+        // Fetch last sale
+        fetch('/api/last-sale')
+            .then(res => res.json())
+            .then(data => setLastSale(data))
+            .catch(() => {})
     }, [mounted])
 
     useEffect(() => {
@@ -114,6 +121,16 @@ export default function Home() {
                                 33 1/1S ON BTC
                             </Link>
                         </div>
+                        
+                        {/* Last Sale Indicator */}
+                        {lastSale?.price > 0 && (
+                            <div className="flex items-center gap-2 font-mono text-xs tracking-wider pt-4"
+                                style={{ color: isDark ? '#666666' : '#999999' }}>
+                                <span className="inline-block w-2 h-2 rounded-full bg-[#ff9900] animate-pulse" />
+                                <span>LAST TRANSACTION</span>
+                                <span className="text-[#ff9900] font-bold">{lastSale.price.toFixed(3)} SOL</span>
+                            </div>
+                        )}
                     </div>
                     {/* Right: Image Block */}
                     <div className="flex flex-col justify-center items-center w-full md:w-1/2 h-auto md:h-full px-0 md:pr-0">

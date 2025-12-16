@@ -53,14 +53,11 @@ export default async function handler(req, res) {
     for (let i = 0; i < salesEvents.length; i += BATCH_SIZE) {
       const batch = salesEvents.slice(i, i + BATCH_SIZE)
       
-      // Use upsert with ignoreDuplicates: true to skip existing records if we just want to fill gaps
-      // OR standard upsert (update if exists) which is safer if data might change (unlikely for immutable txs).
-      // Since transactions are immutable, onConflict: 'signature' with ignoreDuplicates: true is more efficient.
+      // Upsert - will update existing records if they exist (to backfill token_mint)
       const { error } = await supabaseAdmin
         .from('sales')
         .upsert(batch, { 
-            onConflict: 'signature', 
-            ignoreDuplicates: true 
+            onConflict: 'signature'
         })
 
       if (error) {

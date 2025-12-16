@@ -109,20 +109,20 @@ export default function Leaderboard() {
             <div className="flex flex-col items-center gap-4 border-b border-gray-800/20 pb-4 mt-12 mb-12">
               <div className="flex justify-center gap-8">
                 {['daily', 'weekly', 'monthly', 'allTime'].map((tf) => (
-                  <button
-                    key={tf}
+                <button
+                  key={tf}
                     onClick={() => {
                       setTimeframe(tf)
                       if (tf === 'daily') setSelectedDate(getTodayStr())
                     }}
-                    className={`font-mono text-xs tracking-widest uppercase transition-all duration-300 ${timeframe === tf
-                      ? 'text-[#ff6600] opacity-100'
-                      : 'text-black opacity-40 hover:opacity-70'
-                      }`}
-                  >
-                    {tf === 'allTime' ? 'All Time' : tf}
-                  </button>
-                ))}
+                  className={`font-mono text-xs tracking-widest uppercase transition-all duration-300 ${timeframe === tf
+                    ? 'text-[#ff6600] opacity-100'
+                    : 'text-black opacity-40 hover:opacity-70'
+                    }`}
+                >
+                  {tf === 'allTime' ? 'All Time' : tf}
+                </button>
+              ))}
               </div>
               {timeframe === 'daily' && (
                 <div className="flex items-center gap-2">

@@ -1,27 +1,43 @@
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import arweaveData from '../data/arweave-uploads.json'
+import zenjakuMapping from '../data/zenjaku-mapping.json'
+
+// Create reverse mapping: mint address → zenjaku number
+const addressToNumber = {}
+Object.entries(zenjakuMapping).forEach(([num, data]) => {
+    addressToNumber[data.address] = num
+})
 
 export default function ZenjakuGallery() {
-    const [selectedPiece, setSelectedPiece] = useState(null)
+    const router = useRouter()
     const [items, setItems] = useState([])
     const [autoScrollActive, setAutoScrollActive] = useState(true)
     const gridRef = useRef(null)
 
     useEffect(() => {
         const loadedItems = Object.entries(arweaveData).map(([filename, url], index) => {
-            const id = filename.replace('.png', '')
+            const mintAddress = filename.replace('.png', '')
+            const zenjakuNumber = addressToNumber[mintAddress]
             return {
                 index: index + 1,
-                id: id,
+                id: mintAddress,
+                zenjakuNumber: zenjakuNumber,
                 filename: filename,
                 image: url,
-                name: `#${(index + 1).toString().padStart(3, '0')}`,
+                name: zenjakuNumber ? `#${zenjakuNumber.padStart(3, '0')}` : `#${(index + 1).toString().padStart(3, '0')}`,
             }
         })
         setItems(loadedItems)
     }, [])
+
+    const handleItemClick = (item) => {
+        if (item.zenjakuNumber) {
+            router.push(`/explorer/${item.zenjakuNumber}`)
+        }
+    }
 
     // Auto-scroll effect
     useEffect(() => {
@@ -92,60 +108,11 @@ export default function ZenjakuGallery() {
                         <ZenjakuItem
                             key={item.id}
                             item={item}
-                            onClick={setSelectedPiece}
+                            onClick={handleItemClick}
                         />
                     ))}
                 </div>
             </div>
-
-            {/* Modal */}
-            {selectedPiece && (
-                <div
-                    className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
-                    onClick={() => setSelectedPiece(null)}
-                >
-                    <div
-                        className="max-w-lg w-full relative bg-black text-white"
-                        onClick={e => e.stopPropagation()}
-                    >
-                        <button
-                            className="absolute -top-8 right-0 font-mono text-sm hover:text-[#ff9900]"
-                            onClick={() => setSelectedPiece(null)}
-                        >
-                            CLOSE
-                        </button>
-
-                        <div className="relative w-full aspect-square mb-4">
-                            <Image
-                                src={selectedPiece.image}
-                                alt={selectedPiece.name}
-                                className="object-contain"
-                                fill
-                                sizes="(max-width: 768px) 100vw, 600px"
-                                priority
-                            />
-                        </div>
-
-                        <div className="font-mono text-sm space-y-2">
-                            <div className="flex justify-between">
-                                <span className="text-[#ff9900]">{selectedPiece.name}</span>
-                                <span className="opacity-50">ARWEAVE</span>
-                            </div>
-                            <div className="text-[10px] opacity-40 break-all">
-                                {selectedPiece.id}
-                            </div>
-                            <a
-                                href={selectedPiece.image}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-block mt-4 text-xs hover:text-[#ff9900] transition-colors"
-                            >
-                                VIEW FULL SIZE →
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            )}
         </>
     )
 }
