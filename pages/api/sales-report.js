@@ -180,66 +180,61 @@ export default async function handler(req, res) {
     ctx.lineWidth = 3
     ctx.strokeRect(30, 30, w - 60, h - 60)
 
-    // Header - matching home page style
+    // Header - single line title
     ctx.fillStyle = '#222222'
-    ctx.font = 'bold 48px Monospace'
+    ctx.font = 'bold 42px Monospace'
     ctx.textAlign = 'left'
     ctx.textBaseline = 'top'
-    
-    // Text stroke for outline effect
-    ctx.strokeStyle = '#222222'
-    ctx.lineWidth = 1
-    
-    const titleLines = ['THE ZENJAKU', 'EXPERIMENT']
-    let titleY = 50
-    const titleLineHeight = 48 // increased spacing between lines
-    
-    titleLines.forEach((line, idx) => {
-      // Draw stroke first
-      ctx.strokeText(line, 60, titleY)
-      // Then fill
-      ctx.fillText(line, 60, titleY)
-      titleY += titleLineHeight
-    })
+    ctx.fillText('THE ZENJAKU EXPERIMENT', 60, 50)
 
     ctx.fillStyle = '#666666'
     ctx.font = '14px Monospace'
-    ctx.fillText(`EXPERIMENT LOG · DAY ${currentDay}`, 60, 160)
+    ctx.fillText(`EXPERIMENT LOG · DAY ${currentDay}`, 60, 100)
 
-    // Stats line
-    ctx.font = 'bold 24px Monospace'
+    // Stats line - bolder with stroke effect
+    ctx.font = 'bold 28px Monospace'
+    ctx.lineWidth = 1
     
     // Transactions
     ctx.fillStyle = '#222222'
+    ctx.strokeStyle = '#222222'
     const txText = `${totalSales}`
-    ctx.fillText(txText, 60, 190)
+    ctx.strokeText(txText, 60, 130)
+    ctx.fillText(txText, 60, 130)
     const txWidth = ctx.measureText(txText).width
-    ctx.fillText('TRANSACTIONS', 60 + txWidth + 8, 190)
+    ctx.strokeText('TRANSACTIONS', 60 + txWidth + 8, 130)
+    ctx.fillText('TRANSACTIONS', 60 + txWidth + 8, 130)
     
     // Volume - positioned after TRANSACTIONS with proper spacing
     ctx.fillStyle = '#ff9900'
+    ctx.strokeStyle = '#ff9900'
     const volText = `${totalVolume.toFixed(2)}`
     const transactionsWidth = ctx.measureText('TRANSACTIONS').width
     const volX = 60 + txWidth + 8 + transactionsWidth + 30
-    ctx.fillText(volText, volX, 190)
+    ctx.strokeText(volText, volX, 130)
+    ctx.fillText(volText, volX, 130)
     const volWidth = ctx.measureText(volText).width
-    ctx.fillText('SOL', volX + volWidth + 8, 190)
+    ctx.strokeText('SOL', volX + volWidth + 8, 130)
+    ctx.fillText('SOL', volX + volWidth + 8, 130)
     
     // Avg Price - positioned after SOL with proper spacing
     ctx.fillStyle = '#222222'
+    ctx.strokeStyle = '#222222'
     const avgText = `${avgPrice.toFixed(3)}`
     const solWidth = ctx.measureText('SOL').width
     const avgX = volX + volWidth + 8 + solWidth + 30
-    ctx.fillText(avgText, avgX, 190)
+    ctx.strokeText(avgText, avgX, 130)
+    ctx.fillText(avgText, avgX, 130)
     const avgWidth = ctx.measureText(avgText).width
-    ctx.fillText('AVG', avgX + avgWidth + 8, 190)
+    ctx.strokeText('AVG', avgX + avgWidth + 8, 130)
+    ctx.fillText('AVG', avgX + avgWidth + 8, 130)
 
     // Divider - below transactions with proper spacing
     ctx.strokeStyle = '#dddddd'
     ctx.lineWidth = 1
     ctx.beginPath()
-    ctx.moveTo(60, 225)
-    ctx.lineTo(w - 60, 225)
+    ctx.moveTo(60, 165)
+    ctx.lineTo(w - 60, 165)
     ctx.stroke()
 
     // Highest Sale section (right side)
@@ -300,8 +295,12 @@ export default async function handler(req, res) {
       ctx.textAlign = 'left'
     }
 
-    // Primary Actors section (no header text)
-    let yPos = 240
+    // Primary Actors section
+    ctx.fillStyle = '#666666'
+    ctx.font = '12px Monospace'
+    ctx.fillText('PRIMARY ACTORS', 60, 180)
+    
+    let yPos = 200
     const imgSize = 36
     const maxImages = 12
     const entryHeight = 95

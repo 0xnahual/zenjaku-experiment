@@ -79,14 +79,30 @@ export default async function handler(req, res) {
     })
 
     // Step 1: Fetch the sales report image from our own API
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:1217'
+    let baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+    if (!baseUrl && process.env.VERCEL_URL) {
+      baseUrl = `https://${process.env.VERCEL_URL}`
+    }
+    if (!baseUrl) {
+      baseUrl = 'http://localhost:1217'
+    }
     const reportUrl = `${baseUrl}/api/sales-report?day=${day}&hours=${hours}`
     
     console.log(`[Tweet] Fetching report from: ${reportUrl}`)
-    const imageResponse = await fetch(reportUrl)
+    console.log(`[Tweet] NEXT_PUBLIC_BASE_URL: ${process.env.NEXT_PUBLIC_BASE_URL}`)
+    console.log(`[Tweet] VERCEL_URL: ${process.env.VERCEL_URL}`)
+    
+    let imageResponse
+    try {
+      imageResponse = await fetch(reportUrl)
+    } catch (fetchError) {
+      console.error('[Tweet] Fetch error:', fetchError)
+      throw new Error(`Failed to fetch sales report from ${reportUrl}: ${fetchError.message}. Make sure NEXT_PUBLIC_BASE_URL is set in your Vercel environment variables (e.g., https://zenjaku.fun)`)
+    }
     
     if (!imageResponse.ok) {
-      throw new Error(`Failed to fetch sales report: ${imageResponse.status}`)
+      const errorText = await imageResponse.text().catch(() => 'Unable to read error')
+      throw new Error(`Sales report returned ${imageResponse.status}: ${errorText}`)
     }
 
     const imageBuffer = await imageResponse.arrayBuffer()
