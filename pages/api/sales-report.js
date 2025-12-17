@@ -60,63 +60,78 @@ export default async function handler(req, res) {
   }
 
   // Register monospace font for Vercel compatibility
-  // Download font from CDN at runtime and ensure it's loaded before proceeding
+  // Try multiple paths to find the font file
   let fontRegistered = false
   try {
     const fs = require('fs')
     const path = require('path')
     const os = require('os')
     
-    let fontPath = null
+    // List of possible font paths (try in order)
+    const possiblePaths = [
+      // Local development - relative to project root
+      path.join(process.cwd(), 'fonts', 'CourierPrime-Regular.ttf'),
+      path.join(process.cwd(), 'fonts', 'DejaVuSansMono.ttf'),
+      // Vercel - relative to function file
+      path.join(__dirname, '..', '..', 'fonts', 'CourierPrime-Regular.ttf'),
+      path.join(__dirname, '..', '..', 'fonts', 'DejaVuSansMono.ttf'),
+      // Alternative Vercel paths
+      path.resolve('./fonts/CourierPrime-Regular.ttf'),
+      path.resolve('./fonts/DejaVuSansMono.ttf'),
+    ]
     
-    // Try local font first (for local development)
-    const localFontPath = path.join(process.cwd(), 'fonts', 'CourierPrime-Regular.ttf')
-    if (fs.existsSync && fs.existsSync(localFontPath)) {
-      fontPath = localFontPath
-      console.log('[Sales Report] Using local font file')
-    } else {
-      // Download font from Google Fonts CDN at runtime
-      const fontUrl = 'https://fonts.gstatic.com/s/courierprime/v9/u-450q2lgwslOqpF_6gQ8kELWwFwF8.ttf'
-      const tempDir = os.tmpdir()
-      fontPath = path.join(tempDir, 'CourierPrime-Regular.ttf')
-      
-      // Download font if not already cached
-      if (!fs.existsSync(fontPath)) {
-        console.log('[Sales Report] Downloading monospace font from CDN...')
-        try {
-          const fontResponse = await fetch(fontUrl)
-          if (!fontResponse.ok) {
-            throw new Error(`Failed to download font: ${fontResponse.status} ${fontResponse.statusText}`)
+    let fontPath = null
+    for (const tryPath of possiblePaths) {
+      try {
+        if (fs.existsSync(tryPath)) {
+          const stats = fs.statSync(tryPath)
+          if (stats.size > 0) {
+            fontPath = tryPath
+            console.log(`[Sales Report] Found font at: ${tryPath} (${stats.size} bytes)`)
+            break
           }
-          const fontBuffer = Buffer.from(await fontResponse.arrayBuffer())
-          if (fontBuffer.length === 0) {
-            throw new Error('Downloaded font file is empty')
-          }
-          fs.writeFileSync(fontPath, fontBuffer)
-          console.log(`[Sales Report] Font downloaded successfully (${fontBuffer.length} bytes)`)
-        } catch (downloadError) {
-          console.error('[Sales Report] Font download failed:', downloadError.message)
-          throw downloadError
         }
-      } else {
-        console.log('[Sales Report] Using cached font from temp directory')
+      } catch (e) {
+        // Continue to next path
       }
     }
     
-    // Register the font - this must happen before creating canvas
+    // If no local font found, download from CDN
+    if (!fontPath) {
+      console.log('[Sales Report] No local font found, downloading from CDN...')
+      const fontUrl = 'https://fonts.gstatic.com/s/courierprime/v9/u-450q2lgwslOqpF_6gQ8kELWwZf.ttf'
+      const tempDir = os.tmpdir()
+      fontPath = path.join(tempDir, 'CourierPrime.ttf')
+      
+      try {
+        const fontResponse = await fetch(fontUrl)
+        if (!fontResponse.ok) {
+          throw new Error(`HTTP ${fontResponse.status}`)
+        }
+        const fontBuffer = Buffer.from(await fontResponse.arrayBuffer())
+        if (fontBuffer.length < 1000) {
+          throw new Error(`Font file too small: ${fontBuffer.length} bytes`)
+        }
+        fs.writeFileSync(fontPath, fontBuffer)
+        console.log(`[Sales Report] Font downloaded: ${fontBuffer.length} bytes`)
+      } catch (downloadError) {
+        console.error('[Sales Report] Font download failed:', downloadError.message)
+        fontPath = null
+      }
+    }
+    
+    // Register the font
     if (fontPath && fs.existsSync(fontPath)) {
-      registerFont(fontPath, { family: 'Monospace' })
+      registerFont(fontPath, { family: 'CustomMono' })
       fontRegistered = true
-      console.log('[Sales Report] Monospace font registered successfully')
-    } else {
-      throw new Error('Font file does not exist after download attempt')
+      console.log('[Sales Report] Font registered as CustomMono')
     }
   } catch (fontError) {
-    console.error('[Sales Report] Font registration failed:', fontError.message)
-    console.error('[Sales Report] Stack:', fontError.stack)
-    // Continue without font registration - will use system fallback
-    // But log this so we know it's happening
+    console.error('[Sales Report] Font error:', fontError.message)
   }
+  
+  // Define font family to use
+  const fontFamily = fontRegistered ? 'CustomMono' : 'DejaVu Sans Mono, Liberation Mono, monospace'
 
   try {
     const supabase = getSupabaseAdmin()
@@ -204,7 +219,6 @@ export default async function handler(req, res) {
 
     // Helper function to set font with correct family
     const setFont = (size, weight = 'normal') => {
-      const fontFamily = fontRegistered ? 'Monospace' : 'monospace'
       ctx.font = `${weight} ${size}px ${fontFamily}`
     }
 
