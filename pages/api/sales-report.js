@@ -44,12 +44,11 @@ export default async function handler(req, res) {
   }
 
   // Check if canvas is available
-  let Canvas, createCanvas, loadImage, registerFont
+  let createCanvas, loadImage
   try {
     const canvasModule = await import('canvas')
     createCanvas = canvasModule.createCanvas
     loadImage = canvasModule.loadImage
-    registerFont = canvasModule.registerFont
   } catch (canvasError) {
     console.error('[Sales Report] Canvas import failed:', canvasError.message)
     return res.status(500).json({ 
@@ -59,79 +58,9 @@ export default async function handler(req, res) {
     })
   }
 
-  // Register monospace font for Vercel compatibility
-  // Try multiple paths to find the font file
-  let fontRegistered = false
-  try {
-    const fs = require('fs')
-    const path = require('path')
-    const os = require('os')
-    
-    // List of possible font paths (try in order)
-    const possiblePaths = [
-      // Local development - relative to project root
-      path.join(process.cwd(), 'fonts', 'CourierPrime-Regular.ttf'),
-      path.join(process.cwd(), 'fonts', 'DejaVuSansMono.ttf'),
-      // Vercel - relative to function file
-      path.join(__dirname, '..', '..', 'fonts', 'CourierPrime-Regular.ttf'),
-      path.join(__dirname, '..', '..', 'fonts', 'DejaVuSansMono.ttf'),
-      // Alternative Vercel paths
-      path.resolve('./fonts/CourierPrime-Regular.ttf'),
-      path.resolve('./fonts/DejaVuSansMono.ttf'),
-    ]
-    
-    let fontPath = null
-    for (const tryPath of possiblePaths) {
-      try {
-        if (fs.existsSync(tryPath)) {
-          const stats = fs.statSync(tryPath)
-          if (stats.size > 0) {
-            fontPath = tryPath
-            console.log(`[Sales Report] Found font at: ${tryPath} (${stats.size} bytes)`)
-            break
-          }
-        }
-      } catch (e) {
-        // Continue to next path
-      }
-    }
-    
-    // If no local font found, download from CDN
-    if (!fontPath) {
-      console.log('[Sales Report] No local font found, downloading from CDN...')
-      const fontUrl = 'https://fonts.gstatic.com/s/courierprime/v9/u-450q2lgwslOqpF_6gQ8kELWwZf.ttf'
-      const tempDir = os.tmpdir()
-      fontPath = path.join(tempDir, 'CourierPrime.ttf')
-      
-      try {
-        const fontResponse = await fetch(fontUrl)
-        if (!fontResponse.ok) {
-          throw new Error(`HTTP ${fontResponse.status}`)
-        }
-        const fontBuffer = Buffer.from(await fontResponse.arrayBuffer())
-        if (fontBuffer.length < 1000) {
-          throw new Error(`Font file too small: ${fontBuffer.length} bytes`)
-        }
-        fs.writeFileSync(fontPath, fontBuffer)
-        console.log(`[Sales Report] Font downloaded: ${fontBuffer.length} bytes`)
-      } catch (downloadError) {
-        console.error('[Sales Report] Font download failed:', downloadError.message)
-        fontPath = null
-      }
-    }
-    
-    // Register the font
-    if (fontPath && fs.existsSync(fontPath)) {
-      registerFont(fontPath, { family: 'CustomMono' })
-      fontRegistered = true
-      console.log('[Sales Report] Font registered as CustomMono')
-    }
-  } catch (fontError) {
-    console.error('[Sales Report] Font error:', fontError.message)
-  }
-  
-  // Define font family to use
-  const fontFamily = fontRegistered ? 'CustomMono' : 'DejaVu Sans Mono, Liberation Mono, monospace'
+  // Use system fonts available on Vercel Lambda (Amazon Linux)
+  // These fonts are pre-installed and don't need registration
+  const fontFamily = 'DejaVu Sans Mono, Liberation Mono, Courier New, monospace'
 
   try {
     const supabase = getSupabaseAdmin()

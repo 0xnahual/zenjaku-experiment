@@ -8,12 +8,7 @@
       "path": "/api/tweet-sales-report",
       "schedule": "0 20 * * *"
     }
-  ],
-  "functions": {
-    "pages/api/sales-report.js": {
-      "includeFiles": "fonts/**"
-    }
-  }
+  ]
 }
 
 
