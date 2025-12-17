@@ -109,3 +109,4 @@ XMLHttpRequest.prototype.send = function(body) {
 }
 
 console.log('✅ Network interceptor active! Now click the Refresh button and watch the console.')
+
