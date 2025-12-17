@@ -60,44 +60,62 @@ export default async function handler(req, res) {
   }
 
   // Register monospace font for Vercel compatibility
-  // Download font from CDN at runtime (like Google Fonts)
+  // Download font from CDN at runtime and ensure it's loaded before proceeding
+  let fontRegistered = false
   try {
     const fs = require('fs')
     const path = require('path')
     const os = require('os')
     
-    // Try local font first
-    let fontPath = path.join(process.cwd(), 'fonts', 'CourierPrime-Regular.ttf')
-    const fsExists = fs.existsSync && fs.existsSync(fontPath)
+    let fontPath = null
     
-    if (!fsExists) {
+    // Try local font first (for local development)
+    const localFontPath = path.join(process.cwd(), 'fonts', 'CourierPrime-Regular.ttf')
+    if (fs.existsSync && fs.existsSync(localFontPath)) {
+      fontPath = localFontPath
+      console.log('[Sales Report] Using local font file')
+    } else {
       // Download font from Google Fonts CDN at runtime
       const fontUrl = 'https://fonts.gstatic.com/s/courierprime/v9/u-450q2lgwslOqpF_6gQ8kELWwFwF8.ttf'
       const tempDir = os.tmpdir()
       fontPath = path.join(tempDir, 'CourierPrime-Regular.ttf')
       
-      // Check if already downloaded in this execution
+      // Download font if not already cached
       if (!fs.existsSync(fontPath)) {
         console.log('[Sales Report] Downloading monospace font from CDN...')
-        const fontResponse = await fetch(fontUrl)
-        if (!fontResponse.ok) {
-          throw new Error(`Failed to download font: ${fontResponse.status}`)
+        try {
+          const fontResponse = await fetch(fontUrl)
+          if (!fontResponse.ok) {
+            throw new Error(`Failed to download font: ${fontResponse.status} ${fontResponse.statusText}`)
+          }
+          const fontBuffer = Buffer.from(await fontResponse.arrayBuffer())
+          if (fontBuffer.length === 0) {
+            throw new Error('Downloaded font file is empty')
+          }
+          fs.writeFileSync(fontPath, fontBuffer)
+          console.log(`[Sales Report] Font downloaded successfully (${fontBuffer.length} bytes)`)
+        } catch (downloadError) {
+          console.error('[Sales Report] Font download failed:', downloadError.message)
+          throw downloadError
         }
-        const fontBuffer = Buffer.from(await fontResponse.arrayBuffer())
-        fs.writeFileSync(fontPath, fontBuffer)
-        console.log('[Sales Report] Font downloaded successfully')
+      } else {
+        console.log('[Sales Report] Using cached font from temp directory')
       }
     }
     
-    if (fs.existsSync(fontPath)) {
+    // Register the font - this must happen before creating canvas
+    if (fontPath && fs.existsSync(fontPath)) {
       registerFont(fontPath, { family: 'Monospace' })
+      fontRegistered = true
       console.log('[Sales Report] Monospace font registered successfully')
     } else {
-      console.warn('[Sales Report] Font file not found, using system fallback')
+      throw new Error('Font file does not exist after download attempt')
     }
   } catch (fontError) {
-    console.warn('[Sales Report] Font registration failed, using fallback:', fontError.message)
+    console.error('[Sales Report] Font registration failed:', fontError.message)
+    console.error('[Sales Report] Stack:', fontError.stack)
     // Continue without font registration - will use system fallback
+    // But log this so we know it's happening
   }
 
   try {
@@ -184,6 +202,12 @@ export default async function handler(req, res) {
     const w = width / scale
     const h = height / scale
 
+    // Helper function to set font with correct family
+    const setFont = (size, weight = 'normal') => {
+      const fontFamily = fontRegistered ? 'Monospace' : 'monospace'
+      ctx.font = `${weight} ${size}px ${fontFamily}`
+    }
+
     // Background (white)
     ctx.fillStyle = '#ffffff'
     ctx.fillRect(0, 0, w, h)
@@ -195,7 +219,7 @@ export default async function handler(req, res) {
 
     // Header - matching home page style
     ctx.fillStyle = '#222222'
-    ctx.font = 'bold 48px Monospace'
+    setFont(48, 'bold')
     ctx.textAlign = 'left'
     ctx.textBaseline = 'top'
     
@@ -216,11 +240,11 @@ export default async function handler(req, res) {
     })
 
     ctx.fillStyle = '#666666'
-    ctx.font = '14px Monospace'
+    setFont(14)
     ctx.fillText(`EXPERIMENT LOG · DAY ${currentDay} / ∞`, 60, 160)
 
     // Stats line
-    ctx.font = 'bold 24px Monospace'
+    setFont(24, 'bold')
     
     // Transactions
     ctx.fillStyle = '#222222'
@@ -288,17 +312,17 @@ export default async function handler(req, res) {
 
       // Text to the left of the image
       ctx.fillStyle = '#888888'
-      ctx.font = '10px Monospace'
+      setFont(10)
       ctx.textAlign = 'right'
       ctx.fillText('TOP TRANSACTION', hsX - 10, hsY + 20)
       
       ctx.fillStyle = '#ff9900'
-      ctx.font = 'bold 20px Monospace'
+      setFont(20, 'bold')
       ctx.fillText(`${highestSale.price.toFixed(3)} SOL`, hsX - 10, hsY + 45)
       
       if (hsNumber) {
         ctx.fillStyle = '#222222'
-        ctx.font = 'bold 12px Monospace'
+        setFont(12, 'bold')
         ctx.fillText(`ZENJAKU #${hsNumber}`, hsX - 10, hsY + 65)
       }
       
@@ -306,7 +330,7 @@ export default async function handler(req, res) {
       if (highestSale.buyer) {
         const shortBuyer = `${highestSale.buyer.slice(0, 4)}..${highestSale.buyer.slice(-4)}`
         ctx.fillStyle = '#888888'
-        ctx.font = '9px Monospace'
+        setFont(9)
         ctx.fillText(`BUYER: ${shortBuyer}`, hsX - 10, hsY + 80)
       }
       
@@ -325,22 +349,22 @@ export default async function handler(req, res) {
       
       // Rank
       ctx.fillStyle = '#ff9900'
-      ctx.font = 'bold 24px Monospace'
+      setFont(24, 'bold')
       ctx.fillText(`#${i + 1}`, 60, yPos + 20)
       
       // Address (prominent)
       ctx.fillStyle = '#222222'
-      ctx.font = 'bold 18px Monospace'
+      setFont(18, 'bold')
       ctx.fillText(shortAddr, 110, yPos + 20)
 
       // Volume
       ctx.fillStyle = '#ff9900'
-      ctx.font = 'bold 18px Monospace'
+      setFont(18, 'bold')
       const entryVolText = data.volume.toFixed(3)
       ctx.fillText(entryVolText, 240, yPos + 20)
       const entryVolWidth = ctx.measureText(entryVolText).width
       ctx.fillStyle = '#888888'
-      ctx.font = '10px Monospace'
+      setFont(10)
       ctx.fillText('SOL', 240 + entryVolWidth + 4, yPos + 20)
 
       // Donated & Burned
@@ -349,7 +373,7 @@ export default async function handler(req, res) {
       
       // Full address (subtle, below)
       ctx.fillStyle = '#aaaaaa'
-      ctx.font = '9px Monospace'
+      setFont(9)
       ctx.fillText(address, 110, yPos + 40)
 
       // Mini images with buy/sell indicators
@@ -358,7 +382,7 @@ export default async function handler(req, res) {
 
       if (items.length === 0) {
         ctx.fillStyle = '#cccccc'
-        ctx.font = '10px Monospace'
+        setFont(10)
         ctx.fillText('— no image data —', 110, yPos + 65)
       }
 
@@ -394,7 +418,7 @@ export default async function handler(req, res) {
       // More indicator
       if (data.items.length > maxImages) {
         ctx.fillStyle = '#888888'
-        ctx.font = '10px Monospace'
+        setFont(10)
         ctx.fillText(`+${data.items.length - maxImages}`, imgX + 4, yPos + 80)
       }
       
@@ -409,19 +433,19 @@ export default async function handler(req, res) {
       
       // Primary metric - compact
       ctx.fillStyle = '#222222'
-      ctx.font = 'bold 16px Monospace'
+      setFont(16, 'bold')
       const countText = '0'
       const countWidth = ctx.measureText(countText).width
       ctx.fillText(countText, 60, yPos)
       ctx.fillStyle = '#888888'
-      ctx.font = '10px Monospace'
+      setFont(10)
       ctx.fillText('ENTITIES', 60 + countWidth + 8, yPos)
       
       yPos += 28
       
       // System status section - structured grid
       ctx.fillStyle = '#666666'
-      ctx.font = '11px Monospace'
+      setFont(11)
       ctx.fillText('SYSTEM STATUS', 60, yPos)
       
       yPos += 20
@@ -432,7 +456,7 @@ export default async function handler(req, res) {
       const statusLineHeight = 15
       
       ctx.fillStyle = '#888888'
-      ctx.font = '10px Monospace'
+      setFont(10)
       
       // Column 1
       ctx.fillText('MONITORING', statusLeft, yPos)
@@ -493,7 +517,7 @@ export default async function handler(req, res) {
       
       // Continuity indicators - subtle footer
       ctx.fillStyle = '#aaaaaa'
-      ctx.font = '9px Monospace'
+      setFont(9)
       ctx.fillText('MONITORING: CONTINUOUS', 60, yPos)
       ctx.fillText('LOG: RECORDED', statusRight, yPos)
     }
@@ -506,11 +530,11 @@ export default async function handler(req, res) {
     ctx.textAlign = 'right'
     ctx.textBaseline = 'top'
     ctx.fillStyle = '#888888'
-    ctx.font = '12px Monospace'
+    setFont(12)
     ctx.fillText('PERIOD TOTALS', w - 60, h - 140)
     
     ctx.fillStyle = '#ff9900'
-    ctx.font = 'bold 16px Monospace'
+    setFont(16, 'bold')
     ctx.fillText(`DONATED: ${totalDonated.toFixed(5)} SOL`, w - 60, h - 115)
     ctx.fillText(`BURNED: ${totalBurned.toFixed(5)} SOL`, w - 60, h - 90)
     
@@ -519,7 +543,7 @@ export default async function handler(req, res) {
 
     // Footer - at actual bottom with proper padding to prevent cutoff
     ctx.fillStyle = '#aaaaaa'
-    ctx.font = '10px Monospace'
+    setFont(10)
     ctx.textBaseline = 'top'
     const timestamp = new Date().toISOString()
     ctx.fillText(`Generated: ${timestamp}`, 60, h - 50)
@@ -527,7 +551,7 @@ export default async function handler(req, res) {
     ctx.textAlign = 'right'
     ctx.textBaseline = 'top'
     ctx.fillStyle = '#aaaaaa'
-    ctx.font = '10px Monospace'
+    setFont(10)
     ctx.fillText('zenjaku.fun/collect', w - 60, h - 50)
     ctx.textAlign = 'left'
 
