@@ -43,24 +43,49 @@ export default async function handler(req, res) {
     currentDay = daysSinceStart
   }
 
-  // Check if canvas is available
-  let createCanvas, loadImage
+  // Use @napi-rs/canvas which has better serverless support
+  let createCanvas, loadImage, GlobalFonts
   try {
-    const canvasModule = await import('canvas')
+    const canvasModule = await import('@napi-rs/canvas')
     createCanvas = canvasModule.createCanvas
     loadImage = canvasModule.loadImage
+    GlobalFonts = canvasModule.GlobalFonts
   } catch (canvasError) {
     console.error('[Sales Report] Canvas import failed:', canvasError.message)
     return res.status(500).json({ 
       error: 'Canvas library not available',
-      details: 'The canvas library requires native dependencies that may not be available in this environment. Please ensure canvas is properly installed.',
-      message: canvasError.message
+      details: canvasError.message
     })
   }
 
-  // Use system fonts available on Vercel Lambda (Amazon Linux)
-  // These fonts are pre-installed and don't need registration
-  const fontFamily = 'DejaVu Sans Mono, Liberation Mono, Courier New, monospace'
+  // Register monospace font
+  try {
+    const fs = require('fs')
+    const path = require('path')
+    const os = require('os')
+    
+    // Download font from CDN at runtime
+    const fontUrl = 'https://cdn.jsdelivr.net/fontsource/fonts/ibm-plex-mono@latest/latin-400-normal.ttf'
+    const tempDir = os.tmpdir()
+    const fontPath = path.join(tempDir, 'IBMPlexMono.ttf')
+    
+    if (!fs.existsSync(fontPath)) {
+      console.log('[Sales Report] Downloading font from CDN...')
+      const fontResponse = await fetch(fontUrl)
+      if (fontResponse.ok) {
+        const fontBuffer = Buffer.from(await fontResponse.arrayBuffer())
+        fs.writeFileSync(fontPath, fontBuffer)
+        console.log('[Sales Report] Font downloaded')
+      }
+    }
+    
+    if (fs.existsSync(fontPath)) {
+      GlobalFonts.registerFromPath(fontPath, 'Monospace')
+      console.log('[Sales Report] Font registered')
+    }
+  } catch (fontError) {
+    console.warn('[Sales Report] Font registration failed:', fontError.message)
+  }
 
   try {
     const supabase = getSupabaseAdmin()
@@ -146,11 +171,6 @@ export default async function handler(req, res) {
     const w = width / scale
     const h = height / scale
 
-    // Helper function to set font with correct family
-    const setFont = (size, weight = 'normal') => {
-      ctx.font = `${weight} ${size}px ${fontFamily}`
-    }
-
     // Background (white)
     ctx.fillStyle = '#ffffff'
     ctx.fillRect(0, 0, w, h)
@@ -162,7 +182,7 @@ export default async function handler(req, res) {
 
     // Header - matching home page style
     ctx.fillStyle = '#222222'
-    setFont(48, 'bold')
+    ctx.font = 'bold 48px Monospace'
     ctx.textAlign = 'left'
     ctx.textBaseline = 'top'
     
@@ -183,11 +203,11 @@ export default async function handler(req, res) {
     })
 
     ctx.fillStyle = '#666666'
-    setFont(14)
-    ctx.fillText(`EXPERIMENT LOG · DAY ${currentDay} / ∞`, 60, 160)
+    ctx.font = '14px Monospace'
+    ctx.fillText(`EXPERIMENT LOG · DAY ${currentDay}`, 60, 160)
 
     // Stats line
-    setFont(24, 'bold')
+    ctx.font = 'bold 24px Monospace'
     
     // Transactions
     ctx.fillStyle = '#222222'
@@ -255,17 +275,17 @@ export default async function handler(req, res) {
 
       // Text to the left of the image
       ctx.fillStyle = '#888888'
-      setFont(10)
+      ctx.font = '10px Monospace'
       ctx.textAlign = 'right'
       ctx.fillText('TOP TRANSACTION', hsX - 10, hsY + 20)
       
       ctx.fillStyle = '#ff9900'
-      setFont(20, 'bold')
+      ctx.font = 'bold 20px Monospace'
       ctx.fillText(`${highestSale.price.toFixed(3)} SOL`, hsX - 10, hsY + 45)
       
       if (hsNumber) {
         ctx.fillStyle = '#222222'
-        setFont(12, 'bold')
+        ctx.font = 'bold 12px Monospace'
         ctx.fillText(`ZENJAKU #${hsNumber}`, hsX - 10, hsY + 65)
       }
       
@@ -273,7 +293,7 @@ export default async function handler(req, res) {
       if (highestSale.buyer) {
         const shortBuyer = `${highestSale.buyer.slice(0, 4)}..${highestSale.buyer.slice(-4)}`
         ctx.fillStyle = '#888888'
-        setFont(9)
+        ctx.font = '9px Monospace'
         ctx.fillText(`BUYER: ${shortBuyer}`, hsX - 10, hsY + 80)
       }
       
@@ -292,22 +312,22 @@ export default async function handler(req, res) {
       
       // Rank
       ctx.fillStyle = '#ff9900'
-      setFont(24, 'bold')
+      ctx.font = 'bold 24px Monospace'
       ctx.fillText(`#${i + 1}`, 60, yPos + 20)
       
       // Address (prominent)
       ctx.fillStyle = '#222222'
-      setFont(18, 'bold')
+      ctx.font = 'bold 18px Monospace'
       ctx.fillText(shortAddr, 110, yPos + 20)
 
       // Volume
       ctx.fillStyle = '#ff9900'
-      setFont(18, 'bold')
+      ctx.font = 'bold 18px Monospace'
       const entryVolText = data.volume.toFixed(3)
       ctx.fillText(entryVolText, 240, yPos + 20)
       const entryVolWidth = ctx.measureText(entryVolText).width
       ctx.fillStyle = '#888888'
-      setFont(10)
+      ctx.font = '10px Monospace'
       ctx.fillText('SOL', 240 + entryVolWidth + 4, yPos + 20)
 
       // Donated & Burned
@@ -316,7 +336,7 @@ export default async function handler(req, res) {
       
       // Full address (subtle, below)
       ctx.fillStyle = '#aaaaaa'
-      setFont(9)
+      ctx.font = '9px Monospace'
       ctx.fillText(address, 110, yPos + 40)
 
       // Mini images with buy/sell indicators
@@ -325,7 +345,7 @@ export default async function handler(req, res) {
 
       if (items.length === 0) {
         ctx.fillStyle = '#cccccc'
-        setFont(10)
+        ctx.font = '10px Monospace'
         ctx.fillText('— no image data —', 110, yPos + 65)
       }
 
@@ -361,7 +381,7 @@ export default async function handler(req, res) {
       // More indicator
       if (data.items.length > maxImages) {
         ctx.fillStyle = '#888888'
-        setFont(10)
+        ctx.font = '10px Monospace'
         ctx.fillText(`+${data.items.length - maxImages}`, imgX + 4, yPos + 80)
       }
       
@@ -376,19 +396,19 @@ export default async function handler(req, res) {
       
       // Primary metric - compact
       ctx.fillStyle = '#222222'
-      setFont(16, 'bold')
+      ctx.font = 'bold 16px Monospace'
       const countText = '0'
       const countWidth = ctx.measureText(countText).width
       ctx.fillText(countText, 60, yPos)
       ctx.fillStyle = '#888888'
-      setFont(10)
+      ctx.font = '10px Monospace'
       ctx.fillText('ENTITIES', 60 + countWidth + 8, yPos)
       
       yPos += 28
       
       // System status section - structured grid
       ctx.fillStyle = '#666666'
-      setFont(11)
+      ctx.font = '11px Monospace'
       ctx.fillText('SYSTEM STATUS', 60, yPos)
       
       yPos += 20
@@ -399,7 +419,7 @@ export default async function handler(req, res) {
       const statusLineHeight = 15
       
       ctx.fillStyle = '#888888'
-      setFont(10)
+      ctx.font = '10px Monospace'
       
       // Column 1
       ctx.fillText('MONITORING', statusLeft, yPos)
@@ -460,7 +480,7 @@ export default async function handler(req, res) {
       
       // Continuity indicators - subtle footer
       ctx.fillStyle = '#aaaaaa'
-      setFont(9)
+      ctx.font = '9px Monospace'
       ctx.fillText('MONITORING: CONTINUOUS', 60, yPos)
       ctx.fillText('LOG: RECORDED', statusRight, yPos)
     }
@@ -473,11 +493,11 @@ export default async function handler(req, res) {
     ctx.textAlign = 'right'
     ctx.textBaseline = 'top'
     ctx.fillStyle = '#888888'
-    setFont(12)
+    ctx.font = '12px Monospace'
     ctx.fillText('PERIOD TOTALS', w - 60, h - 140)
     
     ctx.fillStyle = '#ff9900'
-    setFont(16, 'bold')
+    ctx.font = 'bold 16px Monospace'
     ctx.fillText(`DONATED: ${totalDonated.toFixed(5)} SOL`, w - 60, h - 115)
     ctx.fillText(`BURNED: ${totalBurned.toFixed(5)} SOL`, w - 60, h - 90)
     
@@ -486,7 +506,7 @@ export default async function handler(req, res) {
 
     // Footer - at actual bottom with proper padding to prevent cutoff
     ctx.fillStyle = '#aaaaaa'
-    setFont(10)
+    ctx.font = '10px Monospace'
     ctx.textBaseline = 'top'
     const timestamp = new Date().toISOString()
     ctx.fillText(`Generated: ${timestamp}`, 60, h - 50)
@@ -494,7 +514,7 @@ export default async function handler(req, res) {
     ctx.textAlign = 'right'
     ctx.textBaseline = 'top'
     ctx.fillStyle = '#aaaaaa'
-    setFont(10)
+    ctx.font = '10px Monospace'
     ctx.fillText('zenjaku.fun/collect', w - 60, h - 50)
     ctx.textAlign = 'left'
 
