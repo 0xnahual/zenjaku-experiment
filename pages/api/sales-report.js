@@ -60,14 +60,35 @@ export default async function handler(req, res) {
   }
 
   // Register monospace font for Vercel compatibility
+  // Download font from CDN at runtime (like Google Fonts)
   try {
-    const path = require('path')
-    // Try CourierPrime first (smaller file), fallback to DejaVu if needed
-    let fontPath = path.join(process.cwd(), 'fonts', 'CourierPrime-Regular.ttf')
     const fs = require('fs')
-    if (!fs.existsSync(fontPath)) {
-      fontPath = path.join(process.cwd(), 'fonts', 'DejaVuSansMono.ttf')
+    const path = require('path')
+    const os = require('os')
+    
+    // Try local font first
+    let fontPath = path.join(process.cwd(), 'fonts', 'CourierPrime-Regular.ttf')
+    const fsExists = fs.existsSync && fs.existsSync(fontPath)
+    
+    if (!fsExists) {
+      // Download font from Google Fonts CDN at runtime
+      const fontUrl = 'https://fonts.gstatic.com/s/courierprime/v9/u-450q2lgwslOqpF_6gQ8kELWwFwF8.ttf'
+      const tempDir = os.tmpdir()
+      fontPath = path.join(tempDir, 'CourierPrime-Regular.ttf')
+      
+      // Check if already downloaded in this execution
+      if (!fs.existsSync(fontPath)) {
+        console.log('[Sales Report] Downloading monospace font from CDN...')
+        const fontResponse = await fetch(fontUrl)
+        if (!fontResponse.ok) {
+          throw new Error(`Failed to download font: ${fontResponse.status}`)
+        }
+        const fontBuffer = Buffer.from(await fontResponse.arrayBuffer())
+        fs.writeFileSync(fontPath, fontBuffer)
+        console.log('[Sales Report] Font downloaded successfully')
+      }
     }
+    
     if (fs.existsSync(fontPath)) {
       registerFont(fontPath, { family: 'Monospace' })
       console.log('[Sales Report] Monospace font registered successfully')
