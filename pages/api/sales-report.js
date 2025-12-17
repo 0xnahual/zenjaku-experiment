@@ -320,19 +320,26 @@ export default async function handler(req, res) {
       ctx.font = 'bold 18px Monospace'
       ctx.fillText(shortAddr, 110, yPos + 20)
 
-      // Volume
+      // Volume + SOL + DON + BRN in a row with consistent spacing
       ctx.fillStyle = '#ff9900'
       ctx.font = 'bold 18px Monospace'
       const entryVolText = data.volume.toFixed(3)
       ctx.fillText(entryVolText, 240, yPos + 20)
       const entryVolWidth = ctx.measureText(entryVolText).width
+      
       ctx.fillStyle = '#888888'
       ctx.font = '10px Monospace'
-      ctx.fillText('SOL', 240 + entryVolWidth + 4, yPos + 20)
-
-      // Donated & Burned
-      ctx.fillText(`DON: ${data.donated.toFixed(5)}`, 240 + entryVolWidth + 40, yPos + 20)
-      ctx.fillText(`BRN: ${data.burned.toFixed(5)}`, 240 + entryVolWidth + 150, yPos + 20)
+      const solX = 240 + entryVolWidth + 6
+      const smallTextY = yPos + 24  // Slightly lower to align with larger text baseline
+      ctx.fillText('SOL', solX, smallTextY)
+      const solWidth = ctx.measureText('SOL').width
+      
+      const donX = solX + solWidth + 20
+      ctx.fillText(`DON: ${data.donated.toFixed(5)}`, donX, smallTextY)
+      const donWidth = ctx.measureText(`DON: ${data.donated.toFixed(5)}`).width
+      
+      const brnX = donX + donWidth + 20
+      ctx.fillText(`BRN: ${data.burned.toFixed(5)}`, brnX, smallTextY)
       
       // Full address (subtle, below)
       ctx.fillStyle = '#aaaaaa'
