@@ -24,7 +24,7 @@ export default async function handler(req, res) {
     const supabaseAdmin = getSupabaseAdmin()
 
     // 3. Fetch Data from Magic Eden
-    const COLLECTION_SYMBOL = 'vibe_knights'
+    const COLLECTION_SYMBOL = 'zenjaku_0'
     
     let activities = []
     try {

@@ -10,7 +10,7 @@ const nextConfig = {
         return [
             {
                 source: '/collect',
-                destination: 'https://magiceden.io/marketplace/vibe_knights',
+                destination: 'https://magiceden.io/marketplace/zenjaku_0',
                 permanent: false,
             },
         ]
