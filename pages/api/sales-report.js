@@ -43,48 +43,19 @@ export default async function handler(req, res) {
     currentDay = daysSinceStart
   }
 
-  // Use @napi-rs/canvas which has better serverless support
-  let createCanvas, loadImage, GlobalFonts
+  // Check if canvas is available
+  let Canvas, createCanvas, loadImage
   try {
     const canvasModule = await import('@napi-rs/canvas')
     createCanvas = canvasModule.createCanvas
     loadImage = canvasModule.loadImage
-    GlobalFonts = canvasModule.GlobalFonts
   } catch (canvasError) {
     console.error('[Sales Report] Canvas import failed:', canvasError.message)
     return res.status(500).json({ 
       error: 'Canvas library not available',
-      details: canvasError.message
+      details: 'The canvas library requires native dependencies that may not be available in this environment. Please ensure canvas is properly installed.',
+      message: canvasError.message
     })
-  }
-
-  // Register monospace font
-  try {
-    const fs = require('fs')
-    const path = require('path')
-    const os = require('os')
-    
-    // Download font from CDN at runtime
-    const fontUrl = 'https://cdn.jsdelivr.net/fontsource/fonts/ibm-plex-mono@latest/latin-400-normal.ttf'
-    const tempDir = os.tmpdir()
-    const fontPath = path.join(tempDir, 'IBMPlexMono.ttf')
-    
-    if (!fs.existsSync(fontPath)) {
-      console.log('[Sales Report] Downloading font from CDN...')
-      const fontResponse = await fetch(fontUrl)
-      if (fontResponse.ok) {
-        const fontBuffer = Buffer.from(await fontResponse.arrayBuffer())
-        fs.writeFileSync(fontPath, fontBuffer)
-        console.log('[Sales Report] Font downloaded')
-      }
-    }
-    
-    if (fs.existsSync(fontPath)) {
-      GlobalFonts.registerFromPath(fontPath, 'Monospace')
-      console.log('[Sales Report] Font registered')
-    }
-  } catch (fontError) {
-    console.warn('[Sales Report] Font registration failed:', fontError.message)
   }
 
   try {
@@ -180,64 +151,66 @@ export default async function handler(req, res) {
     ctx.lineWidth = 3
     ctx.strokeRect(30, 30, w - 60, h - 60)
 
-    // Header - single line title (extra bold with stroke)
-    ctx.fillStyle = '#111111'
-    ctx.strokeStyle = '#111111'
-    ctx.font = 'bold 42px Monospace'
+    // Header - matching home page style
+    ctx.fillStyle = '#222222'
+    ctx.font = 'bold 48px monospace'
     ctx.textAlign = 'left'
     ctx.textBaseline = 'top'
-    ctx.lineWidth = 2
-    ctx.strokeText('THE ZENJAKU EXPERIMENT', 60, 50)
-    ctx.fillText('THE ZENJAKU EXPERIMENT', 60, 50)
+    
+    // Text stroke for outline effect
+    ctx.strokeStyle = '#222222'
+    ctx.lineWidth = 1
+    
+    const titleLines = ['THE ZENJAKU', 'EXPERIMENT']
+    let titleY = 50
+    const titleLineHeight = 48 // increased spacing between lines
+    
+    titleLines.forEach((line, idx) => {
+      // Draw stroke first
+      ctx.strokeText(line, 60, titleY)
+      // Then fill
+      ctx.fillText(line, 60, titleY)
+      titleY += titleLineHeight
+    })
 
     ctx.fillStyle = '#666666'
-    ctx.font = '14px Monospace'
-    ctx.fillText(`EXPERIMENT LOG · DAY ${currentDay}`, 60, 100)
+    ctx.font = '14px monospace'
+    ctx.fillText(`EXPERIMENT LOG · DAY ${currentDay} / ∞`, 60, 160)
 
-    // Stats line - bolder with stroke effect
-    ctx.font = 'bold 28px Monospace'
-    ctx.lineWidth = 2
+    // Stats line
+    ctx.font = 'bold 24px monospace'
     
     // Transactions
     ctx.fillStyle = '#222222'
-    ctx.strokeStyle = '#222222'
     const txText = `${totalSales}`
-    ctx.strokeText(txText, 60, 130)
-    ctx.fillText(txText, 60, 130)
+    ctx.fillText(txText, 60, 190)
     const txWidth = ctx.measureText(txText).width
-    ctx.strokeText('TRANSACTIONS', 60 + txWidth + 8, 130)
-    ctx.fillText('TRANSACTIONS', 60 + txWidth + 8, 130)
+    ctx.fillText('TRANSACTIONS', 60 + txWidth + 8, 190)
     
     // Volume - positioned after TRANSACTIONS with proper spacing
     ctx.fillStyle = '#ff9900'
-    ctx.strokeStyle = '#ff9900'
     const volText = `${totalVolume.toFixed(2)}`
     const transactionsWidth = ctx.measureText('TRANSACTIONS').width
     const volX = 60 + txWidth + 8 + transactionsWidth + 30
-    ctx.strokeText(volText, volX, 130)
-    ctx.fillText(volText, volX, 130)
+    ctx.fillText(volText, volX, 190)
     const volWidth = ctx.measureText(volText).width
-    ctx.strokeText('SOL', volX + volWidth + 8, 130)
-    ctx.fillText('SOL', volX + volWidth + 8, 130)
+    ctx.fillText('SOL', volX + volWidth + 8, 190)
     
     // Avg Price - positioned after SOL with proper spacing
     ctx.fillStyle = '#222222'
-    ctx.strokeStyle = '#222222'
     const avgText = `${avgPrice.toFixed(3)}`
     const solWidth = ctx.measureText('SOL').width
     const avgX = volX + volWidth + 8 + solWidth + 30
-    ctx.strokeText(avgText, avgX, 130)
-    ctx.fillText(avgText, avgX, 130)
+    ctx.fillText(avgText, avgX, 190)
     const avgWidth = ctx.measureText(avgText).width
-    ctx.strokeText('AVG', avgX + avgWidth + 8, 130)
-    ctx.fillText('AVG', avgX + avgWidth + 8, 130)
+    ctx.fillText('AVG', avgX + avgWidth + 8, 190)
 
     // Divider - below transactions with proper spacing
     ctx.strokeStyle = '#dddddd'
     ctx.lineWidth = 1
     ctx.beginPath()
-    ctx.moveTo(60, 165)
-    ctx.lineTo(w - 60, 165)
+    ctx.moveTo(60, 225)
+    ctx.lineTo(w - 60, 225)
     ctx.stroke()
 
     // Highest Sale section (right side)
@@ -273,17 +246,17 @@ export default async function handler(req, res) {
 
       // Text to the left of the image
       ctx.fillStyle = '#888888'
-      ctx.font = '10px Monospace'
+      ctx.font = '10px monospace'
       ctx.textAlign = 'right'
       ctx.fillText('TOP TRANSACTION', hsX - 10, hsY + 20)
       
       ctx.fillStyle = '#ff9900'
-      ctx.font = 'bold 20px Monospace'
+      ctx.font = 'bold 20px monospace'
       ctx.fillText(`${highestSale.price.toFixed(3)} SOL`, hsX - 10, hsY + 45)
       
       if (hsNumber) {
         ctx.fillStyle = '#222222'
-        ctx.font = 'bold 12px Monospace'
+        ctx.font = 'bold 12px monospace'
         ctx.fillText(`ZENJAKU #${hsNumber}`, hsX - 10, hsY + 65)
       }
       
@@ -291,19 +264,15 @@ export default async function handler(req, res) {
       if (highestSale.buyer) {
         const shortBuyer = `${highestSale.buyer.slice(0, 4)}..${highestSale.buyer.slice(-4)}`
         ctx.fillStyle = '#888888'
-        ctx.font = '9px Monospace'
+        ctx.font = '9px monospace'
         ctx.fillText(`BUYER: ${shortBuyer}`, hsX - 10, hsY + 80)
       }
       
       ctx.textAlign = 'left'
     }
 
-    // Primary Actors section
-    ctx.fillStyle = '#666666'
-    ctx.font = '12px Monospace'
-    ctx.fillText('PRIMARY ACTORS', 60, 180)
-    
-    let yPos = 200
+    // Primary Actors section (no header text)
+    let yPos = 240
     const imgSize = 36
     const maxImages = 12
     const entryHeight = 95
@@ -314,38 +283,31 @@ export default async function handler(req, res) {
       
       // Rank
       ctx.fillStyle = '#ff9900'
-      ctx.font = 'bold 24px Monospace'
+      ctx.font = 'bold 24px monospace'
       ctx.fillText(`#${i + 1}`, 60, yPos + 20)
       
       // Address (prominent)
       ctx.fillStyle = '#222222'
-      ctx.font = 'bold 18px Monospace'
+      ctx.font = 'bold 18px monospace'
       ctx.fillText(shortAddr, 110, yPos + 20)
 
-      // Volume + SOL + DON + BRN in a row with consistent spacing
+      // Volume
       ctx.fillStyle = '#ff9900'
-      ctx.font = 'bold 18px Monospace'
+      ctx.font = 'bold 18px monospace'
       const entryVolText = data.volume.toFixed(3)
       ctx.fillText(entryVolText, 240, yPos + 20)
       const entryVolWidth = ctx.measureText(entryVolText).width
-      
       ctx.fillStyle = '#888888'
-      ctx.font = '10px Monospace'
-      const solX = 240 + entryVolWidth + 6
-      const smallTextY = yPos + 24  // Slightly lower to align with larger text baseline
-      ctx.fillText('SOL', solX, smallTextY)
-      const solWidth = ctx.measureText('SOL').width
-      
-      const donX = solX + solWidth + 20
-      ctx.fillText(`DON: ${data.donated.toFixed(5)}`, donX, smallTextY)
-      const donWidth = ctx.measureText(`DON: ${data.donated.toFixed(5)}`).width
-      
-      const brnX = donX + donWidth + 20
-      ctx.fillText(`BRN: ${data.burned.toFixed(5)}`, brnX, smallTextY)
+      ctx.font = '10px monospace'
+      ctx.fillText('SOL', 240 + entryVolWidth + 4, yPos + 20)
+
+      // Donated & Burned
+      ctx.fillText(`DON: ${data.donated.toFixed(5)}`, 240 + entryVolWidth + 40, yPos + 20)
+      ctx.fillText(`BRN: ${data.burned.toFixed(5)}`, 240 + entryVolWidth + 150, yPos + 20)
       
       // Full address (subtle, below)
       ctx.fillStyle = '#aaaaaa'
-      ctx.font = '9px Monospace'
+      ctx.font = '9px monospace'
       ctx.fillText(address, 110, yPos + 40)
 
       // Mini images with buy/sell indicators
@@ -354,7 +316,7 @@ export default async function handler(req, res) {
 
       if (items.length === 0) {
         ctx.fillStyle = '#cccccc'
-        ctx.font = '10px Monospace'
+        ctx.font = '10px monospace'
         ctx.fillText('— no image data —', 110, yPos + 65)
       }
 
@@ -390,7 +352,7 @@ export default async function handler(req, res) {
       // More indicator
       if (data.items.length > maxImages) {
         ctx.fillStyle = '#888888'
-        ctx.font = '10px Monospace'
+        ctx.font = '10px monospace'
         ctx.fillText(`+${data.items.length - maxImages}`, imgX + 4, yPos + 80)
       }
       
@@ -405,19 +367,19 @@ export default async function handler(req, res) {
       
       // Primary metric - compact
       ctx.fillStyle = '#222222'
-      ctx.font = 'bold 16px Monospace'
+      ctx.font = 'bold 16px monospace'
       const countText = '0'
       const countWidth = ctx.measureText(countText).width
       ctx.fillText(countText, 60, yPos)
       ctx.fillStyle = '#888888'
-      ctx.font = '10px Monospace'
+      ctx.font = '10px monospace'
       ctx.fillText('ENTITIES', 60 + countWidth + 8, yPos)
       
       yPos += 28
       
       // System status section - structured grid
       ctx.fillStyle = '#666666'
-      ctx.font = '11px Monospace'
+      ctx.font = '11px monospace'
       ctx.fillText('SYSTEM STATUS', 60, yPos)
       
       yPos += 20
@@ -428,7 +390,7 @@ export default async function handler(req, res) {
       const statusLineHeight = 15
       
       ctx.fillStyle = '#888888'
-      ctx.font = '10px Monospace'
+      ctx.font = '10px monospace'
       
       // Column 1
       ctx.fillText('MONITORING', statusLeft, yPos)
@@ -489,7 +451,7 @@ export default async function handler(req, res) {
       
       // Continuity indicators - subtle footer
       ctx.fillStyle = '#aaaaaa'
-      ctx.font = '9px Monospace'
+      ctx.font = '9px monospace'
       ctx.fillText('MONITORING: CONTINUOUS', 60, yPos)
       ctx.fillText('LOG: RECORDED', statusRight, yPos)
     }
@@ -502,11 +464,11 @@ export default async function handler(req, res) {
     ctx.textAlign = 'right'
     ctx.textBaseline = 'top'
     ctx.fillStyle = '#888888'
-    ctx.font = '12px Monospace'
+    ctx.font = '12px monospace'
     ctx.fillText('PERIOD TOTALS', w - 60, h - 140)
     
     ctx.fillStyle = '#ff9900'
-    ctx.font = 'bold 16px Monospace'
+    ctx.font = 'bold 16px monospace'
     ctx.fillText(`DONATED: ${totalDonated.toFixed(5)} SOL`, w - 60, h - 115)
     ctx.fillText(`BURNED: ${totalBurned.toFixed(5)} SOL`, w - 60, h - 90)
     
@@ -515,7 +477,7 @@ export default async function handler(req, res) {
 
     // Footer - at actual bottom with proper padding to prevent cutoff
     ctx.fillStyle = '#aaaaaa'
-    ctx.font = '10px Monospace'
+    ctx.font = '10px monospace'
     ctx.textBaseline = 'top'
     const timestamp = new Date().toISOString()
     ctx.fillText(`Generated: ${timestamp}`, 60, h - 50)
@@ -523,7 +485,7 @@ export default async function handler(req, res) {
     ctx.textAlign = 'right'
     ctx.textBaseline = 'top'
     ctx.fillStyle = '#aaaaaa'
-    ctx.font = '10px Monospace'
+    ctx.font = '10px monospace'
     ctx.fillText('zenjaku.fun/collect', w - 60, h - 50)
     ctx.textAlign = 'left'
 
