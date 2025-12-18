@@ -180,11 +180,14 @@ export default async function handler(req, res) {
     ctx.lineWidth = 3
     ctx.strokeRect(30, 30, w - 60, h - 60)
 
-    // Header - single line title
-    ctx.fillStyle = '#222222'
+    // Header - single line title (extra bold with stroke)
+    ctx.fillStyle = '#111111'
+    ctx.strokeStyle = '#111111'
     ctx.font = 'bold 42px Monospace'
     ctx.textAlign = 'left'
     ctx.textBaseline = 'top'
+    ctx.lineWidth = 2
+    ctx.strokeText('THE ZENJAKU EXPERIMENT', 60, 50)
     ctx.fillText('THE ZENJAKU EXPERIMENT', 60, 50)
 
     ctx.fillStyle = '#666666'
@@ -193,7 +196,7 @@ export default async function handler(req, res) {
 
     // Stats line - bolder with stroke effect
     ctx.font = 'bold 28px Monospace'
-    ctx.lineWidth = 1
+    ctx.lineWidth = 2
     
     // Transactions
     ctx.fillStyle = '#222222'
