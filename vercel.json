@@ -6,17 +6,11 @@
     },
     {
       "path": "/api/tweet-sales-report",
-      "schedule": "0 20 * * *"
+      "schedule": "0 20 * * 1"
     },
     {
       "path": "/api/tweet-random-nft",
-      "schedule": "0 8 * * *"
-    },
-    {
-      "path": "/api/tweet-random-nft",
-      "schedule": "0 14 * * *"
+      "schedule": "0 14 */3 * *"
     }
   ]
 }
-
-

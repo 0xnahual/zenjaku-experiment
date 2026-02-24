@@ -1,42 +1,22 @@
 import { useState, useEffect } from 'react'
 import Head from 'next/head'
-import { EXPERIMENT_START_DATE } from '../config/constants'
-
-// Format the start date for display
-const startDate = new Date(EXPERIMENT_START_DATE).toLocaleDateString('en-US', {
-  year: 'numeric',
-  month: 'short',
-  day: 'numeric'
-})
 
 const formatAddress = (address) => {
   if (!address) return 'Unknown'
   return `${address.slice(0, 6)}...${address.slice(-4)}`
 }
 
-// Get experiment start date for date picker min
-const experimentStartDateStr = EXPERIMENT_START_DATE.split('T')[0]
-
-// Get today's date in YYYY-MM-DD format
-const getTodayStr = () => new Date().toISOString().split('T')[0]
-
 export default function Leaderboard() {
-  const [timeframe, setTimeframe] = useState('daily')
-  const [selectedDate, setSelectedDate] = useState(getTodayStr())
+  const [timeframe, setTimeframe] = useState('allTime')
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
-  const [showTooltip, setShowTooltip] = useState(false)
 
   useEffect(() => {
     const fetchLeaderboard = async () => {
       setLoading(true)
       try {
-        // Build URL with params
-        let url = `/api/leaderboard?timeframe=${timeframe}`
-        if (timeframe === 'daily' && selectedDate) {
-          url = `/api/leaderboard?timeframe=specific&date=${selectedDate}`
-        }
-        const res = await fetch(url)
+        // Pass the current timeframe to the API
+        const res = await fetch(`/api/leaderboard?timeframe=${timeframe}`)
         const json = await res.json()
         console.log('Leaderboard API response:', json)
 
@@ -53,8 +33,9 @@ export default function Leaderboard() {
       }
     }
 
+    // Fetch real data for ALL tabs.
     fetchLeaderboard()
-  }, [timeframe, selectedDate])
+  }, [timeframe])
 
   return (
     <>
@@ -79,42 +60,25 @@ export default function Leaderboard() {
             <p
               className="text-sm opacity-70 max-w-2xl mx-auto leading-relaxed mb-2 text-black"
             >
-              Addresses influencing system balance through continuous movement.
+              The architects of the ecosystem. These addresses are forging the path forward through volume and dedication.
             </p>
             <p
               className="text-[10px] font-mono tracking-wider uppercase text-[#ff6600] opacity-80"
             >
               VERIFIED // ON-CHAIN // IMMUTABLE
             </p>
-            <p className="text-[9px] font-mono tracking-wider text-gray-400 mt-2">
-              Tracking MagicEden · Started {startDate}
-              <span className="relative ml-1 inline-block">
-                <button
-                  onClick={() => setShowTooltip(!showTooltip)}
-                  onMouseEnter={() => setShowTooltip(true)}
-                  onMouseLeave={() => setShowTooltip(false)}
-                  className="text-gray-300 hover:text-[#ff6600] transition-colors"
-                >
-                  [?]
-                </button>
-                {showTooltip && (
-                  <span className="absolute bottom-5 left-1/2 -translate-x-1/2 w-56 p-2 bg-black text-white text-[8px] font-mono leading-relaxed z-50">
-                    <span className="text-[#ff6600]">VOLUME:</span> Each trade credits buyer + seller 50% each (2 participants per tx).
-                  </span>
-                )}
-              </span>
+            <p
+              className="text-[9px] font-mono tracking-wider text-gray-400 mt-2"
+            >
+              Tracking MagicEden
             </p>
 
             {/* Timeframe Selector */}
-            <div className="flex flex-col items-center gap-4 border-b border-gray-800/20 pb-4 mt-12 mb-12">
-              <div className="flex justify-center gap-8">
-                {['daily', 'weekly', 'monthly', 'allTime'].map((tf) => (
+            <div className="flex justify-center gap-8 border-b border-gray-800/20 pb-4 mt-12 mb-12">
+              {['allTime', 'monthly', 'daily'].map((tf) => (
                 <button
                   key={tf}
-                    onClick={() => {
-                      setTimeframe(tf)
-                      if (tf === 'daily') setSelectedDate(getTodayStr())
-                    }}
+                  onClick={() => setTimeframe(tf)}
                   className={`font-mono text-xs tracking-widest uppercase transition-all duration-300 ${timeframe === tf
                     ? 'text-[#ff6600] opacity-100'
                     : 'text-black opacity-40 hover:opacity-70'
@@ -123,22 +87,6 @@ export default function Leaderboard() {
                   {tf === 'allTime' ? 'All Time' : tf}
                 </button>
               ))}
-              </div>
-              {timeframe === 'daily' && (
-                <div className="flex items-center gap-2">
-                  <input
-                    type="date"
-                    value={selectedDate}
-                    onChange={(e) => setSelectedDate(e.target.value)}
-                    min={experimentStartDateStr}
-                    max={getTodayStr()}
-                    className="font-mono text-xs px-3 py-1.5 border border-gray-300 bg-white text-black focus:outline-none focus:border-[#ff6600]"
-                  />
-                  <span className="font-mono text-[10px] text-gray-500">
-                    {new Date(selectedDate + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
-                  </span>
-                </div>
-              )}
             </div>
 
             {/* Leaderboard Table */}
@@ -188,12 +136,12 @@ export default function Leaderboard() {
                       {/* Secondary: Breakdown */}
                       <div className="flex justify-end gap-3 font-mono text-[9px] mt-2 text-black">
                         <div className="flex items-baseline gap-1">
-                          <span className="font-bold opacity-80">{item.donated.toFixed(5)}</span>
+                          <span className="font-bold opacity-80">{item.donated.toLocaleString()}</span>
                           <span className="tracking-wider text-[7px] uppercase opacity-40">DONATED</span>
                         </div>
                         <div className="w-px h-2 bg-current opacity-20 self-center"></div>
                         <div className="flex items-baseline gap-1">
-                          <span className="font-bold opacity-80">{item.burned.toFixed(5)}</span>
+                          <span className="font-bold opacity-80">{item.burned.toLocaleString()}</span>
                           <span className="tracking-wider text-[7px] uppercase opacity-40">BURNED</span>
                         </div>
                       </div>

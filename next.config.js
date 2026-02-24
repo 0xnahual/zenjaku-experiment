@@ -10,7 +10,12 @@ const nextConfig = {
         return [
             {
                 source: '/collect',
-                destination: 'https://magiceden.io/marketplace/zenjaku_0',
+                destination: 'https://magiceden.io/marketplace/vibe_knights',
+                permanent: false,
+            },
+            {
+                source: '/collect/:address',
+                destination: 'https://magiceden.io/item-details/:address',
                 permanent: false,
             },
         ]

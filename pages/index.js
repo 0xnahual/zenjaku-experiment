@@ -8,43 +8,10 @@ export default function Home() {
     const { isDark, glitchActive, mounted } = useDarkMode()
     const [currentTextIndex, setCurrentTextIndex] = useState(0)
     const [randomGirlIndex, setRandomGirlIndex] = useState(0)
-    const [priceData, setPriceData] = useState(null)
-    const [donationBalance, setDonationBalance] = useState(null)
-    const [burnBalance, setBurnBalance] = useState(null)
 
     useEffect(() => {
         if (!mounted) return
-        setRandomGirlIndex(Math.floor(Math.random() * 10))
-        
-        // Fetch 24h avg price
-        fetch('/api/last-sale')
-            .then(res => res.json())
-            .then(data => setPriceData(data))
-            .catch(() => {})
-        
-        // Fetch donation balance
-        fetch('/api/solana-balance?address=9yw9hUdZCHruZsXdzkY4iaFMPDthegM8DqyrUhucSWsM')
-            .then(res => res.json())
-            .then(data => {
-                if (data.error) {
-                    setDonationBalance(null)
-                } else {
-                    setDonationBalance(data.balance ?? null)
-                }
-            })
-            .catch(() => setDonationBalance(null))
-        
-        // Fetch burn balance
-        fetch('/api/solana-balance?address=6scYfnYS2bQxNG9sXohtHpndNbtutotBdgxcvftzUxrr')
-            .then(res => res.json())
-            .then(data => {
-                if (data.error) {
-                    setBurnBalance(null)
-                } else {
-                    setBurnBalance(data.balance ?? null)
-                }
-            })
-            .catch(() => setBurnBalance(null))
+        setRandomGirlIndex(Math.floor(Math.random() * 11))
     }, [mounted])
 
     useEffect(() => {
@@ -135,7 +102,7 @@ export default function Home() {
                             <br />
                             <span className="opacity-50 line-through decoration-current">{TOTAL_SUPPLY.toLocaleString()}</span> <span className="text-[#ff9900]">{LIVE_ZENJAKU_COUNT.toLocaleString()}</span> elves trapped in an eternal struggle.
                             <br />
-                            Half of the royalties fuel destruction. Half transform reality.
+                            Half of the royalties <a href="https://x.com/0XNAHUAL/status/1998813363359346767" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70 transition-opacity">fuel destruction</a>. Half <a href="https://x.com/0XNAHUAL/status/1998807944260104511" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70 transition-opacity">transform reality</a>.
                             Is balance power? Step in and find out.
                         </p>
                         <div className="flex flex-row gap-8 font-mono text-sm tracking-widest uppercase pt-2 whitespace-nowrap text-left"
@@ -146,36 +113,6 @@ export default function Home() {
                             <Link href="/bitcoin" className="underline underline-offset-2 decoration-1 hover:opacity-70 transition-opacity cursor-pointer">
                                 33 1/1S ON BTC
                             </Link>
-                        </div>
-                        
-                        {/* 24h Avg Price Indicator */}
-                        {priceData?.avgPrice > 0 && (
-                            <div className="flex items-center gap-2 font-mono text-xs tracking-wider pt-4"
-                                style={{ color: isDark ? '#666666' : '#999999' }}>
-                                <span className="inline-block w-2 h-2 rounded-full bg-[#ff9900] animate-pulse" />
-                                <span>24H AVG</span>
-                                <span className="text-[#ff9900] font-bold">{priceData.avgPrice.toFixed(3)} SOL</span>
-                            </div>
-                        )}
-                        
-                        {/* Balance Indicators */}
-                        <div className="flex flex-col gap-2 font-mono text-xs tracking-wider pt-2">
-                            {donationBalance !== null && donationBalance !== undefined && (
-                                <div className="flex items-center gap-2"
-                                    style={{ color: isDark ? '#666666' : '#999999' }}>
-                                    <span className="inline-block w-2 h-2 rounded-full bg-[#00cc00]" />
-                                    <span>DONATION BALANCE</span>
-                                    <span className="text-[#00cc00] font-bold">{donationBalance.toFixed(3)} SOL</span>
-                                </div>
-                            )}
-                            {burnBalance !== null && burnBalance !== undefined && (
-                                <div className="flex items-center gap-2"
-                                    style={{ color: isDark ? '#666666' : '#999999' }}>
-                                    <span className="inline-block w-2 h-2 rounded-full bg-[#ff3333]" />
-                                    <span>BURN BALANCE</span>
-                                    <span className="text-[#ff3333] font-bold">{burnBalance.toFixed(3)} SOL</span>
-                                </div>
-                            )}
                         </div>
                     </div>
                     {/* Right: Image Block */}

@@ -2,19 +2,15 @@ import { getSupabaseAdmin } from '../../lib/supabase'
 import { fetchCollectionActivities, processActivitiesForDB } from '../../lib/magiceden'
 
 export default async function handler(req, res) {
-  // 1. Security Check - Accept both manual auth and Vercel cron
+  // 1. Security Check
   const authHeader = req.headers.authorization
-  const expectedSyncAuth = `Bearer ${process.env.SYNC_SECRET_KEY}`
-  const expectedCronAuth = `Bearer ${process.env.CRON_SECRET}`
+  const expectedAuth = `Bearer ${process.env.SYNC_SECRET_KEY}`
 
-  // Allow GET for Vercel cron, POST for manual triggers
-  if (req.method !== 'POST' && req.method !== 'GET') {
+  if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  // Check authorization - accept either SYNC_SECRET_KEY or CRON_SECRET
-  const isValidAuth = authHeader === expectedSyncAuth || authHeader === expectedCronAuth
-  if (!isValidAuth) {
+  if (authHeader !== expectedAuth) {
     console.warn('Unauthorized sync attempt')
     return res.status(401).json({ error: 'Unauthorized' })
   }
@@ -24,7 +20,7 @@ export default async function handler(req, res) {
     const supabaseAdmin = getSupabaseAdmin()
 
     // 3. Fetch Data from Magic Eden
-    const COLLECTION_SYMBOL = 'zenjaku_0'
+    const COLLECTION_SYMBOL = 'vibe_knights'
     
     let activities = []
     try {
@@ -53,11 +49,14 @@ export default async function handler(req, res) {
     for (let i = 0; i < salesEvents.length; i += BATCH_SIZE) {
       const batch = salesEvents.slice(i, i + BATCH_SIZE)
       
-      // Upsert - will update existing records if they exist (to backfill token_mint)
+      // Use upsert with ignoreDuplicates: true to skip existing records if we just want to fill gaps
+      // OR standard upsert (update if exists) which is safer if data might change (unlikely for immutable txs).
+      // Since transactions are immutable, onConflict: 'signature' with ignoreDuplicates: true is more efficient.
       const { error } = await supabaseAdmin
         .from('sales')
         .upsert(batch, { 
-            onConflict: 'signature'
+            onConflict: 'signature', 
+            ignoreDuplicates: true 
         })
 
       if (error) {

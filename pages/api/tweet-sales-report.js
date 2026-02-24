@@ -12,7 +12,7 @@
  * - NEXT_PUBLIC_BASE_URL (your domain, e.g., https://zenjaku.fun)
  * 
  * Usage: 
- * POST /api/tweet-sales-report?day=1&hours=24
+ * POST /api/tweet-sales-report?hours=168
  * Headers: Authorization: Bearer YOUR_TWEET_SECRET_KEY
  * 
  * Install dependency: npm install twitter-api-v2
@@ -49,7 +49,7 @@ export default async function handler(req, res) {
     })
   }
 
-  const { day = 1, hours = 24 } = req.query
+  const { hours = 168 } = req.query
 
   try {
     // Verify credentials are present and strip quotes if present
@@ -86,7 +86,7 @@ export default async function handler(req, res) {
     if (!baseUrl) {
       baseUrl = 'http://localhost:1217'
     }
-    const reportUrl = `${baseUrl}/api/sales-report?day=${day}&hours=${hours}`
+    const reportUrl = `${baseUrl}/api/sales-report?hours=${hours}`
     
     console.log(`[Tweet] Fetching report from: ${reportUrl}`)
     console.log(`[Tweet] NEXT_PUBLIC_BASE_URL: ${process.env.NEXT_PUBLIC_BASE_URL}`)
@@ -128,7 +128,7 @@ export default async function handler(req, res) {
       console.log('[Tweet] Authenticated as:', me.data.username)
       
       // Continue with media upload
-      return await uploadAndTweet(rwClient, imageData, day, hours, baseUrl, res)
+      return await uploadAndTweet(rwClient, imageData, hours, baseUrl, res)
     } catch (authError) {
       console.error('[Tweet] Auth test failed:', authError)
       throw new Error(`Authentication failed: ${authError.message}. Make sure you regenerated Access Token and Secret after enabling Read and Write permissions.`)
@@ -168,7 +168,7 @@ Original error: ${error.message}`
   }
 }
 
-async function uploadAndTweet(rwClient, imageData, day, hours, baseUrl, res) {
+async function uploadAndTweet(rwClient, imageData, hours, baseUrl, res) {
   // Step 3: Upload media
   console.log('[Tweet] Uploading media to Twitter...')
   const mediaId = await rwClient.v1.uploadMedia(imageData, {

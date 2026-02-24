@@ -47,7 +47,7 @@ export default function Manifesto() {
                 <>
                     <span className="opacity-50 line-through decoration-current">{TOTAL_SUPPLY.toLocaleString()}</span> <span className="text-[#ff9900]">{LIVE_ZENJAKU_COUNT.toLocaleString()}</span> elves trapped inside the chain.{"\n"}
                     Every trade shifts the balance.{"\n"}
-                    Half the royalties burn the supply, half fuel real-world impact.{"\n"}
+                    Half the royalties <a href="https://x.com/0XNAHUAL/status/1998813363359346767" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70 transition-opacity text-[#ff9900]">burn the supply</a>, half fuel <a href="https://x.com/0XNAHUAL/status/1998807944260104511" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70 transition-opacity text-[#ff9900]">real-world impact</a>.{"\n"}
                     Your choices and actions balance the scales.
                 </>
             )
