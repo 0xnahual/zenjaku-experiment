@@ -10,7 +10,7 @@
     },
     {
       "path": "/api/tweet-random-nft",
-      "schedule": "0 14 */3 * *"
+      "schedule": "0 14 * * 1"
     }
   ]
 }
