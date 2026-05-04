@@ -134,7 +134,7 @@ https://zenjaku.fun/explorer/${nftNumber}`
     // Step 7: Post reply tweet
     console.log('[Tweet Random NFT] Posting reply tweet...')
     const replyTweet = await rwClient.v2.tweet({
-      text: 'Join the experiment:\nzenjaku.fun/collect',
+      text: 'Join the experiment:\nhttps://magiceden.io/marketplace/zenjaku_0',
       reply: {
         in_reply_to_tweet_id: tweet.data.id
       }

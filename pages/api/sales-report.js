@@ -514,7 +514,7 @@ export default async function handler(req, res) {
     ctx.textBaseline = 'top'
     ctx.fillStyle = '#aaaaaa'
     ctx.font = '10px Monospace'
-    ctx.fillText('zenjaku.fun/collect', w - 60, h - 50)
+    ctx.fillText('https://magiceden.io/marketplace/zenjaku_0', w - 60, h - 50)
     ctx.textAlign = 'left'
 
     // Return as PNG
