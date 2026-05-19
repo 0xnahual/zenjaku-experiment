@@ -18,7 +18,7 @@ export default function Gallery() {
         <>
             <Head>
                 <title>1/1 Gallery | The Zenjaku Experiment</title>
-                <meta name="description" content="21 unique pieces of digital rebellion, inscribed forever on the Bitcoin blockchain." />
+                <meta name="description" content="33 unique pieces of digital rebellion, inscribed forever on the Bitcoin blockchain." />
             </Head>
 
             <div className="pt-24 px-4 pb-16">
@@ -81,8 +81,8 @@ export default function Gallery() {
                         {artworks.map((artwork) => (
                             <div
                                 key={artwork.id}
-                                className={`group relative aspect-square cursor-pointer bg-black ${artwork.isPlaceholder ? 'pointer-events-none' : ''}`}
-                                onClick={() => !artwork.isPlaceholder && setSelectedPiece(artwork)}
+                                className="group relative aspect-square cursor-pointer bg-black"
+                                onClick={() => setSelectedPiece(artwork)}
                             >
                                 <Image
                                     src={artwork.image}
@@ -91,36 +91,18 @@ export default function Gallery() {
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                                     style={{
-                                        filter: artwork.isPlaceholder
-                                            ? 'brightness(0.3) contrast(1.2)'
-                                            : (isDark ? 'brightness(1.1) contrast(1.1)' : 'contrast(1.1)'),
+                                        filter: isDark ? 'brightness(1.1) contrast(1.1)' : 'contrast(1.1)',
                                         mixBlendMode: isDark ? 'screen' : 'normal'
                                     }}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
 
                                 {/* Cyberpunk Frame */}
-                                <div className={`absolute inset-0 border ${artwork.isPlaceholder ? 'border-[#ff9900]/10' : 'border-[#ff9900]/20'}`} />
-                                <div className={`absolute top-0 left-0 w-8 h-8 border-t border-l ${artwork.isPlaceholder ? 'border-[#ff9900]/20' : 'border-[#ff9900]/40'}`} />
-                                <div className={`absolute top-0 right-0 w-8 h-8 border-t border-r ${artwork.isPlaceholder ? 'border-[#ff9900]/20' : 'border-[#ff9900]/40'}`} />
-                                <div className={`absolute bottom-0 left-0 w-8 h-8 border-b border-l ${artwork.isPlaceholder ? 'border-[#ff9900]/20' : 'border-[#ff9900]/40'}`} />
-                                <div className={`absolute bottom-0 right-0 w-8 h-8 border-b border-r ${artwork.isPlaceholder ? 'border-[#ff9900]/20' : 'border-[#ff9900]/40'}`} />
-
-                                {artwork.isPlaceholder && (
-                                    <div className="absolute inset-0 flex items-center justify-center">
-                                        <div className="text-center">
-                                            <div
-                                                className="text-[#ff9900]/60 font-mono text-sm tracking-wider mb-2"
-                                                style={{
-                                                    textShadow: glitchActive ? '1px 1px #ff3300, -1px -1px #ff9900' : 'none'
-                                                }}
-                                            >
-                                                COMING SOON
-                                            </div>
-                                            <div className="text-white/30 text-xs">Balance demands patience</div>
-                                        </div>
-                                    </div>
-                                )}
+                                <div className="absolute inset-0 border border-[#ff9900]/20" />
+                                <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-[#ff9900]/40" />
+                                <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-[#ff9900]/40" />
+                                <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-[#ff9900]/40" />
+                                <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-[#ff9900]/40" />
 
                                 {/* Always Visible Details */}
                                 <div
@@ -129,44 +111,42 @@ export default function Gallery() {
                                 >
                                     <div className="space-y-1">
                                         <div className="flex justify-between items-center">
-                                            <div className={`text-[9px] tracking-wider ${artwork.isPlaceholder ? 'text-[#ff9900]/40' : 'text-[#ff9900]'}`}>
+                                            <div className="text-[9px] tracking-wider text-[#ff9900]">
                                                 {artwork.isPlaceholder ? 'AWAITING INSCRIPTION' : `INSCRIPTION #${artwork.inscriptionNumber || 'N/A'}`}
                                             </div>
-                                            <div className={`text-[8px] tracking-wider ${artwork.isPlaceholder ? 'text-[#ff6600]/30' : 'text-[#ff6600]/70'}`}>
-                                                {artwork.isPlaceholder ? 'BLOCK TBA' : `BLOCK #${artwork.block}`}
+                                            <div className="text-[8px] tracking-wider text-[#ff6600]/70">
+                                                {artwork.isPlaceholder ? 'BLOCK PENDING' : `BLOCK #${artwork.block}`}
                                             </div>
                                         </div>
-                                        {!artwork.isPlaceholder && artwork.contentType && (
+                                        {artwork.contentType && (
                                             <div className="flex justify-between items-center">
                                                 <div className="text-[8px] tracking-wider text-white/50">
                                                     {artwork.contentType}
                                                 </div>
                                                 <div className="text-[8px] tracking-wider text-white/50">
-                                                    {artwork.contentSize}
+                                                    {artwork.contentSize || 'TBA'}
                                                 </div>
                                             </div>
                                         )}
                                     </div>
-                                    <div className={`text-sm font-bold ${artwork.isPlaceholder ? 'text-white/40' : 'group-hover:text-[#ff9900]'} transition-colors`}>
+                                    <div className="text-sm font-bold group-hover:text-[#ff9900] transition-colors">
                                         {artwork.title}
                                     </div>
-                                    {!artwork.isPlaceholder && (
-                                        <div
-                                            className="text-[8px] tracking-wider opacity-70"
-                                            style={{
-                                                textShadow: glitchActive ? '1px 1px #ff3300, -1px -1px #ff9900' : 'none'
-                                            }}
-                                        >
-                                            TX: {artwork.tx.slice(0, 12)}...
-                                        </div>
-                                    )}
+                                    <div
+                                        className="text-[8px] tracking-wider opacity-70"
+                                        style={{
+                                            textShadow: glitchActive ? '1px 1px #ff3300, -1px -1px #ff9900' : 'none'
+                                        }}
+                                    >
+                                        TX: {artwork.isPlaceholder ? 'PENDING' : `${artwork.tx.slice(0, 12)}...`}
+                                    </div>
                                 </div>
 
                                 {/* Glitch Lines */}
                                 <div
                                     className="absolute inset-0 pointer-events-none"
                                     style={{
-                                        background: `repeating-linear-gradient(transparent, transparent 2px, rgba(255, 153, 0, ${artwork.isPlaceholder ? '0.01' : '0.03'}) 3px, transparent 3px)`,
+                                        background: `repeating-linear-gradient(transparent, transparent 2px, rgba(255, 153, 0, 0.03) 3px, transparent 3px)`,
                                         backgroundSize: '100% 4px'
                                     }}
                                 />
@@ -215,14 +195,14 @@ export default function Gallery() {
                                     <div className="space-y-1">
                                         <div className="tracking-[0.3em] opacity-50">INSCRIPTION NUMBER</div>
                                         <div className="text-lg font-bold tracking-wider text-[#ff9900]">
-                                            #{selectedPiece.inscriptionNumber || 'N/A'}
+                                            {selectedPiece.isPlaceholder ? 'AWAITING' : `#${selectedPiece.inscriptionNumber || 'N/A'}`}
                                         </div>
                                     </div>
 
                                     <div className="space-y-1">
                                         <div className="tracking-[0.3em] opacity-50">INSCRIPTION ID</div>
                                         <div className="text-xs break-all font-mono tracking-wider text-[#ff9900]/80">
-                                            {selectedPiece.inscription}
+                                            {selectedPiece.isPlaceholder ? 'AWAITING' : selectedPiece.inscription}
                                         </div>
                                     </div>
 
@@ -240,7 +220,9 @@ export default function Gallery() {
                                     <div className="grid grid-cols-2 gap-4">
                                         <div>
                                             <div className="tracking-[0.3em] opacity-50 mb-1">BLOCK HEIGHT</div>
-                                            <div className="tracking-wider text-[#ff9900]">#{selectedPiece.block}</div>
+                                            <div className="tracking-wider text-[#ff9900]">
+                                                {selectedPiece.isPlaceholder ? 'AWAITING' : `#${selectedPiece.block}`}
+                                            </div>
                                         </div>
                                         <div>
                                             <div className="tracking-[0.3em] opacity-50 mb-1">NETWORK</div>
@@ -250,18 +232,22 @@ export default function Gallery() {
 
                                     <div>
                                         <div className="tracking-[0.3em] opacity-50 mb-1">TRANSACTION HASH</div>
-                                        <div className="text-xs break-all tracking-wider text-[#ff6600]/70">{selectedPiece.tx}</div>
+                                        <div className="text-xs break-all tracking-wider text-[#ff6600]/70">
+                                            {selectedPiece.isPlaceholder ? 'AWAITING' : selectedPiece.tx}
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="pt-4 border-t border-white/10 space-y-2">
-                                    <a
-                                        href={`https://ordiscan.com/inscription/${selectedPiece.inscription}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-block text-xs tracking-wider hover:text-[#ff9900] transition-colors mr-4"
-                                    >
-                                        VIEW ON ORDISCAN →
-                                    </a>
+                                    {!selectedPiece.isPlaceholder && (
+                                        <a
+                                            href={`https://ordiscan.com/inscription/${selectedPiece.inscription}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-block text-xs tracking-wider hover:text-[#ff9900] transition-colors mr-4"
+                                        >
+                                            VIEW ON ORDISCAN →
+                                        </a>
+                                    )}
                                     <a
                                         href="https://magiceden.io/ordinals/marketplace/zenjaku"
                                         target="_blank"
