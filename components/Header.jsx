@@ -87,14 +87,15 @@ const Header = () => {
             dropdownId: 'collect',
             dropdownItems: [
                 {
-                    name: 'SOL (TENSOR)',
-                    link: 'https://www.tensor.trade/trade/zenjaku',
+                    name: 'SOL (MAGIC EDEN)',
+                    link: 'https://magiceden.io/marketplace/zenjaku_0',
                     isExternal: true
                 },
                 {
                     name: 'BTC (MAGIC EDEN)',
                     link: 'https://magiceden.io/ordinals/marketplace/zenjaku',
-                    isExternal: true
+                    isExternal: true,
+                    comingSoon: "COMING SOON"
                 }
             ]
         }
