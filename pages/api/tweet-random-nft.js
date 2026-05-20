@@ -1,7 +1,7 @@
 /**
  * API endpoint to tweet a random NFT collectible
  * 
- * Requires Twitter API credentials (same as tweet-sales-report):
+ * Requires Twitter API credentials:
  * - TWITTER_API_KEY
  * - TWITTER_API_SECRET
  * - TWITTER_ACCESS_TOKEN

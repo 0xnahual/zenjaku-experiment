@@ -173,12 +173,6 @@ export default function Explorer() {
                                             <span className="text-gray-500">STATUS</span>
                                             <span className="text-green-500">● LIVE</span>
                                         </div>
-                                        <div className="flex justify-between p-3">
-                                            <span className="text-gray-500">TRANSFORMATION</span>
-                                            <span className={nftData.pastImage ? 'text-[#ff9900]' : 'text-gray-500'}>
-                                                {nftData.pastImage ? '✓ TRANSFORMED' : 'ORIGINAL'}
-                                            </span>
-                                        </div>
                                     </div>
 
                                     {/* External Links */}

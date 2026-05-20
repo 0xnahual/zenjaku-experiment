@@ -98,12 +98,18 @@ export default function Home() {
                                 textShadow: glitchActive ? (isDark ? '2px 0 #ff0000, -2px 0 #00ff00' : '2px 0 #ff0000, -2px 0 #00ffff') : 'none'
                             }}
                         >
-                            Zenjaku is an on-chain experiment in duality.
+                            A collection of {LIVE_ZENJAKU_COUNT < TOTAL_SUPPLY ? (
+                                <>
+                                    <span className="opacity-50 line-through decoration-current">{TOTAL_SUPPLY.toLocaleString()}</span>{' '}
+                                    <span className="text-[#ff9900]">{LIVE_ZENJAKU_COUNT.toLocaleString()}</span>
+                                </>
+                            ) : (
+                                <span className="text-[#ff9900]">{LIVE_ZENJAKU_COUNT.toLocaleString()}</span>
+                            )} elves trapped on-chain.
                             <br />
-                            <span className="opacity-50 line-through decoration-current">{TOTAL_SUPPLY.toLocaleString()}</span> <span className="text-[#ff9900]">{LIVE_ZENJAKU_COUNT.toLocaleString()}</span> elves trapped in an eternal struggle.
+                            Every trade splits a 0.69% royalty: half burns supply forever, half funds real-world impact.
                             <br />
-                            Half of the royalties <a href="https://x.com/0XNAHUAL/status/1998813363359346767" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70 transition-opacity">fuel destruction</a>. Half <a href="https://x.com/0XNAHUAL/status/1998807944260104511" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70 transition-opacity">transform reality</a>.
-                            Is balance power? Step in and find out.
+                            Your wallet tips the balance.
                         </p>
                         <div className="flex flex-row gap-8 font-mono text-sm tracking-widest uppercase pt-2 whitespace-nowrap text-left"
                             style={{ color: isDark ? '#FFFFFF' : '#000000' }}>

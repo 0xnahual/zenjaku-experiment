@@ -1,14 +1,6 @@
 {
   "crons": [
     {
-      "path": "/api/sync-leaderboard",
-      "schedule": "0 * * * *"
-    },
-    {
-      "path": "/api/tweet-sales-report",
-      "schedule": "0 20 * * 1"
-    },
-    {
       "path": "/api/tweet-random-nft",
       "schedule": "0 14 * * 1"
     }
