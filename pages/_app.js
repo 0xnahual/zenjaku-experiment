@@ -1,8 +1,6 @@
 import { useEffect } from 'react'
 import Head from 'next/head'
 import '../styles/globals.css'
-import '../styles/breakpoints.css'
-import '../styles/breakpoints-store.css'
 import Header from '../components/Header'
 import Layout from '../components/Layout'
 import { useRouter } from 'next/router'

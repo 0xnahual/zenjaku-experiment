@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import { useDarkMode } from '../contexts/DarkModeContext'
 import Link from 'next/link'
-import { TOTAL_VALUE_BURNED, BURNED_COUNT, TOTAL_SUPPLY, LIVE_ZENJAKU_COUNT } from '../config/constants'
+import { TOTAL_SUPPLY, LIVE_ZENJAKU_COUNT } from '../config/constants'
 
 export default function Home() {
     const { isDark, glitchActive, mounted } = useDarkMode()
@@ -22,7 +22,6 @@ export default function Home() {
         return () => clearInterval(textInterval)
     }, [mounted])
 
-    //Fix Github
     const crypticTexts = [
         "Light feeds darkness",
         "Chaos breeds order",
@@ -77,20 +76,6 @@ export default function Home() {
                                 </div>
                             ))}
                         </div>
-                        {/* 
-                        <p
-                            className="font-mono text-xs sm:text-sm font-medium w-full text-left"
-                            style={{ color: isDark ? '#AAAAAA' : '#444444' }}
-                        >
-                            Zenjaku is an on-chain experiment in duality.
-                            <br />
-                            <span style={{ textDecoration: 'line-through', opacity: 0.5 }}>3,100</span> 3,089 elves trapped in an eternal struggle. Half of the royalties
-                            turn them to ash
-                            . Half
-                            transforms reality
-                            . Is balance power? Step in and find out.
-                        </p> 
-                        */}
                         <p
                             className="font-mono text-xs sm:text-sm font-medium w-full text-left leading-relaxed relative"
                             style={{
