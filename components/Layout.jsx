@@ -71,7 +71,7 @@ export default function Layout({ children }) {
                     className="font-mono text-[8px] sm:text-[10px] tracking-wider opacity-70 text-center pointer-events-auto min-w-[120px] min-h-[1em] flex items-center gap-1"
                     style={{ color: isDark ? '#FFFFFF' : '#000000' }}
                 >
-                    <span>an experiment by</span>
+                    <span>a collection by</span>
                     <a
                         href="https://x.com/0XNAHUAL"
                         target="_blank"
