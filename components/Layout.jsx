@@ -73,12 +73,12 @@ export default function Layout({ children }) {
                 >
                     <span>a collection by</span>
                     <a
-                        href="https://x.com/0XNAHUAL"
+                        href="https://x.com/IXTLANSTUDIOS"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="font-bold ghost-text hover:text-[#ff9900] transition-colors underline group"
                     >
-                        <ScrambleText text="NΛHUΛL" />
+                        <ScrambleText text="IXTLΛN STUDIOS" />
                         <span className="inline-block ml-1 opacity-70 group-hover:opacity-100 transition-opacity">↗</span>
                     </a>
                 </div>
