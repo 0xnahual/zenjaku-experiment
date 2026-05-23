@@ -78,7 +78,7 @@ export default function Layout({ children }) {
                         rel="noopener noreferrer"
                         className="font-bold ghost-text hover:text-[#ff9900] transition-colors underline group"
                     >
-                        <ScrambleText text="NΛHUΛL" />
+                        <ScrambleText text="IXTLΛN STUDIOS" />
                         <span className="inline-block ml-1 opacity-70 group-hover:opacity-100 transition-opacity">↗</span>
                     </a>
                 </div>
