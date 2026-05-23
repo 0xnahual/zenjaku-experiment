@@ -73,7 +73,7 @@ export default function Layout({ children }) {
                 >
                     <span>a collection by</span>
                     <a
-                        href="https://x.com/ixtlanstudios"
+                        href="https://x.com/IXTLANSTUDIOS"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="font-bold ghost-text hover:text-[#ff9900] transition-colors underline group"
